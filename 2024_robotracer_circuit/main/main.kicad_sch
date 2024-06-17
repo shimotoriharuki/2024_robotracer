@@ -2674,12 +2674,12 @@
 				)
 			)
 		)
-		(symbol "LBR-127HLD_1"
+		(symbol "LBR-127HLD_5"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U21"
-				(at -0.508 8.636 0)
+			(property "Reference" "U"
+				(at 0 7.874 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2687,7 +2687,7 @@
 				)
 			)
 			(property "Value" "LBR-127HLD"
-				(at 0 6.35 0)
+				(at -0.254 6.096 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2721,7 +2721,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "LBR-127HLD_1_0_1"
+			(symbol "LBR-127HLD_5_0_1"
 				(rectangle
 					(start -5.08 5.08)
 					(end 5.08 -5.08)
@@ -2854,7 +2854,7 @@
 					)
 				)
 			)
-			(symbol "LBR-127HLD_1_1_1"
+			(symbol "LBR-127HLD_5_1_1"
 				(pin passive line
 					(at -7.62 3.81 0)
 					(length 2.54)
@@ -4437,6 +4437,171 @@
 				)
 			)
 		)
+		(symbol "MTN2306AN3_3"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 4.826 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MTN2306AN3"
+				(at 0 2.794 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MTN2306AN3_3_0_1"
+				(rectangle
+					(start -3.81 1.27)
+					(end 3.81 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -5.08) (xy -1.27 -7.62)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -6.35) (xy -5.08 -6.35) (xy -5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -6.35) (xy 5.08 -6.35) (xy 5.08 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -5.08) (xy -1.27 -6.35) (xy 1.27 -7.62) (xy 1.27 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MTN2306AN3_3_1_1"
+				(pin passive line
+					(at -6.35 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -6.35 -2.54 0)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 6.35 -2.54 180)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Switch:SW_Push"
 			(pin_numbers hide)
 			(pin_names
@@ -4594,8 +4759,8 @@
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "AE-BMX055"
+				(at 0 -7.366 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -4965,15 +5130,15 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 3.81 0)
+				(at 0 6.096 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "BP5293-33"
+				(at 0 3.556 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5021,14 +5186,6 @@
 				)
 			)
 			(symbol "BP5293-33_1_1"
-				(text "BP5293-33"
-					(at 0 1.524 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
 				(pin passive line
 					(at -8.89 0 0)
 					(length 2.54)
@@ -5090,15 +5247,15 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 3.81 0)
+				(at 0 5.842 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "BP5293-50"
+				(at 0 3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5146,14 +5303,6 @@
 				)
 			)
 			(symbol "BP5293-50_1_1"
-				(text "BP5293-50"
-					(at 0 1.524 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
 				(pin passive line
 					(at -8.89 0 0)
 					(length 2.54)
@@ -5215,15 +5364,15 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 6.604 0)
+				(at 0 7.874 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at -1.27 0 0)
+			(property "Value" "LBR-127HLD"
+				(at -0.254 6.096 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5470,15 +5619,15 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 3.048 0)
+				(at 0 4.826 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "MTN2306AN3"
+				(at 0 2.794 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5635,15 +5784,15 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 8.128 4.572 0)
+				(at 8.382 5.842 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at 6.35 -2.54 0)
+			(property "Value" "OSC8MI/H"
+				(at 8.382 3.556 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5670,6 +5819,15 @@
 			)
 			(property "Description" ""
 				(at 6.35 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "OSC8MI/H"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -5941,15 +6099,15 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 5.588 0)
+				(at 0 7.112 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "SSM6J808R"
+				(at 0 4.826 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -13843,14 +14001,14 @@
 		(dnp no)
 		(uuid "11e82cdf-cfa8-4315-8e24-b3dbd5eec31a")
 		(property "Reference" "U2"
-			(at 318.262 71.882 0)
+			(at 318.516 70.104 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "OSC8MI/H"
 			(at 318.135 72.39 0)
 			(effects
 				(font
@@ -16191,7 +16349,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 173.99 158.75 90)
 			(effects
 				(font
@@ -16264,7 +16422,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 172.72 222.25 90)
 			(effects
 				(font
@@ -16407,7 +16565,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "AE-BMX055"
 			(at 345.44 180.34 0)
 			(effects
 				(font
@@ -16567,7 +16725,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "LBR-127HLD"
 			(at 229.87 195.58 0)
 			(effects
 				(font
@@ -17134,6 +17292,7 @@
 		)
 	)
 	(symbol
+		(lib_name "LBR-127HLD_5")
 		(lib_id "mylib:LBR-127HLD")
 		(at 185.42 201.93 0)
 		(unit 1)
@@ -17150,7 +17309,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "LBR-127HLD"
 			(at 185.42 195.58 0)
 			(effects
 				(font
@@ -20789,7 +20948,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 309.88 222.25 90)
 			(effects
 				(font
@@ -21423,6 +21582,7 @@
 		)
 	)
 	(symbol
+		(lib_name "MTN2306AN3_3")
 		(lib_id "mylib:MTN2306AN3")
 		(at 220.98 157.48 90)
 		(mirror x)
@@ -21441,7 +21601,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 218.44 158.75 90)
 			(effects
 				(font
@@ -21513,7 +21673,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "SSM6J808R"
 			(at 52.07 29.21 0)
 			(effects
 				(font
@@ -21594,7 +21754,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 217.17 222.25 90)
 			(effects
 				(font
@@ -22280,7 +22440,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 34.29 91.44 90)
 			(effects
 				(font
@@ -22560,7 +22720,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "LBR-127HLD"
 			(at 186.69 132.08 0)
 			(effects
 				(font
@@ -22791,7 +22951,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "BP5293-33"
 			(at 139.7 34.29 0)
 			(effects
 				(font
@@ -23744,7 +23904,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "LBR-127HLD"
 			(at 322.58 195.58 0)
 			(effects
 				(font
@@ -24662,7 +24822,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MTN2306AN3"
 			(at 264.16 222.25 90)
 			(effects
 				(font
@@ -26544,7 +26704,6 @@
 		)
 	)
 	(symbol
-		(lib_name "LBR-127HLD_1")
 		(lib_id "mylib:LBR-127HLD")
 		(at 231.14 138.43 0)
 		(unit 1)
@@ -27041,7 +27200,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "LBR-127HLD"
 			(at 276.86 195.58 0)
 			(effects
 				(font
@@ -28016,7 +28175,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "BP5293-50"
 			(at 229.87 35.56 0)
 			(effects
 				(font
