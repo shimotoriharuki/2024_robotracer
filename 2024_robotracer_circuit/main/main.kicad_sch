@@ -6269,16 +6269,16 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
-				(at 0 0 0)
+			(property "Reference" "U23"
+				(at 0.635 7.62 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "SS-22F32G5"
+				(at 0.635 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -14016,7 +14016,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:OSC8MIH"
 			(at 316.23 78.74 0)
 			(effects
 				(font
@@ -15306,7 +15306,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical"
 			(at 176.53 93.98 0)
 			(effects
 				(font
@@ -15386,7 +15386,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
 			(at 279.4 134.62 0)
 			(effects
 				(font
@@ -16212,7 +16212,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
 			(at 279.4 104.14 0)
 			(effects
 				(font
@@ -16654,7 +16654,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical"
 			(at 279.4 166.37 0)
 			(effects
 				(font
@@ -16733,7 +16733,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:LBR-127HLD"
 			(at 228.6 201.93 0)
 			(effects
 				(font
@@ -17317,7 +17317,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:LBR-127HLD"
 			(at 184.15 201.93 0)
 			(effects
 				(font
@@ -18547,7 +18547,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "TVGP01-G73BB"
 			(at 279.4 69.8499 90)
 			(effects
 				(font
@@ -18556,7 +18556,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:TVGP01-G73BB"
 			(at 273.05 68.58 0)
 			(effects
 				(font
@@ -21028,7 +21028,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:SKRHAAE010"
 			(at 142.24 181.61 0)
 			(effects
 				(font
@@ -21681,7 +21681,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSOP-6_1.65x3.05mm_P0.95mm"
 			(at 52.07 34.29 0)
 			(effects
 				(font
@@ -22728,7 +22728,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:LBR-127HLD"
 			(at 185.42 138.43 0)
 			(effects
 				(font
@@ -22802,7 +22802,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5"
 			(at 172.72 120.65 0)
 			(effects
 				(font
@@ -22959,7 +22959,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:BP5293-xx"
 			(at 139.7 38.1 0)
 			(effects
 				(font
@@ -23912,7 +23912,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:LBR-127HLD"
 			(at 321.31 201.93 0)
 			(effects
 				(font
@@ -23978,7 +23978,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "SS-22F32G5"
 			(at 47.625 48.26 0)
 			(effects
 				(font
@@ -23986,7 +23986,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 46.99 53.34 0)
 			(effects
 				(font
@@ -24260,7 +24260,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
 			(at 99.06 83.82 0)
 			(effects
 				(font
@@ -24538,7 +24538,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
 			(at 129.54 83.82 0)
 			(effects
 				(font
@@ -24611,7 +24611,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:UM1515IA085008"
 			(at 41.275 73.66 90)
 			(effects
 				(font
@@ -26728,7 +26728,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:LBR-127HLD"
 			(at 229.87 138.43 0)
 			(effects
 				(font
@@ -27208,7 +27208,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:LBR-127HLD"
 			(at 275.59 201.93 0)
 			(effects
 				(font
@@ -28183,7 +28183,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:BP5293-xx"
 			(at 229.87 39.37 0)
 			(effects
 				(font
