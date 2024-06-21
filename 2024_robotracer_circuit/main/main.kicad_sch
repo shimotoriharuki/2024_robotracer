@@ -16358,7 +16358,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 176.53 157.48 0)
 			(effects
 				(font
@@ -16431,7 +16431,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 175.26 220.98 0)
 			(effects
 				(font
@@ -16573,7 +16573,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "mylib:AE-BMX055"
 			(at 345.44 177.8 0)
 			(effects
 				(font
@@ -20957,7 +20957,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 312.42 220.98 0)
 			(effects
 				(font
@@ -21610,7 +21610,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 220.98 157.48 0)
 			(effects
 				(font
@@ -21763,7 +21763,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 219.71 220.98 0)
 			(effects
 				(font
@@ -22449,7 +22449,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 36.83 90.17 0)
 			(effects
 				(font
@@ -24831,7 +24831,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 266.7 220.98 0)
 			(effects
 				(font
