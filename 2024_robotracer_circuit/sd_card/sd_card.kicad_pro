@@ -430,7 +430,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "main.kicad_pro",
+    "filename": "sd_card.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -561,14 +561,6 @@
       "version": 1
     },
     "net_format_name": "",
-    "ngspice": {
-      "fix_include_paths": true,
-      "meta": {
-        "version": 0
-      },
-      "model_mode": 4,
-      "workbook_filename": ""
-    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "spice_current_sheet_as_root": false,
@@ -582,7 +574,7 @@
   },
   "sheets": [
     [
-      "17779a84-a458-4dfa-8c72-c0044fe3feb5",
+      "5c8bc54e-35dd-4c32-851e-a2e69654c7d1",
       "ルート"
     ]
   ],
