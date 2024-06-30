@@ -6640,6 +6640,12 @@
 		(uuid "13fe78b6-5a34-4786-b0c1-22dea0b85da0")
 	)
 	(junction
+		(at 325.12 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "16518cd7-1955-4f94-a75d-f0a0c94a80b3")
+	)
+	(junction
 		(at 78.74 163.83)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7298,6 +7304,16 @@
 			(type default)
 		)
 		(uuid "0dcac987-0aab-481f-b79e-565ed8f6b18f")
+	)
+	(wire
+		(pts
+			(xy 325.12 34.29) (xy 334.01 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e75e7d0-3a83-472b-8be7-598b7744e87b")
 	)
 	(wire
 		(pts
@@ -9338,6 +9354,16 @@
 			(type default)
 		)
 		(uuid "bad2367e-d9d8-4ed5-adf6-39d4b8328d2f")
+	)
+	(wire
+		(pts
+			(xy 325.12 39.37) (xy 334.01 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc4fba24-b756-439a-8893-b859a0121601")
 	)
 	(wire
 		(pts
@@ -13289,6 +13315,75 @@
 			(project "main"
 				(path "/17779a84-a458-4dfa-8c72-c0044fe3feb5"
 					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 334.01 36.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "37480af0-16f4-42e5-9389-c541d5e54a08")
+		(property "Reference" "C10"
+			(at 336.55 35.5662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1u"
+			(at 336.55 38.1062 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 334.01 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 334.01 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 334.01 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9cf5adff-af00-4280-bf5e-5d37c3c4ba5b")
+		)
+		(pin "2"
+			(uuid "bb86955a-431c-409c-b607-f67046dec9cc")
+		)
+		(instances
+			(project "main"
+				(path "/17779a84-a458-4dfa-8c72-c0044fe3feb5"
+					(reference "C10")
 					(unit 1)
 				)
 			)
