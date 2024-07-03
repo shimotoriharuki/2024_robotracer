@@ -1348,12 +1348,6 @@
 		)
 	)
 	(junction
-		(at 92.71 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7ea051a4-336e-4464-9e01-758cb62fe617")
-	)
-	(junction
 		(at 71.12 82.55)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1382,12 +1376,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ca004551-8e83-4715-82be-4a6c32819abf")
-	)
-	(junction
-		(at 80.01 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d22745e4-9e87-47e8-9157-8f2dc0012111")
 	)
 	(wire
 		(pts
@@ -1438,16 +1426,6 @@
 			(type default)
 		)
 		(uuid "1b32fd76-d9d5-4973-beb9-d41ec43208bd")
-	)
-	(wire
-		(pts
-			(xy 92.71 80.01) (xy 92.71 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1cb9cb03-3cd9-4f1d-a775-8f610c81d73f")
 	)
 	(wire
 		(pts
@@ -1541,17 +1519,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 59.69) (xy 80.01 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6181bc6f-0faf-4bea-b582-81f75a0b8bb2")
-	)
-	(wire
-		(pts
-			(xy 92.71 82.55) (xy 71.12 82.55)
+			(xy 71.12 82.55) (xy 101.6 82.55)
 		)
 		(stroke
 			(width 0)
@@ -1651,16 +1619,6 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 82.55) (xy 92.71 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "de3d619e-e584-4a5a-971d-ac672f845133")
-	)
-	(wire
-		(pts
 			(xy 137.16 115.57) (xy 144.78 115.57)
 		)
 		(stroke
@@ -1699,16 +1657,6 @@
 		)
 		(uuid "f2a54406-c905-4b95-8e80-55e24019e9ca")
 	)
-	(wire
-		(pts
-			(xy 92.71 74.93) (xy 92.71 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f6ebb6e3-0654-4743-b6e6-01effc38e955")
-	)
 	(label "PULSE"
 		(at 121.92 132.08 270)
 		(fields_autoplaced yes)
@@ -1731,6 +1679,17 @@
 		)
 		(uuid "b5c6ea4d-68c9-4315-9fc7-688d4a2774da")
 	)
+	(label "SENSOR_SIDE_ADC"
+		(at 144.78 115.57 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bb859f28-d850-49dd-83e7-603fda240e43")
+	)
 	(label "PULSE"
 		(at 66.04 74.93 0)
 		(fields_autoplaced yes)
@@ -1741,17 +1700,6 @@
 			(justify left bottom)
 		)
 		(uuid "c838f811-4578-41de-92a5-24b45a576afd")
-	)
-	(label "SENSOR0_ADC"
-		(at 144.78 115.57 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d0abe91a-971c-4ab2-87f5-f52c9a2d07ec")
 	)
 	(symbol
 		(lib_name "LBR-127HLD_5")
@@ -3046,77 +2994,6 @@
 			(project "side_sensor"
 				(path "/a42dd4c6-b236-415a-8b71-3f8e0cd98396"
 					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C_Small")
-		(at 92.71 77.47 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f2a6897b-c008-4d4a-9418-86cc6daab885")
-		(property "Reference" "C1"
-			(at 90.17 76.2062 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0.1u"
-			(at 90.17 78.7462 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
-			(at 92.71 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 92.71 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 92.71 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "fe7d12e5-0132-4c22-8252-b87f84a8c941")
-		)
-		(pin "1"
-			(uuid "59a9a42f-00ad-499c-8adc-af175d74496c")
-		)
-		(instances
-			(project "side_sensor"
-				(path "/a42dd4c6-b236-415a-8b71-3f8e0cd98396"
-					(reference "C1")
 					(unit 1)
 				)
 			)
