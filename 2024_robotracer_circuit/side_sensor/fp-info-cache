@@ -1,4 +1,4 @@
-23350040071366087
+23351760081465706
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -95369,6 +95369,13 @@ OSC8MIH
 4
 mylib
 SH
+
+
+0
+0
+0
+mylib
+SH_3mm
 
 
 0
