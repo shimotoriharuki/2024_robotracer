@@ -1,0 +1,5 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"C1, C2",0603,2,0.1u,
+J1,microSD_HC_Hirose_DM3AT-SF-PEJM5,1,Micro_SD_Card_Det1,
+J2,JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical,1,PH_6p,
+"R1, R2, R3, R4, R5, R6, R7",0603,7,22k,
