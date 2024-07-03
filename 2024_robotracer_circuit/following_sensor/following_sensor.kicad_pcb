@@ -2269,7 +2269,7 @@
 			(at 0 -3.2 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "3c9854ac-045b-41fb-961b-306133ceff93")
+			(uuid "e6c8242c-1dce-459e-a5ed-4abc7bdeebf4")
 			(effects
 				(font
 					(size 1 1)
@@ -2280,7 +2280,7 @@
 		(property "Value" "MountingHole_2.2mm_M2"
 			(at 0 3.2 0)
 			(layer "F.Fab")
-			(uuid "83566e14-a703-49f8-b493-947927f9f7ea")
+			(uuid "d5e10cb5-f988-4a6b-b064-57e4c7879bd5")
 			(effects
 				(font
 					(size 1 1)
@@ -2334,7 +2334,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "cbaaf6bb-196d-4833-bc54-7157d78eba82")
+			(uuid "af069673-0a09-4d3c-9841-3a276bca8809")
 		)
 		(fp_circle
 			(center 0 0)
@@ -2345,12 +2345,12 @@
 			)
 			(fill none)
 			(layer "F.CrtYd")
-			(uuid "fac5f214-b003-4cf7-a524-a8dae5d718a5")
+			(uuid "ab7c1d32-219f-4bbf-a553-c47bb1e96c2b")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "b3258db7-80da-450f-9e49-37dbae1c3860")
+			(uuid "5006675e-904a-40c3-9062-c4478f6bba00")
 			(effects
 				(font
 					(size 1 1)
@@ -2363,7 +2363,7 @@
 			(size 2.2 2.2)
 			(drill 2.2)
 			(layers "*.Cu" "*.Mask")
-			(uuid "375e5d8e-a068-4c5f-9c25-1da58ed2caa4")
+			(uuid "c3b622d0-f1c0-44ed-ac07-2166b5f9e55a")
 		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"

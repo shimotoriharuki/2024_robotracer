@@ -484,7 +484,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "following_sensor.step",
       "svg": "",
       "vrml": ""
     },

@@ -482,7 +482,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "sd_card.step",
       "svg": "",
       "vrml": ""
     },
