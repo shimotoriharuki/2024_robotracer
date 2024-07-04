@@ -15928,7 +15928,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "HX_12p"
+		(property "Value" "XH_12p"
 			(at 59.69 154.9399 0)
 			(effects
 				(font

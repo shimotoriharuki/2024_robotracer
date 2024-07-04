@@ -2622,7 +2622,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "5.1"
 			(at 220.98 124.4599 0)
 			(effects
 				(font
@@ -2692,7 +2692,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "5.1"
 			(at 177.8 124.4599 0)
 			(effects
 				(font
@@ -3183,7 +3183,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "5.1"
 			(at 132.08 124.4599 0)
 			(effects
 				(font
@@ -4144,7 +4144,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "5.1"
 			(at 85.09 124.4599 0)
 			(effects
 				(font
