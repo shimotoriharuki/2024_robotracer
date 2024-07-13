@@ -1529,9 +1529,9 @@ static void MX_TIM6_Init(void)
  8000b3a:	4b15      	ldr	r3, [pc, #84]	; (8000b90 <MX_TIM6_Init+0x64>)
  8000b3c:	4a15      	ldr	r2, [pc, #84]	; (8000b94 <MX_TIM6_Init+0x68>)
  8000b3e:	601a      	str	r2, [r3, #0]
-  htim6.Init.Prescaler = 41;
+  htim6.Init.Prescaler = 83;
  8000b40:	4b13      	ldr	r3, [pc, #76]	; (8000b90 <MX_TIM6_Init+0x64>)
- 8000b42:	2229      	movs	r2, #41	; 0x29
+ 8000b42:	2253      	movs	r2, #83	; 0x53
  8000b44:	605a      	str	r2, [r3, #4]
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
  8000b46:	4b12      	ldr	r3, [pc, #72]	; (8000b90 <MX_TIM6_Init+0x64>)
@@ -1614,9 +1614,9 @@ static void MX_TIM7_Init(void)
  8000ba6:	4b14      	ldr	r3, [pc, #80]	; (8000bf8 <MX_TIM7_Init+0x60>)
  8000ba8:	4a14      	ldr	r2, [pc, #80]	; (8000bfc <MX_TIM7_Init+0x64>)
  8000baa:	601a      	str	r2, [r3, #0]
-  htim7.Init.Prescaler = 41;
+  htim7.Init.Prescaler = 83;
  8000bac:	4b12      	ldr	r3, [pc, #72]	; (8000bf8 <MX_TIM7_Init+0x60>)
- 8000bae:	2229      	movs	r2, #41	; 0x29
+ 8000bae:	2253      	movs	r2, #83	; 0x53
  8000bb0:	605a      	str	r2, [r3, #4]
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
  8000bb2:	4b11      	ldr	r3, [pc, #68]	; (8000bf8 <MX_TIM7_Init+0x60>)
