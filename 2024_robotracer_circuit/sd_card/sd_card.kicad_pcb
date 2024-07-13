@@ -3497,6 +3497,17 @@
 		)
 	)
 	(gr_circle
+		(center 153 87.8)
+		(end 156.6 87.9)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "Dwgs.User")
+		(uuid "79c83ccd-1814-454b-9bfd-c265ae7dcb5e")
+	)
+	(gr_circle
 		(center 127 87.8)
 		(end 128.1 87.8)
 		(stroke

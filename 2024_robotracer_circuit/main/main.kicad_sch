@@ -12984,7 +12984,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_Small"
+		(property "Value" "1.8k"
 			(at 179.07 41.9099 0)
 			(effects
 				(font
@@ -17585,7 +17585,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_Small"
+		(property "Value" "5.1k"
 			(at 90.17 39.3699 0)
 			(effects
 				(font
@@ -18714,7 +18714,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R_Small"
+		(property "Value" "3k"
 			(at 175.26 73.6599 0)
 			(effects
 				(font
