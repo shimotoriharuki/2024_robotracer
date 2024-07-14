@@ -616,11 +616,9 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**TIM1 GPIO Configuration
     PA8     ------> TIM1_CH1
-    PA9     ------> TIM1_CH2
     PA10     ------> TIM1_CH3
-    PA11     ------> TIM1_CH4
     */
-    GPIO_InitStruct.Pin = TIM1_CH1_MOTOR1_Pin|TIM1_CH2_MOTOR1_Pin|TIM1_CH3_MOTOR2_Pin|TIM1_CH4_MOTOR2_Pin;
+    GPIO_InitStruct.Pin = TIM1_CH1_MOTOR1_Pin|TIM1_CH3_MOTOR2_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
