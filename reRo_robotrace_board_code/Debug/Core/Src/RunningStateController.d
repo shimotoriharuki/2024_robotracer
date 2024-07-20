@@ -46,7 +46,7 @@ Core/Src/RunningStateController.o: ../Core/Src/RunningStateController.cpp \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
- ../Core/Inc/Logger.hpp \
+ ../Core/Inc/Logger.hpp ../Core/Inc/InvertedControl.hpp \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h
 ../Core/Inc/globalDefine.h:
 ../Core/Inc/RunningStateController.hpp:
@@ -107,4 +107,5 @@ Core/Src/RunningStateController.o: ../Core/Src/RunningStateController.cpp \
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/sd_diskio.h:
 ../Core/Inc/Logger.hpp:
+../Core/Inc/InvertedControl.hpp:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h:

@@ -138,22 +138,23 @@ void IdleStateController::initializeRobotAngle()
 	uint16_t initial_angle_cnt = 0;
 	bool initializing_flag = true;
 
+	led_.set(0x07);
 	while(initializing_flag == true){
 		float robot_angle_acc = imu_->getRobotAngleFromAcc();
 
-		if(-0.05 <= robot_angle_acc && robot_angle_acc <= 0.05){
+		if(-0.01 <= robot_angle_acc && robot_angle_acc <= 0.01){
 			initial_angle_cnt++;
 		}
 		else{
 			initial_angle_cnt = 0;
 		}
 
-		if(initial_angle_cnt >= 100){
+		if(initial_angle_cnt >= 5000){
 			imu_->resetRobotAngleFromGyro();
-			initial_angle_cnt = false;
-
+			initializing_flag = false;
 		}
 	}
+	led_.set(0x00);
 
 }
 

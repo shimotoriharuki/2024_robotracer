@@ -26,8 +26,8 @@ float RunningStateController::linear_function(float a, int16_t r, int16_t r_shif
 }
 
 RunningStateController::RunningStateController(DriveMotor *drive_motor, FanMotor *fan_motor, LineFollowing *line_following, FollowingSensor *following_sensor,
-		SideSensor *side_sensor_l, SideSensor *side_sensor_r, VelocityControl *velocity_control, Encoder *encoder, IMU *imu, WheelDial *wheel_dial, sdCard *sd_card) : break_flag_(false),
-				velocity_table_idx_(0), start_goal_line_cnt_(0), logging_flag_(false), velocity_update_flag_(false), cross_line_ignore_flag_(false), goal_judge_flag_(false),
+		SideSensor *side_sensor_l, SideSensor *side_sensor_r, VelocityControl *velocity_control, Encoder *encoder, IMU *imu, WheelDial *wheel_dial, sdCard *sd_card, InvertedControl *inverted_control) :
+				break_flag_(false), velocity_table_idx_(0), start_goal_line_cnt_(0), logging_flag_(false), velocity_update_flag_(false), cross_line_ignore_flag_(false), goal_judge_flag_(false),
 				side_line_judge_flag_(false), continuous_cnt_reset_flag_(false), continuous_curve_flag_(false), running_flag_(false), cross_line_idx_(0), side_line_idx_(0), correction_check_cnt_cross_(0),
 				correction_check_cnt_side_(0), continuous_curve_check_cnt_(0), min_velocity_(0), max_velocity_(0), acceleration_(0), deceleration_(0), straight_radius_(0)
 {
@@ -42,6 +42,8 @@ RunningStateController::RunningStateController(DriveMotor *drive_motor, FanMotor
 	imu_ = imu;
 	wheel_dial_ = wheel_dial;
 	sd_card_ = sd_card;
+	inverted_control_ = inverted_control;
+
 	searching_run_logger_distance_ = new Logger(sd_card_, COURSE_STORAGE_SIZE);
 	searching_run_logger_theta_ = new Logger(sd_card_, COURSE_STORAGE_SIZE);
 	searching_run_logger_side_= new Logger(sd_card_, 100);
@@ -146,6 +148,8 @@ void RunningStateController::loop()
 	while(break_flag_ == false){
 		switch(pattern){
 		case 0:
+			while(1);
+
 			if(side_sensor_r_->getState() == true){ //最初のスタートマーカを読んだ
 				start_goal_line_cnt_++;
 
@@ -358,11 +362,13 @@ void RunningStateController::init()
 	continuous_curve_flag_ = false;
 	running_flag_ = true;
 
-	fan_motor_->setDuty(SUCTION_DUTY);
-	HAL_Delay(2000);
+	//fan_motor_->setDuty(SUCTION_DUTY);
+	//HAL_Delay(2000);
 
-	line_following_->setTargetVelocity(min_velocity_);
-	line_following_->start();
+	//line_following_->setTargetVelocity(min_velocity_);
+	//line_following_->start();
+
+	inverted_control_->start();
 }
 
 void RunningStateController::storeLog()

@@ -5,6 +5,7 @@
 "./Core/Src/FollowingSensor.o"
 "./Core/Src/IMU.o"
 "./Core/Src/IdleStateController.o"
+"./Core/Src/InvertedControl.o"
 "./Core/Src/LineFollowign.o"
 "./Core/Src/Logger.o"
 "./Core/Src/MPU6500.o"

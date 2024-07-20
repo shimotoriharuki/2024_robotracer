@@ -19,6 +19,7 @@
 #include "IdleStateController.hpp"
 #include "RunningStateController.hpp"
 #include "SideSensor.hpp"
+#include "InvertedControl.hpp"
 
 DriveMotor drive_motor;
 FanMotor fan_motor(&htim3, TIM_CHANNEL_3);
@@ -37,12 +38,13 @@ FollowingSensor following_sensor(&adc);
 SideSensor side_sensor_l(GPIOC, GPIO_PIN_13);
 SideSensor side_sensor_r(GPIOC, GPIO_PIN_14);
 LineFollowing line_following(&velocity_control, &following_sensor);
+InvertedControl inverted_control(&drive_motor, &encoder, &imu);
 
 sdCard sd_card;
 Logger logger(&sd_card, 10);
 Battery battery(&adc);
 
-RunningStateController running_state_controller(&drive_motor, &fan_motor, &line_following, &following_sensor, &side_sensor_l, &side_sensor_r, &velocity_control, &encoder, &imu, &wheel_dial, &sd_card);
+RunningStateController running_state_controller(&drive_motor, &fan_motor, &line_following, &following_sensor, &side_sensor_l, &side_sensor_r, &velocity_control, &encoder, &imu, &wheel_dial, &sd_card, &inverted_control);
 IdleStateController idle_state_controller(&drive_motor, &fan_motor, &line_following, &following_sensor, &velocity_control, &encoder, &imu, &wheel_dial, &sd_card, &running_state_controller);
 
 bool mon_side_l, mon_side_r;
@@ -85,6 +87,8 @@ void cppInit(void)
 	velocity_control.setTranslationGain(1000, 12000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 
+	inverted_control.setPIDGain(1000, 0, 0);
+
 }
 
 void cppExit(uint16_t gpio_pin)
@@ -115,6 +119,7 @@ void cppFlip1ms(void)
 	//各種制御など
 	line_following.pidFlip();
 	velocity_control.flip();
+	inverted_control.flip();
 
 	//モータを駆動
 	drive_motor.controlFlip();

@@ -18,6 +18,7 @@
 #include "UI.hpp"
 #include "sdCard.hpp"
 #include "Logger.hpp"
+#include "InvertedControl.hpp"
 
 #define COURSE_STORAGE_SIZE 4000
 #define GOAL_LINE_JUDGE_DISTANCE 70 //mm
@@ -37,6 +38,8 @@ private:
 	IMU *imu_;
 	WheelDial *wheel_dial_;
 	sdCard *sd_card_;
+	InvertedControl *inverted_control_;
+
 	Logger *searching_run_logger_distance_;
 	Logger *searching_run_logger_theta_;
 	Logger *searching_run_logger_side_;
@@ -89,7 +92,7 @@ private:
 
 public:
 
-	RunningStateController(DriveMotor *, FanMotor *, LineFollowing *, FollowingSensor *, SideSensor *, SideSensor *, VelocityControl *, Encoder *, IMU *, WheelDial *, sdCard *);
+	RunningStateController(DriveMotor *, FanMotor *, LineFollowing *, FollowingSensor *, SideSensor *, SideSensor *, VelocityControl *, Encoder *, IMU *, WheelDial *, sdCard *, InvertedControl *);
 	void timerCountUp();
 
 	bool isCrossLine();
