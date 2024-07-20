@@ -12,7 +12,7 @@
 #include <cmath>
 
 float mon_zg, mon_theta;
-float mon_robot_angle_acc;
+float mon_robot_angle_acc, mon_robot_angle_gyro;
 float mon_omega_x, mon_omega_y, mon_omega_z;
 
 IMU::IMU() : xa_(0), ya_(0), za_(0), xg_(0), yg_(0), zg_(0),
@@ -36,6 +36,9 @@ void IMU::updateValues()
 	read_gyro_data();
 	read_accel_data();
 
+	xg_ = xg;
+	yg_ = yg;
+
 	static int16_t pre_zg;
 	zg_ = int((R_IMU)*(zg) + (1.0 - (R_IMU))* (pre_zg)); // lowpath filter
 
@@ -55,6 +58,9 @@ void IMU::updateValues()
 	theta_ += omega_z_ * DELTA_T;
 	theta_10mm_ += omega_z_ * DELTA_T;
 	mon_theta = theta_;
+
+	robot_angle_from_gyro_ += omega_x_ * DELTA_T;
+	mon_robot_angle_gyro = robot_angle_from_gyro_;
 
 	if(ya == 0) ya = 1e-3;
 	robot_angle_from_acc_ = std::atan2(ya, -za) + M_PI / 2;
@@ -128,7 +134,7 @@ float IMU::getRobotAngleFromAcc()
 	return robot_angle_from_acc_;
 }
 
-void IMU::clearRobotAngleFromAcc()
+void IMU::resetRobotAngleFromAcc()
 {
 	robot_angle_from_acc_ = 0;
 }
@@ -138,7 +144,7 @@ float IMU::getRobotAngleFromGyro()
 	return robot_angle_from_gyro_;
 }
 
-void IMU::clearRobotAngleFromGyro()
+void IMU::resetRobotAngleFromGyro()
 {
 	robot_angle_from_gyro_ = 0;
 }

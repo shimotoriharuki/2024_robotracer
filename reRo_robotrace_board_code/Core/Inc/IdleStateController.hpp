@@ -41,6 +41,7 @@ private:
 	LED led_;
 
 	void parameterAdjustmentMode();
+	void initializeRobotAngle();
 
 public:
 	IdleStateController(DriveMotor *, FanMotor *, LineFollowing *, FollowingSensor *, VelocityControl *, Encoder *, IMU *, WheelDial *, sdCard *, RunningStateController *);

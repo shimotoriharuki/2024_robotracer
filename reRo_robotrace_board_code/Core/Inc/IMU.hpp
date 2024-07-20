@@ -46,10 +46,10 @@ public:
 	void clearTheta10mm();
 
 	float getRobotAngleFromAcc();
-	void clearRobotAngleFromAcc();
+	void resetRobotAngleFromAcc();
 
 	float getRobotAngleFromGyro();
-	void clearRobotAngleFromGyro();
+	void resetRobotAngleFromGyro();
 
 
 };

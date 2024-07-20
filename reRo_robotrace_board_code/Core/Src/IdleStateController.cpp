@@ -133,6 +133,30 @@ void IdleStateController::parameterAdjustmentMode()
 
 }
 
+void IdleStateController::initializeRobotAngle()
+{
+	uint16_t initial_angle_cnt = 0;
+	bool initializing_flag = true;
+
+	while(initializing_flag == true){
+		float robot_angle_acc = imu_->getRobotAngleFromAcc();
+
+		if(-0.05 <= robot_angle_acc && robot_angle_acc <= 0.05){
+			initial_angle_cnt++;
+		}
+		else{
+			initial_angle_cnt = 0;
+		}
+
+		if(initial_angle_cnt >= 100){
+			imu_->resetRobotAngleFromGyro();
+			initial_angle_cnt = false;
+
+		}
+	}
+
+}
+
 //-------------------------//
 //---------public----------//
 //-------------------------//
@@ -177,6 +201,9 @@ void IdleStateController::loop()
 		case 0:
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
+
+				initializeRobotAngle();
+				HAL_Delay(1000);
 
 				running_state_controller_->setRunMode(1);
 				running_state_controller_->setMinVelocity(2.5);
