@@ -86,6 +86,7 @@ void IdleStateController::parameterAdjustmentMode()
 				}
 				HAL_Delay(500);
 
+
 				fan_motor_->setDuty(0);
 			}
 

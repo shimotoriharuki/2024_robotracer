@@ -15,16 +15,24 @@
 class IMU{
 private:
 	int16_t xa_, ya_, za_, xg_, yg_, zg_;
-	float omega_;
-	float offset_;
+	float omega_x_;
+	float omega_y_;
+	float omega_z_;
+	float offset_x_;
+	float offset_y_;
+	float offset_z_;
 	float theta_;
 	float theta_10mm_;
+	float robot_angle_from_acc_;
+	float robot_angle_from_gyro_;
 
 public:
 	IMU();
 	uint8_t init();
 	void updateValues();
-	float getOmega();
+	float getOmegaX();
+	float getOmegaY();
+	float getOmegaZ();
 	void calibration();
 
 	float getOffsetVal();
@@ -36,6 +44,13 @@ public:
 
 	float getTheta10mm();
 	void clearTheta10mm();
+
+	float getRobotAngleFromAcc();
+	void clearRobotAngleFromAcc();
+
+	float getRobotAngleFromGyro();
+	void clearRobotAngleFromGyro();
+
 
 };
 

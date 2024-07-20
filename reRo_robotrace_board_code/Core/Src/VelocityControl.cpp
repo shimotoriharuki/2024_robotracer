@@ -40,7 +40,7 @@ void VelocityControl::pid()
 {
 	float static t_pre_diff, r_pre_diff;
 	float t_diff = target_velocity_ - current_velocity_;
-	float r_diff = target_omega_- imu_->getOmega();
+	float r_diff = target_omega_- imu_->getOmegaZ();
 
 	float t_p, t_d, r_p, r_d;
 	static float t_i, r_i;

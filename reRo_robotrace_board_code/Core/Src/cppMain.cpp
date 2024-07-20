@@ -72,7 +72,7 @@ void cppInit(void)
 	HAL_TIM_Base_Start_IT(&htim10);
 
 	//キャリブレーションなど
-	following_sensor.calibration();
+	//following_sensor.calibration();
 	HAL_Delay(500);
 
 	led.set(0x01);
