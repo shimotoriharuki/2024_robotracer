@@ -57,7 +57,7 @@ void IMU::updateValues()
 	mon_theta = theta_;
 
 	if(ya == 0) ya = 1e-3;
-	//robot_angle_from_acc_ = std::atan2(za, ya);
+	robot_angle_from_acc_ = std::atan2(ya, -za) + M_PI / 2;
 	mon_robot_angle_acc = robot_angle_from_acc_;
 }
 
@@ -79,30 +79,19 @@ float IMU::getOmegaZ()
 void IMU::calibration()
 {
 	int16_t num = 2000;
-	float xg_vals[num];
-	float yg_vals[num];
-	float zg_vals[num];
+	float xg_sum;
+	float yg_sum;
+	float zg_sum;
 	for(uint16_t i = 0; i < num; i++){
-		xg_vals[i] = float(xg_);
-		yg_vals[i] = float(yg_);
-		zg_vals[i] = float(zg_);
+		xg_sum += float(xg_);
+		yg_sum += float(yg_);
+		zg_sum += float(zg_);
 		HAL_Delay(1);
 	}
 
-	float sum_x, sum_y, sum_z;
-	for(const auto &v : xg_vals){
-		sum_x += v;
-	}
-	for(const auto &v : yg_vals){
-		sum_y += v;
-	}
-	for(const auto &v : zg_vals){
-		sum_z += v;
-	}
-
-	offset_x_ = sum_x / num;
-	offset_y_ = sum_y / num;
-	offset_z_ = sum_z / num;
+	offset_x_ = xg_sum / num;
+	offset_y_ = yg_sum / num;
+	offset_z_ = zg_sum / num;
 }
 
 float IMU::getOffsetVal()
