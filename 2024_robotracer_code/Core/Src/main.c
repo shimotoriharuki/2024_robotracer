@@ -162,7 +162,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_TIM_Base_Start_IT(&htim7);
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
   /* USER CODE END 2 */
 
@@ -179,9 +179,11 @@ int main(void)
 	  }
 	  */
 
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
 	  for(mon_i = 4000; mon_i < 8000; mon_i++){
 		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, mon_i); //B
+		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, mon_i); //B
 		  HAL_Delay(1);
 	  }
 
