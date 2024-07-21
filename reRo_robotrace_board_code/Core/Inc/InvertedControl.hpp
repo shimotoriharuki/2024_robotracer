@@ -19,7 +19,7 @@ private:
 	bool i_reset_flag_;
 	bool processing_flag_;
 	float ratio_;
-	const double pre_P_[4];
+	double pre_P_[4];
 	double pre_theta_, U_, W_;
 	double estimated_robot_theta_;
 	double P_[4];
