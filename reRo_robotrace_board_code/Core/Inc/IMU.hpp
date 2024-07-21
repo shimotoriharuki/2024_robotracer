@@ -51,6 +51,8 @@ public:
 	float getRobotAngleFromGyro();
 	void resetRobotAngleFromGyro();
 
+	float getOmegaXOffset();
+
 
 };
 

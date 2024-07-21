@@ -17,6 +17,7 @@
 "./Core/Src/cppMain.o"
 "./Core/Src/kalmanFilter.o"
 "./Core/Src/kalmanFilter_initialize.o"
+"./Core/Src/kalmanFilter_terminate.o"
 "./Core/Src/main.o"
 "./Core/Src/sdCard.o"
 "./Core/Src/stm32f4xx_hal_msp.o"

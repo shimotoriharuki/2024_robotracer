@@ -34,7 +34,7 @@ Core/Src/InvertedControl.o: ../Core/Src/InvertedControl.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Core/Inc/main.h ../Core/Inc/globalDefine.h ../Core/Inc/Encoder.hpp \
- ../Core/Inc/IMU.hpp
+ ../Core/Inc/IMU.hpp ../Core/Inc/kalmanFilter.h ../Core/Inc/rtwtypes.h
 ../Core/Inc/InvertedControl.hpp:
 ../Core/Inc/Motor.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -74,3 +74,5 @@ Core/Src/InvertedControl.o: ../Core/Src/InvertedControl.cpp \
 ../Core/Inc/globalDefine.h:
 ../Core/Inc/Encoder.hpp:
 ../Core/Inc/IMU.hpp:
+../Core/Inc/kalmanFilter.h:
+../Core/Inc/rtwtypes.h:

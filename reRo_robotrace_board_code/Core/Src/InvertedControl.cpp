@@ -6,10 +6,11 @@
  */
 
 #include "InvertedControl.hpp"
+#include "kalmanFilter.h"
 
 float mon_angle_diff;
 
-InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0)
+InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0), pre_P_{1, 0, 0.1, 0}, pre_theta_(0), U_(0), W_(0), estimated_robot_theta_(0), P_{1e-3, 0, 1e-3, 0}
 {
 	motor_ = motor;
 	encoder_ = encoder;
@@ -50,8 +51,17 @@ void InvertedControl::pid()
 	}
 }
 
+float InvertedControl::estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
+		double pre_theta, double U, double W, double omega,
+		double theta, double *estimated_robot_theta,
+		double P[4])
+{
+	kalmanFilter(dt, omega_offset, pre_P, pre_theta, U, W, omega, theta, estimated_robot_theta, P);
+}
+
 //--------------------------------public----------------//
 void InvertedControl::flip(){
+	estimateRobotAngle(1e-3, double(imu_->getOmegaXOffset()), pre_P_, pre_theta_, U_, W_, double(imu_->getOmegaX()), double(imu_->getRobotAngleFromAcc()), &estimated_robot_theta_, P_);
 	pid();
 }
 

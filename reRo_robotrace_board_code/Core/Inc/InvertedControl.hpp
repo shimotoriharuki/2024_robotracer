@@ -19,12 +19,21 @@ private:
 	bool i_reset_flag_;
 	bool processing_flag_;
 	float ratio_;
+	const double pre_P_[4];
+	double pre_theta_, U_, W_;
+	double estimated_robot_theta_;
+	double P_[4];
+
 	DriveMotor *motor_;
 	Encoder *encoder_;
 	IMU *imu_;
 
 	float calcError();
 	void pid();
+	float estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
+                         double pre_theta, double U, double W, double omega,
+                         double theta, double *estimated_robot_theta,
+                         double P[4]);
 
 public:
 	InvertedControl(DriveMotor *, Encoder *, IMU *);

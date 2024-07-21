@@ -45,10 +45,10 @@ void IMU::updateValues()
 	pre_zg = zg_;
 	mon_zg= zg_;
 
-	float corrected_xg = float(xg_) - offset_x_;
+	//float corrected_xg = float(xg_) - offset_x_;
 	float corrected_yg = float(yg_) - offset_y_;
 	float corrected_zg = float(zg_) - offset_z_;
-	omega_x_ = -(corrected_xg / 16.4) * PI / 180;
+	omega_x_ = -(xg / 16.4) * PI / 180; //カルマンフィルタのところでオフセット考慮しているのでここではオフセットひかない
 	omega_y_ = -(corrected_yg / 16.4) * PI / 180;
 	omega_z_ = -(corrected_zg / 16.4) * PI / 180;
 	mon_omega_x= omega_x_;
@@ -147,4 +147,9 @@ float IMU::getRobotAngleFromGyro()
 void IMU::resetRobotAngleFromGyro()
 {
 	robot_angle_from_gyro_ = 0;
+}
+
+float IMU::getOmegaXOffset()
+{
+	return offset_x_;
 }
