@@ -1,8 +1,8 @@
-../Core/Src/InvertedControl.cpp:14:1:InvertedControl::InvertedControl(DriveMotor*, Encoder*, IMU*)	32	static
-../Core/Src/InvertedControl.cpp:23:7:float InvertedControl::calcError()	24	static
-../Core/Src/InvertedControl.cpp:31:6:void InvertedControl::pid()	40	static
-../Core/Src/InvertedControl.cpp:55:8:double InvertedControl::estimateRobotAngle(double, double, const double*, double, double, double, double, double, double*, double*)	88	static
-../Core/Src/InvertedControl.cpp:71:6:void InvertedControl::flip()	64	static
-../Core/Src/InvertedControl.cpp:78:6:void InvertedControl::setPIDGain(float, float, float)	24	static
-../Core/Src/InvertedControl.cpp:85:6:void InvertedControl::start()	16	static
-../Core/Src/InvertedControl.cpp:91:6:void InvertedControl::stop()	16	static
+../Core/Src/InvertedControl.cpp:15:1:InvertedControl::InvertedControl(DriveMotor*, Encoder*, IMU*)	32	static
+../Core/Src/InvertedControl.cpp:24:7:float InvertedControl::calcError()	24	static
+../Core/Src/InvertedControl.cpp:32:6:void InvertedControl::pid()	40	static
+../Core/Src/InvertedControl.cpp:56:8:double InvertedControl::estimateRobotAngle(double, double, const double*, double, double, double, double, double, double*, double*)	88	static
+../Core/Src/InvertedControl.cpp:72:6:void InvertedControl::flip()	64	static
+../Core/Src/InvertedControl.cpp:79:6:void InvertedControl::setPIDGain(float, float, float)	24	static
+../Core/Src/InvertedControl.cpp:86:6:void InvertedControl::start()	16	static
+../Core/Src/InvertedControl.cpp:92:6:void InvertedControl::stop()	16	static
