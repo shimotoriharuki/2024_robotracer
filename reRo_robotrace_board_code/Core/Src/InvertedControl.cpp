@@ -51,12 +51,14 @@ void InvertedControl::pid()
 	}
 }
 
-float InvertedControl::estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
+double InvertedControl::estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
 		double pre_theta, double U, double W, double omega,
 		double theta, double *estimated_robot_theta,
 		double P[4])
 {
 	kalmanFilter(dt, omega_offset, pre_P, pre_theta, U, W, omega, theta, estimated_robot_theta, P);
+
+	return *estimated_robot_theta;
 }
 
 //--------------------------------public----------------//

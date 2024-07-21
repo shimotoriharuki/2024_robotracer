@@ -30,7 +30,7 @@ private:
 
 	float calcError();
 	void pid();
-	float estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
+	double estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
                          double pre_theta, double U, double W, double omega,
                          double theta, double *estimated_robot_theta,
                          double P[4]);
