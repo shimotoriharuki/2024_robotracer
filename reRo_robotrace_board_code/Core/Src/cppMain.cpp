@@ -87,7 +87,7 @@ void cppInit(void)
 	velocity_control.setTranslationGain(1000, 12000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 
-	inverted_control.setPIDGain(1000, 0, 0);
+	inverted_control.setPIDGain(7000, 0, 0);
 
 }
 
