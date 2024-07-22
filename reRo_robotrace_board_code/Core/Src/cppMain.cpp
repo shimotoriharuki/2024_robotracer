@@ -131,6 +131,7 @@ void cppFlip1ms(void)
 	battery.getVoltage();
 	wheel_dial.flip();
 	running_state_controller.timerCountUp();
+	idle_state_controller.debug_flip();
 
 	/*
 	static uint16_t cnt;

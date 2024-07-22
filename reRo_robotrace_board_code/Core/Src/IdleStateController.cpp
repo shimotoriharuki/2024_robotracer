@@ -69,8 +69,22 @@ void IdleStateController::parameterAdjustmentMode()
 
 			break;
 
-		case 2: //ラインセンサキャリブレーション
+		case 2: //
+			if(push_switch_->getStatus() == true){
+				HAL_Delay(2000);
+				acc_data_logger_->start();
+				gyro_data_logger_->start();
+
+				HAL_Delay(2000);
+
+				acc_data_logger_->stop();
+				gyro_data_logger_->stop();
+
+				acc_data_logger_->saveLogs("debug", "robot_theta_from_acc");
+				gyro_data_logger_->saveLogs("debug", "robot_omega_x");
+			}
 			break;
+
 		case 3:
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
@@ -189,6 +203,9 @@ IdleStateController::IdleStateController(DriveMotor *drive_motor, FanMotor *fan_
 
 	logger_ = new Logger(sd_card, 10);
 	push_switch_ = new Switch(GPIOA, GPIO_PIN_12);
+
+	acc_data_logger_ = new Logger(sd_card, 2000);
+	gyro_data_logger_ = new Logger(sd_card, 2000);
 
 }
 
@@ -310,4 +327,10 @@ void IdleStateController::loop()
 
 }
 
+void IdleStateController::debug_flip()
+{
+	acc_data_logger_->storeLogs(imu_->getRobotAngleFromAcc());
+	gyro_data_logger_->storeLogs(imu_->getOmegaX());
+
+}
 

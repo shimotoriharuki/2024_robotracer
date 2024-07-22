@@ -42,12 +42,16 @@ private:
 	Switch *push_switch_;
 	LED led_;
 
+	Logger *acc_data_logger_;
+	Logger *gyro_data_logger_;
+
 	void parameterAdjustmentMode();
 	void initializeRobotAngle();
 
 public:
 	IdleStateController(DriveMotor *, FanMotor *, LineFollowing *, FollowingSensor *, VelocityControl *, Encoder *, IMU *, WheelDial *, sdCard *, RunningStateController *, InvertedControl *);
 	void loop();
+	void debug_flip();
 };
 
 

@@ -1,8 +1,8 @@
 ../Core/Src/cppMain.cpp:52:6:void cppInit()	16	static
 ../Core/Src/cppMain.cpp:94:6:void cppExit(uint16_t)	16	static
 ../Core/Src/cppMain.cpp:104:6:void cppFlip1ms()	8	static
-../Core/Src/cppMain.cpp:154:6:void cppFlip100ns()	8	static
-../Core/Src/cppMain.cpp:160:6:void cppFlip10ms()	8	static
-../Core/Src/cppMain.cpp:166:6:void cppLoop()	8	static
-../Core/Src/cppMain.cpp:170:1:void __static_initialization_and_destruction_0(int, int)	56	static
-../Core/Src/cppMain.cpp:170:1:cpp)	8	static
+../Core/Src/cppMain.cpp:155:6:void cppFlip100ns()	8	static
+../Core/Src/cppMain.cpp:161:6:void cppFlip10ms()	8	static
+../Core/Src/cppMain.cpp:167:6:void cppLoop()	8	static
+../Core/Src/cppMain.cpp:171:1:void __static_initialization_and_destruction_0(int, int)	56	static
+../Core/Src/cppMain.cpp:171:1:cpp)	8	static
