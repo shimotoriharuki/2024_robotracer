@@ -22,7 +22,6 @@ private:
 	double pre_P_[4];
 	double pre_theta_, U_, W_;
 	double estimated_robot_theta_;
-	double init_P_[4];
 
 	DriveMotor *motor_;
 	Encoder *encoder_;
