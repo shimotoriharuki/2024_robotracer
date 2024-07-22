@@ -13,7 +13,7 @@ float mon_angle_diff;
 double mon_estimated_robot_theta;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
-		pre_P_{1*M_PI/180, 0, 0, 1e-2}, pre_theta_(0), U_(1e-3), W_(1e-3), estimated_robot_theta_(0), init_P_{1*M_PI/180, 0, 0, 1e-2}
+		pre_P_{1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), init_P_{1*M_PI/180, 0, 0, 6.3e-06} //U: 角速度の分散, W: 角度の分散
 {
 	motor_ = motor;
 	encoder_ = encoder;
