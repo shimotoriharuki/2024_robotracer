@@ -72,6 +72,16 @@ void IdleStateController::parameterAdjustmentMode()
 		case 2: //ラインセンサキャリブレーション
 			break;
 		case 3:
+			if(push_switch_->getStatus() == true){
+				HAL_Delay(500);
+
+				inverted_control_->start();
+
+				HAL_Delay(3000);
+
+				inverted_control_->stop();
+			}
+
 			HAL_Delay(100);
 			break;
 
@@ -162,7 +172,7 @@ void IdleStateController::initializeRobotAngle()
 //---------public----------//
 //-------------------------//
 IdleStateController::IdleStateController(DriveMotor *drive_motor, FanMotor *fan_motor, LineFollowing *line_following, FollowingSensor *following_sensor,
-		VelocityControl *velocity_control, Encoder *encoder, IMU *imu, WheelDial *wheel_dial, sdCard *sd_card, RunningStateController *running_state_controller) :
+		VelocityControl *velocity_control, Encoder *encoder, IMU *imu, WheelDial *wheel_dial, sdCard *sd_card, RunningStateController *running_state_controller, InvertedControl *inverted_control) :
 		break_flag_(false), state_(0), parameter_state_(0)
 {
 	drive_motor_ = drive_motor;
@@ -175,6 +185,7 @@ IdleStateController::IdleStateController(DriveMotor *drive_motor, FanMotor *fan_
 	wheel_dial_ = wheel_dial;
 	sd_card_ = sd_card;
 	running_state_controller_ = running_state_controller;
+	inverted_control_ = inverted_control;
 
 	logger_ = new Logger(sd_card, 10);
 	push_switch_ = new Switch(GPIOA, GPIO_PIN_12);

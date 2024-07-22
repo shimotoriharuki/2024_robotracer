@@ -45,7 +45,7 @@ Logger logger(&sd_card, 10);
 Battery battery(&adc);
 
 RunningStateController running_state_controller(&drive_motor, &fan_motor, &line_following, &following_sensor, &side_sensor_l, &side_sensor_r, &velocity_control, &encoder, &imu, &wheel_dial, &sd_card, &inverted_control);
-IdleStateController idle_state_controller(&drive_motor, &fan_motor, &line_following, &following_sensor, &velocity_control, &encoder, &imu, &wheel_dial, &sd_card, &running_state_controller);
+IdleStateController idle_state_controller(&drive_motor, &fan_motor, &line_following, &following_sensor, &velocity_control, &encoder, &imu, &wheel_dial, &sd_card, &running_state_controller, &inverted_control);
 
 bool mon_side_l, mon_side_r;
 
@@ -87,7 +87,7 @@ void cppInit(void)
 	velocity_control.setTranslationGain(1000, 12000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 
-	inverted_control.setPIDGain(7000, 0, 0);
+	inverted_control.setPIDGain(4000, 0, 0);
 
 }
 

@@ -12,7 +12,8 @@
 float mon_angle_diff;
 double mon_estimated_robot_theta;
 
-InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0), pre_P_{1, 0, 0.1, 0}, pre_theta_(0), U_(1e-3), W_(1e-3), estimated_robot_theta_(0), P_{1e-3, 0, 1e-3, 0}
+InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
+		pre_P_{1*M_PI/180, 0, 0, 1e-2}, pre_theta_(0), U_(1e-3), W_(1e-3), estimated_robot_theta_(0), init_P_{1*M_PI/180, 0, 0, 1e-2}
 {
 	motor_ = motor;
 	encoder_ = encoder;
@@ -31,7 +32,6 @@ float InvertedControl::calcError()
 
 void InvertedControl::pid()
 {
-	if(processing_flag_ == true){
 		float diff = calcError();
 		static float pre_diff = 0;
 		float p, d;
@@ -51,29 +51,32 @@ void InvertedControl::pid()
 		motor_->setDuty(ratio_, ratio_);
 		pre_diff = diff;
 	}
-}
 
-double InvertedControl::estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
+void InvertedControl::estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
 		double pre_theta, double U, double W, double omega,
 		double theta, double *estimated_robot_theta,
 		double P[4])
 {
 	kalmanFilter(dt, omega_offset, pre_P, pre_theta, U, W, omega, theta, estimated_robot_theta, P);
 
-	for(uint8_t i = 0; i < 4; i++){
-		pre_P_[i] = P[i];
-	}
-	pre_theta_ = *estimated_robot_theta;
 
-	return *estimated_robot_theta;
 }
 
 //--------------------------------public----------------//
 void InvertedControl::flip(){
-	estimateRobotAngle(1e-3, double(imu_->getOmegaXOffset()), pre_P_, pre_theta_, U_, W_, double(imu_->getOmegaX()), double(imu_->getRobotAngleFromAcc()), &estimated_robot_theta_, P_);
-	mon_estimated_robot_theta = estimated_robot_theta_;
+	if(processing_flag_ == true){
+		double P[4];
 
-	pid();
+		estimateRobotAngle(1e-3, double(imu_->getOmegaXOffset()), pre_P_, pre_theta_, U_, W_, double(imu_->getOmegaX()), double(imu_->getRobotAngleFromAcc()), &estimated_robot_theta_, P);
+		mon_estimated_robot_theta = estimated_robot_theta_;
+
+		for(uint8_t i = 0; i < 4; i++){
+			pre_P_[i] = P[i];
+		}
+		pre_theta_ = estimated_robot_theta_;
+
+		//pid();
+	}
 }
 
 void InvertedControl::setPIDGain(float kp, float ki, float kd)

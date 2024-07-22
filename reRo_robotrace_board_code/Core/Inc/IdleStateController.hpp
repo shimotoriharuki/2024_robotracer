@@ -18,6 +18,7 @@
 #include "sdCard.hpp"
 #include "Logger.hpp"
 #include "RunningStateController.hpp"
+#include "InvertedControl.hpp"
 
 class IdleStateController{
 private:
@@ -35,6 +36,7 @@ private:
 	WheelDial *wheel_dial_;
 	sdCard *sd_card_;
 	RunningStateController *running_state_controller_;
+	InvertedControl *inverted_control_;
 
 	Logger *logger_;
 	Switch *push_switch_;
@@ -44,7 +46,7 @@ private:
 	void initializeRobotAngle();
 
 public:
-	IdleStateController(DriveMotor *, FanMotor *, LineFollowing *, FollowingSensor *, VelocityControl *, Encoder *, IMU *, WheelDial *, sdCard *, RunningStateController *);
+	IdleStateController(DriveMotor *, FanMotor *, LineFollowing *, FollowingSensor *, VelocityControl *, Encoder *, IMU *, WheelDial *, sdCard *, RunningStateController *, InvertedControl *);
 	void loop();
 };
 
