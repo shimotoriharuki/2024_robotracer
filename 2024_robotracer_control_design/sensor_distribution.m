@@ -1,3 +1,5 @@
+clear
+
 omega_data = load("sensor_data\robot_omega_x1.txt");
 theta_data = load("sensor_data\robot_theta_from_acc1.txt");
 

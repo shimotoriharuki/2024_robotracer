@@ -1,16 +1,22 @@
 clear
 
+omega_data = load("sensor_data\robot_omega_x1.txt");
+theta_data = load("sensor_data\robot_theta_from_acc1.txt");
+
 %パラメータ
 dt = 0.01;
 
-init_P = [1*p, 0; 0, 0.01];
+init_P = [1*M_PI/180, 0, 0, 6.3e-06];
 pre_P = init_P;
 
-init_theta = 0.1;
+init_theta = 0;
 pre_theta = init_theta;
 
-for i = 1:10
-    [theta, P] = kalmanFilter(dt, 0.001, pre_P, pre_theta, 0.1, 0.1, 0.1, 0.0);
+U = 6.3e-06;
+W = 2.2e-05;
+
+for i = 1 : length(omega_data)
+    [theta, P] = kalmanFilter(dt, 0, pre_P, pre_theta, U, W, 0.01, 0.01)
 
     pre_P = P;
     pre_theta = theta;
