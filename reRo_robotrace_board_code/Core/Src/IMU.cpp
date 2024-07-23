@@ -60,7 +60,7 @@ void IMU::updateValues()
 	theta_10mm_ += omega_z_ * DELTA_T;
 	mon_theta = theta_;
 
-	robot_angle_from_gyro_ += omega_x_ * DELTA_T;
+	robot_angle_from_gyro_ += (omega_x_ - offset_x_) * DELTA_T;
 	mon_robot_angle_gyro = robot_angle_from_gyro_;
 
 	if(ya == 0) ya = 1e-3;

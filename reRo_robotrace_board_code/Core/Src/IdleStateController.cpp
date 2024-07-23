@@ -89,6 +89,7 @@ void IdleStateController::parameterAdjustmentMode()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				imu_->resetRobotAngleFromGyro();
 				inverted_control_->start();
 
 				//HAL_Delay(3000);
