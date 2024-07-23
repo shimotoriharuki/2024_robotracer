@@ -91,9 +91,9 @@ void IdleStateController::parameterAdjustmentMode()
 
 				inverted_control_->start();
 
-				HAL_Delay(3000);
+				//HAL_Delay(3000);
 
-				inverted_control_->stop();
+				//inverted_control_->stop();
 			}
 
 			HAL_Delay(100);

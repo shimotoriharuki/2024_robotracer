@@ -14,6 +14,7 @@
 float mon_zg, mon_theta;
 float mon_robot_angle_acc, mon_robot_angle_gyro;
 float mon_omega_x, mon_omega_y, mon_omega_z;
+float mon_offset_x, mon_offset_y, mon_offset_z;
 
 IMU::IMU() : xa_(0), ya_(0), za_(0), xg_(0), yg_(0), zg_(0),
 		omega_x_(0), omega_y_(0), omega_z_(0), offset_x_(0), offset_y_(0), offset_z_(0),
@@ -96,8 +97,13 @@ void IMU::calibration()
 	}
 
 	offset_x_ = xg_sum / num;
+	offset_x_ = (offset_x_ / 16.4) * PI / 180;
 	offset_y_ = yg_sum / num;
 	offset_z_ = zg_sum / num;
+
+	mon_offset_x = offset_x_;
+	mon_offset_y = offset_y_;
+	mon_offset_z = offset_z_;
 }
 
 float IMU::getOffsetVal()
