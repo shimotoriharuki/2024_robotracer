@@ -20,7 +20,7 @@ W = 2.2e-05;
 data_size = length(omega_data);
 store_theta = zeros(1, data_size);
 for i = 1 : data_size
-    [theta, P] = kalmanFilter(dt, 0, pre_P, pre_theta, U, W, omega_data(i), theta_data(i))
+    [theta, P] = kalmanFilter(dt, 0, pre_P, pre_theta, U, W, omega_data(i), theta_data(i));
 
     pre_P = P;
     pre_theta = theta;
