@@ -24,7 +24,8 @@ InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu):
 
 float InvertedControl::calcError()
 {
-	float diff = imu_->getRobotAngleFromGyro() - 0;
+	//float diff = imu_->getRobotAngleFromGyro() - 0;
+	float diff = estimated_robot_theta_ - 0;
 	mon_angle_diff = diff;
 
 	return diff;
@@ -74,7 +75,7 @@ void InvertedControl::flip()
 		}
 		pre_theta_ = estimated_robot_theta_;
 
-		//pid();
+		pid();
 	}
 }
 
@@ -97,6 +98,10 @@ void InvertedControl::stop()
 	motor_->setDuty(0, 0);
 }
 
+void InvertedControl::resetEstimatedTheta()
+{
+	estimated_robot_theta_ = 0;
+}
 
 
 

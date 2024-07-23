@@ -40,6 +40,7 @@ public:
 	void setPIDGain(float, float, float);
 	void start();
 	void stop();
+	void resetEstimatedTheta();
 
 
 };

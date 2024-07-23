@@ -368,6 +368,7 @@ void RunningStateController::init()
 	//line_following_->setTargetVelocity(min_velocity_);
 	//line_following_->start();
 
+	inverted_control_->resetEstimatedTheta();
 	inverted_control_->start();
 }
 
