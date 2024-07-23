@@ -46,12 +46,16 @@ void IMU::updateValues()
 	pre_zg = zg_;
 	mon_zg= zg_;
 
-	//float corrected_xg = float(xg_) - offset_x_;
-	float corrected_yg = float(yg_) - offset_y_;
-	float corrected_zg = float(zg_) - offset_z_;
-	omega_x_ = -(xg / 16.4) * PI / 180; //カルマンフィルタのところでオフセット考慮しているのでここではオフセットひかない
-	omega_y_ = -(corrected_yg / 16.4) * PI / 180;
-	omega_z_ = -(corrected_zg / 16.4) * PI / 180;
+	//各速度に変換
+	float omega_x_raw_ = -(xg_ / 16.4) * PI / 180;
+	float omega_y_raw_ = -(yg_ / 16.4) * PI / 180;
+	float omega_z_raw_ = -(zg_ / 16.4) * PI / 180;
+
+	//オフセットを考慮
+	omega_x_ = omega_x_raw_; //カルマンフィルタの中でオフセットを考慮しているのここではオフセットを引かない
+	omega_y_ = omega_y_raw_ - offset_y_;
+	omega_z_ = omega_z_raw_ - offset_z_;
+
 	mon_omega_x= omega_x_;
 	mon_omega_y= omega_y_;
 	mon_omega_z= omega_z_;
@@ -86,20 +90,20 @@ float IMU::getOmegaZ()
 void IMU::calibration()
 {
 	int16_t num = 2000;
-	float xg_sum;
-	float yg_sum;
-	float zg_sum;
+	float omega_x_sum;
+	float omega_y_sum;
+	float omega_z_sum;
+
 	for(uint16_t i = 0; i < num; i++){
-		xg_sum += float(xg_);
-		yg_sum += float(yg_);
-		zg_sum += float(zg_);
+		omega_x_sum += omega_x_;
+		omega_y_sum += omega_y_;
+		omega_z_sum += omega_z_;
 		HAL_Delay(1);
 	}
 
-	offset_x_ = xg_sum / num;
-	offset_x_ = (offset_x_ / 16.4) * PI / 180;
-	offset_y_ = yg_sum / num;
-	offset_z_ = zg_sum / num;
+	offset_x_ = omega_x_sum / num;
+	offset_y_ = omega_y_sum / num;
+	offset_z_ = omega_z_sum / num;
 
 	mon_offset_x = offset_x_;
 	mon_offset_y = offset_y_;
