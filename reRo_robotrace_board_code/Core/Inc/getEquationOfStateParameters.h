@@ -24,7 +24,7 @@ extern "C" {
 extern void getEquationOfStateParameters(double m_w, double m_p, double r_w,
                                          double r_p, double J_w, double J_p,
                                          double J_m, double g, double n,
-                                         double kt, double kn, double R,
+                                         double kt, double ke, double R,
                                          double Ab[25], double Bb[5],
                                          double C[4]);
 

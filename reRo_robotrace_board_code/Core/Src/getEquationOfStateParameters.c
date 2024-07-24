@@ -23,7 +23,7 @@
  *                double g
  *                double n
  *                double kt
- *                double kn
+ *                double ke
  *                double R
  *                double Ab[25]
  *                double Bb[5]
@@ -33,7 +33,7 @@
 void getEquationOfStateParameters(double m_w, double m_p, double r_w,
                                   double r_p, double J_w, double J_p,
                                   double J_m, double g, double n, double kt,
-                                  double kn, double R, double Ab[25],
+                                  double ke, double R, double Ab[25],
                                   double Bb[5], double C[4])
 {
   double a11;
@@ -41,8 +41,8 @@ void getEquationOfStateParameters(double m_w, double m_p, double r_w,
   double a22;
   double a22_tmp;
   double delta;
-  double ke;
-  ke = 1.0 / (kn * 2.0 * 3.1415926535897931 / 60.0);
+  //double ke;
+  //ke = 1.0 / (kn * 2.0 * 3.1415926535897931 / 60.0);
   /* 起電力定数 [V/rpm] */
   a22 = (m_w + m_p) * (r_w * r_w);
   a11 = (((a22 + 2.0 * m_p * r_w * r_p) + m_p * (r_p * r_p)) + J_p) + J_w;

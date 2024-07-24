@@ -8,16 +8,22 @@
 #include "InvertedControl.hpp"
 #include "kalmanFilter.h"
 #include <cmath>
+#include "getEquationOfStateParameters.h"
+#include "servoStateFeedback.h"
 
 float mon_angle_diff;
 double mon_estimated_robot_theta;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
-		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0) //U: 角速度の分散, W: 角度の分散
+		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
+		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-2.6052e+03, -388.0362, -55.6586, -71.1086}, k_(-100)
 {
 	motor_ = motor;
 	encoder_ = encoder;
 	imu_ = imu;
+
+	getEquationOfStateParameters(m_w_,  m_p_,  r_w_, r_p_,  J_w_,  J_p_, J_m_,  g_,  n_,  kt_, kn_,  R_,  Ab_, Bb_,  C_);
 }
 
 //--------------------------------private----------------//
@@ -59,6 +65,7 @@ void InvertedControl::estimateRobotAngle(double dt, double omega_offset, const d
 		double P[4])
 {
 	kalmanFilter(dt, omega_offset, pre_P, pre_theta, U, W, omega, theta, estimated_robot_theta, P);
+
 }
 
 //--------------------------------public----------------//
@@ -75,8 +82,21 @@ void InvertedControl::flip()
 		}
 		pre_theta_ = estimated_robot_theta_;
 
-		pid();
+		//pid();
 	}
+}
+
+void InvertedControl::stateFeedbackControl()
+{
+	servoStateFeedback(dt_, target_omega_, Ab_, Bb_, pre_target_theta_, pre_xb_, pre_z_, pre_input_, disturbance_, f_, k_, &input_, &target_theta_, xb_, &z_);
+	pre_input_ = input_;
+	pre_target_theta_ = target_theta_;
+	for(uint8_t i = 0; i < 4; i++){
+		pre_xb_[i] = xb_[i];
+	}
+	pre_z_ = z_;
+
+	motor_->setDuty((input_/current_voltage_) * 1000, (input_/current_voltage_) * 1000);
 }
 
 void InvertedControl::setPIDGain(float kp, float ki, float kd)
