@@ -25,6 +25,8 @@ private:
 	float cross_line_judge_distance_;
 	float goal_judge_distance_;
 	float goal_area_distance_;
+	double theta_l_, theta_r_, theta_;
+	double dtheta_l_, dtheta_r_, dtheta_;
 
 public:
 	Encoder();
@@ -47,6 +49,11 @@ public:
 	void clearGoalJudgeDistance();
 	float getGoalAreaDistance();
 	void clearGoalAreaDistance();
+
+	double getTheta();
+	void clearTheta();
+	double getDTheta();
+	void clearDTheta();
 };
 
 

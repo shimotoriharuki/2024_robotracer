@@ -26,8 +26,8 @@ extern void servoStateFeedback(double dt, double target_omega,
                                double pre_target_theta, const double pre_xb[4],
                                double pre_z, double pre_input,
                                const double disturbance[4], const double f[4],
-                               double k, double *input, double *target_theta,
-                               double xb[4], double *z);
+                               double k, double theta_p, double dtheta_p, double theta_w, double dtheta_w,
+							   double *input, double *target_theta, double xb[4], double *z);
 
 #ifdef __cplusplus
 }

@@ -37,8 +37,8 @@ void servoStateFeedback(double dt, double target_omega, const double Ab[25],
                         const double Bb[5], double pre_target_theta,
                         const double pre_xb[4], double pre_z, double pre_input,
                         const double disturbance[4], const double f[4],
-                        double k, double *input, double *target_theta,
-                        double xb[4], double *z)
+                        double k, double theta_p, double dtheta_p, double theta_w, double dtheta_w,
+						double *input, double *target_theta, double xb[4], double *z)
 {
   double b_pre_xb[5];
   double dxb[5];
@@ -68,16 +68,16 @@ void servoStateFeedback(double dt, double target_omega, const double Ab[25],
   }
   double b_f;
   *z = pre_z + dxb[4] * dt;
-  d = pre_xb[0] + dxb[0] * dt;
+  d = theta_w; //theta_p
   xb[0] = d;
   b_f = -f[0] * d;
-  d = pre_xb[1] + dxb[1] * dt;
+  d = dtheta_p; //dtheta_p
   xb[1] = d;
   b_f += -f[1] * d;
-  d = pre_xb[2] + dxb[2] * dt;
+  d = theta_w; //theta_w
   xb[2] = d;
   b_f += -f[2] * d;
-  d = pre_xb[3] + dxb[3] * dt;
+  d = dtheta_w; //dtheta_w
   xb[3] = d;
   b_f += -f[3] * d;
   *input = b_f + k * *z;

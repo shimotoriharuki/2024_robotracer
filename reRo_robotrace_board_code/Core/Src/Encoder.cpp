@@ -17,7 +17,8 @@ float mon_cnt_l, mon_cnt_r;
 int16_t mon_total_cnt_l, mon_total_cnt_r;
 
 Encoder::Encoder() : cnt_l_(0), cnt_r_(0), distance_(0), total_cnt_l_(0), total_cnt_r_(0), distance_10mm_(0), total_distance_(0),
-		side_line_judge_distance_(), cross_line_judge_distance_(0), goal_judge_distance_(0), goal_area_distance_(0){}
+		side_line_judge_distance_(), cross_line_judge_distance_(0), goal_judge_distance_(0), goal_area_distance_(0),
+		theta_l_(0), theta_r_(0), theta_(0), dtheta_l_(0), dtheta_r_(0), dtheta_(0){}
 
 void Encoder::init()
 {
@@ -59,6 +60,9 @@ void Encoder::update()
 	goal_area_distance_ += distance_;
 
 	mon_distance = total_distance_;
+
+	dtheta_ = RADIAN_PER_CNT * (cnt_l_ + cnt_r_) / 2;
+	theta_ = theta_ + dtheta_ * DELTA_T;
 
 }
 
@@ -147,6 +151,25 @@ float Encoder::getGoalAreaDistance()
 void Encoder::clearGoalAreaDistance()
 {
 	goal_area_distance_= 0;
+}
+
+double Encoder::getTheta()
+{
+	return theta_;
+}
+
+void Encoder::clearTheta()
+{
+	theta_ = 0;
+}
+double Encoder::getDTheta()
+{
+	return dtheta_;
+}
+
+void Encoder::clearDTheta()
+{
+	dtheta_ = 0;
 }
 
 

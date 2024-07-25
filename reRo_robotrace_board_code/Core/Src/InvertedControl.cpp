@@ -82,13 +82,14 @@ void InvertedControl::flip()
 		}
 		pre_theta_ = estimated_robot_theta_;
 
+		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta());
 		//pid();
 	}
 }
 
-void InvertedControl::stateFeedbackControl()
+void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w)
 {
-	servoStateFeedback(dt_, target_omega_, Ab_, Bb_, pre_target_theta_, pre_xb_, pre_z_, pre_input_, disturbance_, f_, k_, &input_, &target_theta_, xb_, &z_);
+	servoStateFeedback(dt_, target_omega_, Ab_, Bb_, pre_target_theta_, pre_xb_, pre_z_, pre_input_, disturbance_, f_, k_, theta_p, dtheta_p, theta_w, dtheta_w, &input_, &target_theta_, xb_, &z_);
 	pre_input_ = input_;
 	pre_target_theta_ = target_theta_;
 	for(uint8_t i = 0; i < 4; i++){
