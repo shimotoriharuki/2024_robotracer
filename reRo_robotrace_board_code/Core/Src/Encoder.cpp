@@ -43,13 +43,14 @@ void Encoder::update()
 	TIM4 -> CNT = CNT_OFFSET;
 	TIM8 -> CNT = CNT_OFFSET;
 
-	mon_cnt_l = cnt_l;
-	mon_cnt_r = cnt_r;
-	mon_total_cnt_l += cnt_l;
-	mon_total_cnt_r += cnt_r;
 
 	cnt_l_ = float(cnt_l);
 	cnt_r_ = float(cnt_r);
+
+	mon_cnt_l = cnt_l_;
+	mon_cnt_r = cnt_r_;
+	mon_total_cnt_l += cnt_l_;
+	mon_total_cnt_r += cnt_r_;
 
 	distance_ = DISTANCE_PER_CNT * (cnt_l_ + cnt_r_) / 2;
 	//distance_ = DISTANCE_PER_CNT * (cnt_l_) ;
