@@ -64,7 +64,7 @@ void Encoder::update()
 	mon_distance = total_distance_;
 
 	//dtheta_ = RADIAN_PER_CNT * (cnt_l_ + cnt_r_) / 2;
-	dtheta_ = -RADIAN_PER_CNT * (cnt_r_) * 1000 / 2;
+	dtheta_ = -RADIAN_PER_CNT * (cnt_r_ + cnt_l_) * 1000 / 2;
 	theta_ = theta_ + dtheta_ * DELTA_T;
 
 	mon_wheel_dtheta = dtheta_;
