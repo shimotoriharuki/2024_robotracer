@@ -68,7 +68,7 @@ void servoStateFeedback(double dt, double target_omega, const double Ab[25],
   }
   double b_f;
   *z = pre_z + dxb[4] * dt;
-  d = theta_w; //theta_p
+  d = theta_p; //theta_p
   xb[0] = d;
   b_f = -f[0] * d;
   d = dtheta_p; //dtheta_p

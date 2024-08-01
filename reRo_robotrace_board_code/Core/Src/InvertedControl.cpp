@@ -13,11 +13,13 @@
 
 float mon_angle_diff;
 double mon_estimated_robot_theta;
+double mon_left_duty, mon_right_dity;
+double mon_input;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-2.6052e3, -388.0362, -55.6586, -71.1086}, k_(-100)
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-698.1379, -101.4814, -12.9017, -16.2351}, k_(-10)
 {
 	motor_ = motor;
 	encoder_ = encoder;
@@ -97,7 +99,14 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	}
 	pre_z_ = z_;
 
-	motor_->setDuty((input_/current_voltage_) * 1000, (input_/current_voltage_) * 1000);
+	double left_duty = (input_/current_voltage_) * 100;
+	double right_duty = (input_/current_voltage_) * 100;
+
+	mon_input = input_;
+	mon_left_duty = left_duty;
+	mon_right_dity = right_duty;
+
+	motor_->setDuty(left_duty, right_duty);
 }
 
 void InvertedControl::setPIDGain(float kp, float ki, float kd)

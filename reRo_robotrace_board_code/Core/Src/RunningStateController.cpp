@@ -369,6 +369,8 @@ void RunningStateController::init()
 	//line_following_->start();
 
 	inverted_control_->resetEstimatedTheta();
+	encoder_->clearTheta();
+
 	inverted_control_->start();
 }
 
