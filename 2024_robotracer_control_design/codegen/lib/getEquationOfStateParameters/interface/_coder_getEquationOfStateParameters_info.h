@@ -5,7 +5,7 @@
  * File: _coder_getEquationOfStateParameters_info.h
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:10:29
+ * C/C++ source code generated on  : 2024/08/04 17:01:01
  */
 
 #ifndef _CODER_GETEQUATIONOFSTATEPARAMETERS_INFO_H

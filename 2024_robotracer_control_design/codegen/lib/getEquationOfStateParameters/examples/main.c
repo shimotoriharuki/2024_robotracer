@@ -5,7 +5,7 @@
  * File: main.c
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:10:29
+ * C/C++ source code generated on  : 2024/08/04 17:01:01
  */
 
 /*************************************************************************/
@@ -77,8 +77,8 @@ You do not need to do this more than one time. */
  */
 void main_getEquationOfStateParameters(void)
 {
-  double Ab[25];
-  double Bb[5];
+  double A[16];
+  double B[4];
   double C[4];
   double m_w_tmp;
   /* Initialize function 'getEquationOfStateParameters' input arguments. */
@@ -86,7 +86,7 @@ void main_getEquationOfStateParameters(void)
   /* Call the entry-point 'getEquationOfStateParameters'. */
   getEquationOfStateParameters(m_w_tmp, m_w_tmp, m_w_tmp, m_w_tmp, m_w_tmp,
                                m_w_tmp, m_w_tmp, m_w_tmp, m_w_tmp, m_w_tmp,
-                               m_w_tmp, m_w_tmp, Ab, Bb, C);
+                               m_w_tmp, m_w_tmp, A, B, C);
 }
 
 /*

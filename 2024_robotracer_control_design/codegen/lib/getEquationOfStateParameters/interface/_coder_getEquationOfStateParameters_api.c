@@ -5,7 +5,7 @@
  * File: _coder_getEquationOfStateParameters_api.c
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:10:29
+ * C/C++ source code generated on  : 2024/08/04 17:01:01
  */
 
 /* Include Files */
@@ -31,7 +31,7 @@ emlrtContext emlrtContextGlobal = {
 static real_T b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
                                  const emlrtMsgIdentifier *parentId);
 
-static const mxArray *b_emlrt_marshallOut(const real_T u[5]);
+static const mxArray *b_emlrt_marshallOut(const real_T u[4]);
 
 static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
                                  const emlrtMsgIdentifier *msgId);
@@ -43,7 +43,7 @@ static void emlrtExitTimeCleanupDtorFcn(const void *r);
 static real_T emlrt_marshallIn(const emlrtStack *sp, const mxArray *nullptr,
                                const char_T *identifier);
 
-static const mxArray *emlrt_marshallOut(const real_T u[25]);
+static const mxArray *emlrt_marshallOut(const real_T u[16]);
 
 /* Function Definitions */
 /*
@@ -62,13 +62,13 @@ static real_T b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
 }
 
 /*
- * Arguments    : const real_T u[5]
+ * Arguments    : const real_T u[4]
  * Return Type  : const mxArray *
  */
-static const mxArray *b_emlrt_marshallOut(const real_T u[5])
+static const mxArray *b_emlrt_marshallOut(const real_T u[4])
 {
   static const int32_T i = 0;
-  static const int32_T i1 = 5;
+  static const int32_T i1 = 4;
   const mxArray *m;
   const mxArray *y;
   y = NULL;
@@ -144,13 +144,13 @@ static real_T emlrt_marshallIn(const emlrtStack *sp, const mxArray *nullptr,
 }
 
 /*
- * Arguments    : const real_T u[25]
+ * Arguments    : const real_T u[16]
  * Return Type  : const mxArray *
  */
-static const mxArray *emlrt_marshallOut(const real_T u[25])
+static const mxArray *emlrt_marshallOut(const real_T u[16])
 {
   static const int32_T iv[2] = {0, 0};
-  static const int32_T iv1[2] = {5, 5};
+  static const int32_T iv1[2] = {4, 4};
   const mxArray *m;
   const mxArray *y;
   y = NULL;
@@ -175,8 +175,8 @@ void c_getEquationOfStateParameters_(const mxArray *const prhs[12],
       NULL, /* tls */
       NULL  /* prev */
   };
-  real_T(*Ab)[25];
-  real_T(*Bb)[5];
+  real_T(*A)[16];
+  real_T(*B)[4];
   real_T(*C)[4];
   real_T J_m;
   real_T J_p;
@@ -191,8 +191,8 @@ void c_getEquationOfStateParameters_(const mxArray *const prhs[12],
   real_T r_p;
   real_T r_w;
   st.tls = emlrtRootTLSGlobal;
-  Ab = (real_T(*)[25])mxMalloc(sizeof(real_T[25]));
-  Bb = (real_T(*)[5])mxMalloc(sizeof(real_T[5]));
+  A = (real_T(*)[16])mxMalloc(sizeof(real_T[16]));
+  B = (real_T(*)[4])mxMalloc(sizeof(real_T[4]));
   C = (real_T(*)[4])mxMalloc(sizeof(real_T[4]));
   /* Marshall function inputs */
   m_w = emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "m_w");
@@ -209,11 +209,11 @@ void c_getEquationOfStateParameters_(const mxArray *const prhs[12],
   R = emlrt_marshallIn(&st, emlrtAliasP(prhs[11]), "R");
   /* Invoke the target function */
   getEquationOfStateParameters(m_w, m_p, r_w, r_p, J_w, J_p, J_m, g, n, kt, kn,
-                               R, *Ab, *Bb, *C);
+                               R, *A, *B, *C);
   /* Marshall function outputs */
-  plhs[0] = emlrt_marshallOut(*Ab);
+  plhs[0] = emlrt_marshallOut(*A);
   if (nlhs > 1) {
-    plhs[1] = b_emlrt_marshallOut(*Bb);
+    plhs[1] = b_emlrt_marshallOut(*B);
   }
   if (nlhs > 2) {
     plhs[2] = c_emlrt_marshallOut(*C);

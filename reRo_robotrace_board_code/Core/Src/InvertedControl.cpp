@@ -9,7 +9,7 @@
 #include "kalmanFilter.h"
 #include <cmath>
 #include "getEquationOfStateParameters.h"
-#include "servoStateFeedback.h"
+#include "stateFeedback.h"
 
 float mon_angle_diff;
 double mon_estimated_robot_theta;
@@ -91,13 +91,14 @@ void InvertedControl::flip()
 
 void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w)
 {
-	servoStateFeedback(dt_, target_omega_, Ab_, Bb_, pre_target_theta_, pre_xb_, pre_z_, pre_input_, disturbance_, f_, k_, theta_p, dtheta_p, theta_w, dtheta_w, &input_, &target_theta_, xb_, &z_);
-	pre_input_ = input_;
-	pre_target_theta_ = target_theta_;
-	for(uint8_t i = 0; i < 4; i++){
-		pre_xb_[i] = xb_[i];
-	}
-	pre_z_ = z_;
+	double x[4] = {theta_p, dtheta_p, theta_w, dtheta_w};
+	stateFeedback(x, f_);
+	//pre_input_ = input_;
+	//pre_target_theta_ = target_theta_;
+	//for(uint8_t i = 0; i < 4; i++){
+	//	pre_xb_[i] = xb_[i];
+	//}
+	//pre_z_ = z_;
 
 	double left_duty = (input_/current_voltage_) * 100;
 	double right_duty = (input_/current_voltage_) * 100;

@@ -5,7 +5,7 @@
  * File: _coder_getEquationOfStateParameters_info.c
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:10:29
+ * C/C++ source code generated on  : 2024/08/04 17:01:01
  */
 
 /* Include Files */
@@ -69,7 +69,7 @@ mxArray *emlrtMexFcnProperties(void)
           "C:\\Users\\under\\Documents\\2024_robotracer\\2024_robotracer_"
           "control_design\\getEquationOfStateParameters.m"));
   emlrtSetField(xEntryPoints, 0, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739456.96100694442));
+                emlrtMxCreateDoubleScalar(739468.69597222225));
   emlrtSetField(xEntryPoints, 0, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 0, "Visible", emlrtMxCreateLogicalScalar(true));
