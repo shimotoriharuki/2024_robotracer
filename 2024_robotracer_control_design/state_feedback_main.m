@@ -56,13 +56,13 @@ f = calcStateFeedbackGain(A, B, Q, R);
 %シミュレーション
 dt = 0.001;
 t = 0 : dt : 10;
-xb0 = [0.01; 0; 0; 0]; % 初期値
+x0 = [0.01; 0; 0; 0]; % 初期値
 z = 0; % 偏差の積分
 target_theta = 0; % 目標角度 [rad]
 target_omega = 0; %目標角速度[rad/s]
 
 u = 0; % 入力の初期値
-x = xb0;
+x = x0;
 
 s_x1 = []; %theta_p
 s_x2 = []; %dtheta_p
@@ -72,13 +72,15 @@ s_u = [];
 
 pre_input = u;
 pre_target_theta = 0;
-pre_x = xb0;
+pre_x = x0;
 
 for i = t
-    [input, target_theta, x] =  stateFeedback(dt, target_omega, A, B, pre_target_theta, pre_x, pre_input, f);
+    input =  stateFeedback(x, f);
+
+    dx = A * pre_x + B * pre_input;
+    x = pre_x + dx * dt;
 
     pre_input = input;
-    pre_target_theta = target_theta;
     pre_x = x;
     
     s_x1 = [s_x1 x(1)];
@@ -109,7 +111,7 @@ plot(t, s_x4);
 % legend('dtheta_w')
 title('dtheta_w')
 
-figure(3)
+figure(2)
 plot(t, s_u);
 % legend('u')
 title('u')
