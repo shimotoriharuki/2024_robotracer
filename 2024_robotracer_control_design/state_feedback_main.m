@@ -36,64 +36,55 @@ V_offset = R * t_md / kt;
 % 
 % C = [1, 1, 1, 1];
 
-[Ab, Bb, C] = getEquationOfStateParameters(m_w, m_p, r_w, r_p, J_w, J_p, J_m, g, n, kt, kn, R);
+[A, B, C] = getEquationOfStateParameters(m_w, m_p, r_w, r_p, J_w, J_p, J_m, g, n, kt, kn, R);
 
 %可制御
-Uc = [Bb, Ab*Bb, Ab^2*Bb, Ab^3*Bb, Ab^4*Bb];
+Uc = [B, A*B, A^2*B, A^3*B];
 if det(Uc) ~= 0
     disp('可制御である')
 end
 
 %状態フィードバック
-Q = [0.1, 0, 0, 0, 0;
-     0, 0.1, 0, 0, 0;
-     0, 0, 0.1, 0, 0;
-     0, 0, 0, 0.1, 0;
-     0, 0, 0, 0, 0.1];
+Q = [0.1, 0, 0, 0;
+     0, 0.1, 0, 0;
+     0, 0, 0.1, 0;
+     0, 0, 0, 0.1];
 R = 0.001;
-% gain = lqr(Ab, Bb, Q, R);
-% f = gain(1:4);
-% k = -gain(5);
 
-[f, k] = calcStateFeedbackGain(Ab, Bb, Q, R);
+f = calcStateFeedbackGain(A, B, Q, R);
 
 %シミュレーション
 dt = 0.001;
 t = 0 : dt : 10;
 xb0 = [0.01; 0; 0; 0]; % 初期値
 z = 0; % 偏差の積分
-v = [0; 0; 0; 0]; % 外乱
 target_theta = 0; % 目標角度 [rad]
 target_omega = 0; %目標角速度[rad/s]
 
 u = 0; % 入力の初期値
-xb = xb0;
+x = xb0;
 
 s_x1 = []; %theta_p
 s_x2 = []; %dtheta_p
 s_x3 = []; %theta_w
 s_x4 = []; %dtheta_w
-s_z = [];
 s_u = [];
 
 pre_input = u;
 pre_target_theta = 0;
-pre_xb = xb0;
-pre_z = z;
+pre_x = xb0;
 
 for i = t
-    [input, target_theta, xb, z] =  servoStateFeedback(dt, target_omega, Ab, Bb, pre_target_theta, pre_xb, pre_z, pre_input, v, f, k);
+    [input, target_theta, x] =  stateFeedback(dt, target_omega, A, B, pre_target_theta, pre_x, pre_input, f);
 
     pre_input = input;
     pre_target_theta = target_theta;
-    pre_xb = xb;
-    pre_z = z;
+    pre_x = x;
     
-    s_x1 = [s_x1 xb(1)];
-    s_x2 = [s_x2 xb(2)];
-    s_x3 = [s_x3 xb(3)];
-    s_x4 = [s_x4 xb(4)];
-    s_z = [s_z z];
+    s_x1 = [s_x1 x(1)];
+    s_x2 = [s_x2 x(2)];
+    s_x3 = [s_x3 x(3)];
+    s_x4 = [s_x4 x(4)];
     s_u = [s_u input];
 end
 
@@ -117,11 +108,6 @@ subplot(2, 2, 4)
 plot(t, s_x4);
 % legend('dtheta_w')
 title('dtheta_w')
-
-figure(2)
-plot(t, s_z);
-% legend('z')
-title('z')
 
 figure(3)
 plot(t, s_u);
