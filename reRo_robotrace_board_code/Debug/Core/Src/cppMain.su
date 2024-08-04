@@ -3,6 +3,6 @@
 ../Core/Src/cppMain.cpp:104:6:void cppFlip1ms()	8	static
 ../Core/Src/cppMain.cpp:155:6:void cppFlip100ns()	8	static
 ../Core/Src/cppMain.cpp:161:6:void cppFlip10ms()	8	static
-../Core/Src/cppMain.cpp:167:6:void cppLoop()	8	static
-../Core/Src/cppMain.cpp:171:1:void __static_initialization_and_destruction_0(int, int)	56	static
-../Core/Src/cppMain.cpp:171:1:cpp)	8	static
+../Core/Src/cppMain.cpp:168:6:void cppLoop()	8	static
+../Core/Src/cppMain.cpp:172:1:void __static_initialization_and_destruction_0(int, int)	56	static
+../Core/Src/cppMain.cpp:172:1:cpp)	8	static
