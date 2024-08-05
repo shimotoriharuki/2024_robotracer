@@ -5,7 +5,7 @@
  * File: _coder_servoStateFeedback_mex.c
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:14:20
+ * C/C++ source code generated on  : 2024/08/05 21:13:25
  */
 
 /* Include Files */
@@ -45,46 +45,39 @@ emlrtCTX mexFunctionCreateRootTLS(void)
 
 /*
  * Arguments    : int32_T nlhs
- *                mxArray *plhs[4]
+ *                mxArray *plhs[1]
  *                int32_T nrhs
- *                const mxArray *prhs[11]
+ *                const mxArray *prhs[4]
  * Return Type  : void
  */
-void unsafe_servoStateFeedback_mexFunction(int32_T nlhs, mxArray *plhs[4],
-                                           int32_T nrhs,
-                                           const mxArray *prhs[11])
+void unsafe_servoStateFeedback_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                           int32_T nrhs, const mxArray *prhs[4])
 {
   emlrtStack st = {
       NULL, /* site */
       NULL, /* tls */
       NULL  /* prev */
   };
-  const mxArray *b_prhs[11];
-  const mxArray *outputs[4];
-  int32_T i;
-  int32_T i1;
+  const mxArray *b_prhs[4];
+  const mxArray *outputs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 11) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 11, 4,
+  if (nrhs != 4) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 4, 4,
                         18, "servoStateFeedback");
   }
-  if (nlhs > 4) {
+  if (nlhs > 1) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 18,
                         "servoStateFeedback");
   }
   /* Call the function. */
-  for (i = 0; i < 11; i++) {
-    b_prhs[i] = prhs[i];
-  }
-  servoStateFeedback_api(b_prhs, nlhs, outputs);
+  b_prhs[0] = prhs[0];
+  b_prhs[1] = prhs[1];
+  b_prhs[2] = prhs[2];
+  b_prhs[3] = prhs[3];
+  servoStateFeedback_api(b_prhs, &outputs);
   /* Copy over outputs to the caller. */
-  if (nlhs < 1) {
-    i1 = 1;
-  } else {
-    i1 = nlhs;
-  }
-  emlrtReturnArrays(i1, &plhs[0], &outputs[0]);
+  emlrtReturnArrays(1, &plhs[0], &outputs);
 }
 
 /*

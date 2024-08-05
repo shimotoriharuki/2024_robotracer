@@ -5,7 +5,7 @@
  * File: _coder_servoStateFeedback_api.h
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:14:20
+ * C/C++ source code generated on  : 2024/08/05 21:13:25
  */
 
 #ifndef _CODER_SERVOSTATEFEEDBACK_API_H
@@ -26,14 +26,9 @@ extern "C" {
 #endif
 
 /* Function Declarations */
-void servoStateFeedback(real_T dt, real_T target_omega, real_T Ab[25],
-                        real_T Bb[5], real_T pre_target_theta, real_T pre_xb[4],
-                        real_T pre_z, real_T pre_input, real_T disturbance[4],
-                        real_T f[4], real_T k, real_T *input,
-                        real_T *target_theta, real_T xb[4], real_T *z);
+real_T servoStateFeedback(real_T xb[4], real_T z, real_T f[4], real_T k);
 
-void servoStateFeedback_api(const mxArray *const prhs[11], int32_T nlhs,
-                            const mxArray *plhs[4]);
+void servoStateFeedback_api(const mxArray *const prhs[4], const mxArray **plhs);
 
 void servoStateFeedback_atexit(void);
 

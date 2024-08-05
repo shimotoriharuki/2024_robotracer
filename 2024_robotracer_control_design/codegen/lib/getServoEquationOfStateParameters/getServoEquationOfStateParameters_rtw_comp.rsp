@@ -1,0 +1,8 @@
+-IC:/Users/under/Documents/2024_robotracer/2024_robotracer_control_design/codegen/lib/getServoEquationOfStateParameters
+-IC:/Users/under/Documents/2024_robotracer/2024_robotracer_control_design
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis.instrset/CMSIS/Core/Include
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis_dsp.instrset/Include
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/3P.instrset/cmsis_dsp.instrset/Include/dsp
+-IC:/ProgramData/MATLAB/SupportPackages/R2024a/toolbox/target/supportpackages/arm_cortex_m/include
+-IC:/Program\ Files/MATLAB/R2024a/toolbox/target/shared/armcortexmbase/scheduler/include
+-IC:/Program\ Files/MATLAB/R2024a/extern/include

@@ -5,7 +5,7 @@
  * File: _coder_servoStateFeedback_mex.h
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:14:20
+ * C/C++ source code generated on  : 2024/08/05 21:13:25
  */
 
 #ifndef _CODER_SERVOSTATEFEEDBACK_MEX_H
@@ -26,9 +26,9 @@ MEXFUNCTION_LINKAGE void mexFunction(int32_T nlhs, mxArray *plhs[],
 
 emlrtCTX mexFunctionCreateRootTLS(void);
 
-void unsafe_servoStateFeedback_mexFunction(int32_T nlhs, mxArray *plhs[4],
+void unsafe_servoStateFeedback_mexFunction(int32_T nlhs, mxArray *plhs[1],
                                            int32_T nrhs,
-                                           const mxArray *prhs[11]);
+                                           const mxArray *prhs[4]);
 
 #ifdef __cplusplus
 }

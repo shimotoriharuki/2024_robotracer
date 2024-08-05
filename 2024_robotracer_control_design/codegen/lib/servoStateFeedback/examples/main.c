@@ -5,7 +5,7 @@
  * File: main.c
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:14:20
+ * C/C++ source code generated on  : 2024/08/05 21:13:25
  */
 
 /*************************************************************************/
@@ -41,10 +41,6 @@
 /* Function Declarations */
 static void argInit_4x1_real_T(double result[4]);
 
-static void argInit_5x1_real_T(double result[5]);
-
-static void argInit_5x5_real_T(double result[25]);
-
 static double argInit_real_T(void);
 
 /* Function Definitions */
@@ -60,36 +56,6 @@ static void argInit_4x1_real_T(double result[4])
     /* Set the value of the array element.
 Change this value to the value that the application requires. */
     result[idx0] = argInit_real_T();
-  }
-}
-
-/*
- * Arguments    : double result[5]
- * Return Type  : void
- */
-static void argInit_5x1_real_T(double result[5])
-{
-  int idx0;
-  /* Loop over the array to initialize each element. */
-  for (idx0 = 0; idx0 < 5; idx0++) {
-    /* Set the value of the array element.
-Change this value to the value that the application requires. */
-    result[idx0] = argInit_real_T();
-  }
-}
-
-/*
- * Arguments    : double result[25]
- * Return Type  : void
- */
-static void argInit_5x5_real_T(double result[25])
-{
-  int i;
-  /* Loop over the array to initialize each element. */
-  for (i = 0; i < 25; i++) {
-    /* Set the value of the array element.
-Change this value to the value that the application requires. */
-    result[i] = argInit_real_T();
   }
 }
 
@@ -128,30 +94,17 @@ You do not need to do this more than one time. */
  */
 void main_servoStateFeedback(void)
 {
-  double dv[25];
-  double dv1[5];
-  double dv2[4];
-  double pre_xb_tmp[4];
-  double xb[4];
-  double dt_tmp;
-  double input;
-  double target_theta;
-  double z;
+  double dv[4];
+  double dv1[4];
+  double z_tmp;
   /* Initialize function 'servoStateFeedback' input arguments. */
-  dt_tmp = argInit_real_T();
-  /* Initialize function input argument 'Ab'. */
-  /* Initialize function input argument 'Bb'. */
-  /* Initialize function input argument 'pre_xb'. */
-  argInit_4x1_real_T(pre_xb_tmp);
-  /* Initialize function input argument 'disturbance'. */
+  /* Initialize function input argument 'xb'. */
+  z_tmp = argInit_real_T();
   /* Initialize function input argument 'f'. */
   /* Call the entry-point 'servoStateFeedback'. */
-  argInit_5x5_real_T(dv);
-  argInit_5x1_real_T(dv1);
-  argInit_4x1_real_T(dv2);
-  servoStateFeedback(dt_tmp, dt_tmp, dv, dv1, dt_tmp, pre_xb_tmp, dt_tmp,
-                     dt_tmp, pre_xb_tmp, dv2, dt_tmp, &input, &target_theta, xb,
-                     &z);
+  argInit_4x1_real_T(dv);
+  argInit_4x1_real_T(dv1);
+  z_tmp = servoStateFeedback(dv, z_tmp, dv1, z_tmp);
 }
 
 /*

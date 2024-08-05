@@ -10,6 +10,7 @@
 #include <cmath>
 #include "getEquationOfStateParameters.h"
 #include "stateFeedback.h"
+#include "servoStateFeedback.h"
 
 float mon_angle_diff;
 double mon_estimated_robot_theta;
@@ -20,7 +21,7 @@ double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-34.5776826704779,-3.32693376436952,-0.100000000000002,-0.191127410540318}, k_(-10)
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-45.3246860510667,-5.01541286402395,-0.375885067662091,-0.530797750883073}, k_(-0.3162)
 {
 	motor_ = motor;
 	encoder_ = encoder;
@@ -98,7 +99,9 @@ void InvertedControl::flip()
 void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w)
 {
 	double x[4] = {theta_p, dtheta_p, theta_w, dtheta_w};
-	input_ = stateFeedback(x, f_);
+	double dz = -x[0] - x[1] - x[2] - x[3];
+	z_ = z_ + dz * DELTA_T;
+	input_ = servoStateFeedback(x, z_, f_, k_);
 	//pre_input_ = input_;
 	//pre_target_theta_ = target_theta_;
 	//for(uint8_t i = 0; i < 4; i++){
@@ -127,6 +130,7 @@ void InvertedControl::start()
 {
 	processing_flag_ = true;
 	i_reset_flag_ = true;
+	z_ = 0;
 }
 
 void InvertedControl::stop()

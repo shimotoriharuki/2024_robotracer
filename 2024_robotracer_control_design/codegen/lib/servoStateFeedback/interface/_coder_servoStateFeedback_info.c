@@ -5,7 +5,7 @@
  * File: _coder_servoStateFeedback_info.c
  *
  * MATLAB Coder version            : 24.1
- * C/C++ source code generated on  : 2024/07/23 23:14:20
+ * C/C++ source code generated on  : 2024/08/05 21:13:25
  */
 
 /* Include Files */
@@ -55,20 +55,20 @@ mxArray *emlrtMexFcnProperties(void)
       "FullPath", "TimeStamp",      "Constructor",     "Visible"};
   xEntryPoints =
       emlrtCreateStructMatrix(1, 1, 8, (const char_T **)&epFieldName[0]);
-  xInputs = emlrtCreateLogicalMatrix(1, 11);
+  xInputs = emlrtCreateLogicalMatrix(1, 4);
   emlrtSetField(xEntryPoints, 0, "Name",
                 emlrtMxCreateString("servoStateFeedback"));
   emlrtSetField(xEntryPoints, 0, "NumberOfInputs",
-                emlrtMxCreateDoubleScalar(11.0));
-  emlrtSetField(xEntryPoints, 0, "NumberOfOutputs",
                 emlrtMxCreateDoubleScalar(4.0));
+  emlrtSetField(xEntryPoints, 0, "NumberOfOutputs",
+                emlrtMxCreateDoubleScalar(1.0));
   emlrtSetField(xEntryPoints, 0, "ConstantInputs", xInputs);
   emlrtSetField(
       xEntryPoints, 0, "FullPath",
       emlrtMxCreateString("C:\\Users\\under\\Documents\\2024_robotracer\\2024_"
                           "robotracer_control_design\\servoStateFeedback.m"));
   emlrtSetField(xEntryPoints, 0, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739456.9678125));
+                emlrtMxCreateDoubleScalar(739469.86335648154));
   emlrtSetField(xEntryPoints, 0, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 0, "Visible", emlrtMxCreateLogicalScalar(true));

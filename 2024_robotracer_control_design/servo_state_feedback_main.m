@@ -36,7 +36,7 @@ V_offset = R * t_md / kt;
 % 
 % C = [1, 1, 1, 1];
 
-[Ab, Bb, C] = getEquationOfStateParameters(m_w, m_p, r_w, r_p, J_w, J_p, J_m, g, n, kt, kn, R);
+[Ab, Bb, C] = getServoEquationOfStateParameters(m_w, m_p, r_w, r_p, J_w, J_p, J_m, g, n, kt, kn, R);
 
 %可制御
 Uc = [Bb, Ab*Bb, Ab^2*Bb, Ab^3*Bb, Ab^4*Bb];
@@ -45,17 +45,17 @@ if det(Uc) ~= 0
 end
 
 %状態フィードバック
-Q = [0.1, 0, 0, 0, 0;
-     0, 0.1, 0, 0, 0;
-     0, 0, 0.1, 0, 0;
-     0, 0, 0, 0.1, 0;
+Q = [0.01, 0, 0, 0, 0;
+     0, 0.01, 0, 0, 0;
+     0, 0, 0.05, 0, 0;
+     0, 0, 0, 0.05, 0;
      0, 0, 0, 0, 0.1];
-R = 0.001;
+R = 1;
 % gain = lqr(Ab, Bb, Q, R);
 % f = gain(1:4);
 % k = -gain(5);
 
-[f, k] = calcStateFeedbackGain(Ab, Bb, Q, R);
+[f, k] = calcServoStateFeedbackGain(Ab, Bb, Q, R);
 
 %シミュレーション
 dt = 0.001;
@@ -82,7 +82,12 @@ pre_xb = xb0;
 pre_z = z;
 
 for i = t
-    [input, target_theta, xb, z] =  servoStateFeedback(dt, target_omega, Ab, Bb, pre_target_theta, pre_xb, pre_z, pre_input, v, f, k);
+    input =  servoStateFeedback(xb, z, f, k);
+
+    target_theta = pre_target_theta + target_omega * dt;
+    dxb = Ab * [pre_xb; pre_z] + Bb * pre_input + [v; target_theta];
+    xb = pre_xb + dxb(1:4, 1) * dt;
+    z = pre_z + dxb(5) * dt;
 
     pre_input = input;
     pre_target_theta = target_theta;
@@ -127,3 +132,5 @@ figure(3)
 plot(t, s_u);
 % legend('u')
 title('u')
+
+writematrix(f, 'servo_gain');
