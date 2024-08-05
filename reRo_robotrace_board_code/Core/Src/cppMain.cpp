@@ -119,7 +119,7 @@ void cppFlip1ms(void)
 	//各種制御など
 	line_following.pidFlip();
 	velocity_control.flip();
-	//inverted_control.flip();
+	inverted_control.flip();
 
 	//モータを駆動
 	drive_motor.controlFlip();
@@ -161,7 +161,7 @@ void cppFlip100ns(void)
 void cppFlip10ms(void)
 {
 	running_state_controller.flip10ms();
-	inverted_control.flip();
+	//inverted_control.flip();
 }
 
 

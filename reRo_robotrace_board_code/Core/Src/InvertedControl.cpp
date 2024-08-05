@@ -20,7 +20,7 @@ double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-31.672038386786,-3.03027549509701,-0.0316227766016839,-0.0954045690001685}, k_(-10)
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-34.5776826704779,-3.32693376436952,-0.100000000000002,-0.191127410540318}, k_(-10)
 {
 	motor_ = motor;
 	encoder_ = encoder;
@@ -77,7 +77,7 @@ void InvertedControl::flip()
 	if(processing_flag_ == true){
 		double P[4];
 
-		estimateRobotAngle(1e-2, double(imu_->getOmegaXOffset()), pre_P_, pre_theta_, U_, W_, double(imu_->getOmegaX()), double(imu_->getRobotAngleFromAcc()), &estimated_robot_theta_, P);
+		estimateRobotAngle(1e-3, double(imu_->getOmegaXOffset()), pre_P_, pre_theta_, U_, W_, double(imu_->getOmegaX()), double(imu_->getRobotAngleFromAcc()), &estimated_robot_theta_, P);
 		mon_estimated_robot_theta = estimated_robot_theta_;
 
 		for(uint8_t i = 0; i < 4; i++){
