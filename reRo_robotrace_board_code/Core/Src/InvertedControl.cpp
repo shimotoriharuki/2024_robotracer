@@ -18,11 +18,12 @@ double mon_estimated_robot_theta;
 double mon_left_duty, mon_right_dity;
 double mon_input;
 double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
+double mon_z;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-33.5528040138125,-3.1709627857099,-0.0801995212872659,-0.167504596468793}, k_(-0.0408)
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-36.4263317925083,-3.63335884128368,-0.158961189681767,-0.266751968172705}, k_(-0.129)
 {
 	motor_ = motor;
 	encoder_ = encoder;
@@ -105,6 +106,7 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 
 	double dz = -x[0] - x[1] - x[2] - x[3];
 	z_ = z_ + dz * DELTA_T;
+	mon_z = z_;
 
 	//pre_input_ = input_;
 	//pre_target_theta_ = target_theta_;

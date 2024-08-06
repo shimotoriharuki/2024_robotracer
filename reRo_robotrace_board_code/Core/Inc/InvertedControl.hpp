@@ -32,7 +32,7 @@ private:
 	double J_p_ = 6.498e-4; // 振子のイナーシャ ??
 	double J_m_ = 0.151e-7; // モータの回転子のイナーシャ
 	double g_ = 9.8; // 重力加速度 [m/s^2]
-	double n_ = 3; // 減速比
+	double n_ = 4; // 減速比
 	double kt_ = 3.52e-3; //トルク定数 [Nm/A]
 	double kn_ = 2710; // 回転数定数[rpm/V]
 	double ke_ = 1 / (kn_ * 2*M_PI / 60); //起電力定数 [V/(rad/s)]
