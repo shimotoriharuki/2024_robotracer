@@ -23,7 +23,7 @@ double mon_z;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-36.4263317925083,-3.63335884128368,-0.158961189681767,-0.266751968172705}, k_(-0.129)
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-28.1560353293939,-2.85904859777903,-0.142569871084718,-0.234742187272336}, k_(-0.1291)
 {
 	motor_ = motor;
 	encoder_ = encoder;
