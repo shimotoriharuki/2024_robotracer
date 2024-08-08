@@ -148,7 +148,7 @@ void RunningStateController::loop()
 	while(break_flag_ == false){
 		switch(pattern){
 		case 0:
-			while(1);
+			//while(1);
 
 			if(side_sensor_r_->getState() == true){ //最初のスタートマーカを読んだ
 				start_goal_line_cnt_++;
