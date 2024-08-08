@@ -67,7 +67,7 @@ private:
                          double pre_theta, double U, double W, double omega,
                          double theta, double *estimated_robot_theta,
                          double P[4]);
-	void stateFeedbackControl(double, double, double, double);
+	void stateFeedbackControl(double, double, double, double, double);
 
 public:
 	InvertedControl(DriveMotor *, Encoder *, IMU *);
@@ -76,6 +76,7 @@ public:
 	void start();
 	void stop();
 	void resetEstimatedTheta();
+	void setTargetOmega(float);
 
 
 };

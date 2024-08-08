@@ -19,6 +19,7 @@ double mon_left_duty, mon_right_dity;
 double mon_input;
 double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
 double mon_z;
+double mon_target_theta;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
@@ -89,22 +90,24 @@ void InvertedControl::flip()
 
 		pre_theta_ = estimated_robot_theta_;
 
-		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta());
+		target_theta_ += target_omega_ * DELTA_T;
+		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
 		mon_theta_p = estimated_robot_theta_;
 		mon_dtheta_p = imu_->getOmegaX();
 		mon_theta_w = encoder_->getTheta();
 		mon_dtheta_w = encoder_->getDTheta();
+		mon_target_theta = target_theta_;
 		//pid();
 	}
 }
 
-void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w)
+void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w, double target_theta)
 {
 	double x[4] = {theta_p, dtheta_p, theta_w, dtheta_w};
 
 	input_ = servoStateFeedback(x, z_, f_, k_);
 
-	double dz = -x[0] - x[1] - x[2] - x[3];
+	double dz = -x[0] - x[1] - x[2] - x[3] + target_theta;
 	z_ = z_ + dz * DELTA_T;
 	mon_z = z_;
 
@@ -137,6 +140,8 @@ void InvertedControl::start()
 	processing_flag_ = true;
 	i_reset_flag_ = true;
 	z_ = 0;
+	target_theta_ = 0;
+	target_omega_ = 0;
 }
 
 void InvertedControl::stop()
@@ -150,5 +155,10 @@ void InvertedControl::resetEstimatedTheta()
 	estimated_robot_theta_ = 0;
 }
 
+void InvertedControl::setTargetOmega(float target_omega)
+{
+	target_omega_ = target_omega;
+	//target_theta_ += target_omega * DELTA_T;
+}
 
 

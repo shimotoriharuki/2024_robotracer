@@ -64,7 +64,7 @@ xb0 = [0.01; 0; 0; 0]; % 初期値
 z = 0; % 偏差の積分
 v = [0; 0; 0; 0]; % 外乱
 target_theta = 0; % 目標角度 [rad]
-target_omega = 0; %目標角速度[rad/s]
+target_omega = 3.14; %目標角速度[rad/s]
 
 u = 0; % 入力の初期値
 xb = xb0;
