@@ -250,8 +250,8 @@ void RunningStateController::loop()
 		if(inverted_control_->fallDown() == true){
 			stopLogging();
 
-			line_following_->emergencyStop();
 			inverted_control_->stop();
+			line_following_->emergencyStop();
 			fan_motor_->setDuty(0);
 			emergerncy_flag = true;
 
