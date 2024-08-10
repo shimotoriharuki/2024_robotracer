@@ -27,7 +27,7 @@ double mon_estimate_theta;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-30.2143122651299,-3.16969916691238,-0.181026856870426,-0.283327308288888}, k_(-0.0913)
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-30.8843942783021,-3.27677844337711,-0.201098294451269,-0.307268950808485}, k_(-0.1291)
 {
 	motor_ = motor;
 	encoder_ = encoder;
