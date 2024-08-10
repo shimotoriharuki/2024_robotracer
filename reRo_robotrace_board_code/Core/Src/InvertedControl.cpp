@@ -20,6 +20,8 @@ double mon_input;
 double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
 double mon_z;
 double mon_target_theta;
+bool mon_fall_down;
+double mon_estimate_theta;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
@@ -162,3 +164,15 @@ void InvertedControl::setTargetOmega(float target_omega)
 }
 
 
+bool InvertedControl::fallDown()
+{
+	bool fall_down = false;
+
+	if(estimated_robot_theta_ >= FALL_DOWN_THETA || -FALL_DOWN_THETA >= estimated_robot_theta_){
+		fall_down = true;
+	}
+
+	mon_fall_down = fall_down;
+
+	return fall_down;
+}

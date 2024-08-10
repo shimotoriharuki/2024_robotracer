@@ -148,7 +148,7 @@ void RunningStateController::loop()
 	while(break_flag_ == false){
 		switch(pattern){
 		case 0:
-			while(1){
+			//while(1){
 				/*
 				HAL_Delay(1000);
 				inverted_control_->setTargetOmega(3.14);
@@ -159,8 +159,8 @@ void RunningStateController::loop()
 				HAL_Delay(1000);
 				inverted_control_->setTargetOmega(0);
 				*/
-				inverted_control_->setTargetOmega(1);
-			}
+				//inverted_control_->setTargetOmega(1);
+			//}
 
 			if(side_sensor_r_->getState() == true){ //最初のスタートマーカを読んだ
 				start_goal_line_cnt_++;
@@ -246,10 +246,12 @@ void RunningStateController::loop()
 
 
 		//緊急停止処理
-		if(following_sensor_->isAllSensorBlack() == true){
+		//if(following_sensor_->isAllSensorBlack() == true || inverted_control_->fallDown() == true){
+		if(inverted_control_->fallDown() == true){
 			stopLogging();
 
 			line_following_->emergencyStop();
+			inverted_control_->stop();
 			fan_motor_->setDuty(0);
 			emergerncy_flag = true;
 

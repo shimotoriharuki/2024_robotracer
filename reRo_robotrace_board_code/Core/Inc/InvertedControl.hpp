@@ -14,6 +14,8 @@
 #include "globalDefine.h"
 #include <cmath>
 
+#define FALL_DOWN_THETA 0.5
+
 class InvertedControl{
 private:
 	float kp_, ki_, kd_;
@@ -78,6 +80,7 @@ public:
 	void resetEstimatedTheta();
 	void setTargetOmega(float);
 
+	bool fallDown();
 
 };
 
