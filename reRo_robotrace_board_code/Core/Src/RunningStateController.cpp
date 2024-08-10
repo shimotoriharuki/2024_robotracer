@@ -148,19 +148,6 @@ void RunningStateController::loop()
 	while(break_flag_ == false){
 		switch(pattern){
 		case 0:
-			//while(1){
-				/*
-				HAL_Delay(1000);
-				inverted_control_->setTargetOmega(3.14);
-				HAL_Delay(1000);
-				inverted_control_->setTargetOmega(0);
-				HAL_Delay(1000);
-				inverted_control_->setTargetOmega(-3.14);
-				HAL_Delay(1000);
-				inverted_control_->setTargetOmega(0);
-				*/
-				//inverted_control_->setTargetOmega(1);
-			//}
 
 			if(side_sensor_r_->getState() == true){ //最初のスタートマーカを読んだ
 				start_goal_line_cnt_++;

@@ -12,6 +12,7 @@
 #include "getServoEquationOfStateParameters.h"
 #include "stateFeedback.h"
 #include "servoStateFeedback.h"
+#include <cmath>
 
 float mon_angle_diff;
 double mon_estimated_robot_theta;
@@ -93,6 +94,8 @@ void InvertedControl::flip()
 		pre_theta_ = estimated_robot_theta_;
 
 		target_theta_ += target_omega_ * DELTA_T;
+		if(abs(target_theta_) >= 2*M_PI) target_theta_ = 0;
+
 		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
 		mon_theta_p = estimated_robot_theta_;
 		mon_dtheta_p = imu_->getOmegaX();
@@ -159,7 +162,7 @@ void InvertedControl::resetEstimatedTheta()
 	estimated_robot_theta_ = 0;
 }
 
-void InvertedControl::setTargetOmega(float target_omega)
+void InvertedControl::setTargetOmega(double target_omega)
 {
 	target_omega_ = target_omega;
 	//target_theta_ += target_omega * DELTA_T;

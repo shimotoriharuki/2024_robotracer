@@ -80,7 +80,7 @@ public:
 	void start();
 	void stop();
 	void resetEstimatedTheta();
-	void setTargetOmega(float);
+	void setTargetOmega(double);
 
 	bool fallDown();
 	void getDytu(double *, double *);

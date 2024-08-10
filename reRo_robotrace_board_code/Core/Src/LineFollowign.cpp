@@ -100,8 +100,8 @@ void LineFollowing::start()
 	//velocity_control_->start();
 
 	inverted_control_->resetEstimatedTheta();
-	inverted_control_-> start();
-	inverted_control_->setTargetOmega(0.5);
+	inverted_control_->start();
+	inverted_control_->setTargetOmega(2.5);
 
 }
 
