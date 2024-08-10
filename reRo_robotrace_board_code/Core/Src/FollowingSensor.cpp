@@ -131,7 +131,7 @@ bool FollowingSensor::isAllSensorBlack()
 	}
 	*/
 	for(uint16_t i = 1; i <= 10; i++){
-		if(sensor[i] >= 750) out_cnt++;
+		if(sensor[i] >= 900) out_cnt++;
 	}
 
 	if(out_cnt >= 10){
@@ -141,7 +141,7 @@ bool FollowingSensor::isAllSensorBlack()
 		cnt = 0;
 	}
 
-	if(cnt >= 800){
+	if(cnt >= 1000){
 		flag = true;
 	}
 	else flag = false;

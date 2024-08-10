@@ -240,7 +240,6 @@ void IdleStateController::loop()
 				running_state_controller_->setAccDec(1.0, 1.0);
 				running_state_controller_->setStraightRadius(1000);
 
-				inverted_control_->setTargetOmega(1);
 
 				running_state_controller_->loop(); //走行状態ループ．
 

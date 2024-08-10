@@ -2,4 +2,4 @@
 ../Core/Src/IdleStateController.cpp:161:6:void IdleStateController::initializeRobotAngle()	24	static
 ../Core/Src/IdleStateController.cpp:189:1:IdleStateController::IdleStateController(DriveMotor*, FanMotor*, LineFollowing*, FollowingSensor*, VelocityControl*, Encoder*, IMU*, WheelDial*, sdCard*, RunningStateController*, InvertedControl*)	32	static
 ../Core/Src/IdleStateController.cpp:213:6:void IdleStateController::loop()	16	static
-../Core/Src/IdleStateController.cpp:333:6:void IdleStateController::debug_flip()	24	static
+../Core/Src/IdleStateController.cpp:332:6:void IdleStateController::debug_flip()	24	static

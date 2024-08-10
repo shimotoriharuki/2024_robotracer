@@ -5,5 +5,5 @@
 ../Core/Src/LineFollowign.cpp:52:6:void LineFollowing::pidFlip()	64	static
 ../Core/Src/LineFollowign.cpp:86:6:void LineFollowing::setGain(float, float, float)	24	static
 ../Core/Src/LineFollowign.cpp:93:6:void LineFollowing::start()	16	static
-../Core/Src/LineFollowign.cpp:107:6:void LineFollowing::stop()	16	static
-../Core/Src/LineFollowign.cpp:121:6:void LineFollowing::emergencyStop()	16	static
+../Core/Src/LineFollowign.cpp:108:6:void LineFollowing::stop()	16	static
+../Core/Src/LineFollowign.cpp:122:6:void LineFollowing::emergencyStop()	16	static
