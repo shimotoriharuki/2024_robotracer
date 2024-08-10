@@ -84,7 +84,7 @@ void cppInit(void)
 	led.set(0x00);
 
 	//ゲインの設定
-	line_following.setGain(0.5, 0, 0.0); //吸引ありゲイン /0.23, 0, 0.0045
+	line_following.setGain(0.8, 0, 0.0); //吸引ありゲイン /0.23, 0, 0.0045
 	velocity_control.setTranslationGain(1000, 12000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 

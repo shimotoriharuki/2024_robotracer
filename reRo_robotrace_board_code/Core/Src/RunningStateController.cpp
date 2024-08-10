@@ -380,7 +380,6 @@ void RunningStateController::init()
 	//HAL_Delay(2000);
 
 	//line_following_->setTargetVelocity(min_velocity_);
-	inverted_control_->setTargetOmega(0.0);
 	line_following_->start();
 
 	//inverted_control_->resetEstimatedTheta();
