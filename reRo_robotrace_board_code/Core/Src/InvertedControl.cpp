@@ -64,7 +64,7 @@ void InvertedControl::pid()
 		d = kd_ * (diff - pre_diff) / DELTA_T;
 
 		ratio_ = p + i + d;
-		motor_->setDuty(ratio_, ratio_);
+		//motor_->setDuty(ratio_, ratio_);
 		pre_diff = diff;
 	}
 
@@ -120,14 +120,14 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	//}
 	//pre_z_ = z_;
 
-	double left_duty = (input_/current_voltage_) * 1000;
-	double right_duty = (input_/current_voltage_) * 1000;
+	left_duty_ = (input_/current_voltage_) * 1000;
+	right_duty_ = (input_/current_voltage_) * 1000;
 
 	mon_input = input_;
-	mon_left_duty = left_duty;
-	mon_right_dity = right_duty;
+	mon_left_duty = left_duty_;
+	mon_right_dity = right_duty_;
 
-	motor_->setDuty(left_duty, right_duty);
+	//motor_->setDuty(left_duty_, right_duty_);
 }
 
 void InvertedControl::setPIDGain(float kp, float ki, float kd)
@@ -144,6 +144,8 @@ void InvertedControl::start()
 	z_ = 0;
 	target_theta_ = 0;
 	target_omega_ = 0;
+
+	encoder_->clearTheta();
 }
 
 void InvertedControl::stop()
@@ -175,4 +177,11 @@ bool InvertedControl::fallDown()
 	mon_fall_down = fall_down;
 
 	return fall_down;
+}
+
+void InvertedControl::getDytu(double *left, double *right)
+{
+	*left = left_duty_;
+	*right = right_duty_;
+
 }

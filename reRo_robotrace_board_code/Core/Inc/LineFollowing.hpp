@@ -10,6 +10,8 @@
 
 #include "FollowingSensor.hpp"
 #include "VelocityControl.hpp"
+#include "InvertedControl.hpp"
+#include "Motor.hpp"
 
 class LineFollowing
 {
@@ -20,13 +22,16 @@ private:
 	float rotation_ratio_;
 	bool processing_flag_;
 
+
 	FollowingSensor *following_sensor_;
 	VelocityControl *velocity_control_;
+	InvertedControl *inverted_control_;
+	DriveMotor * drive_motor_;
 
 	float calcError();
 
 public:
-	LineFollowing(VelocityControl *, FollowingSensor *);
+	LineFollowing(VelocityControl *, FollowingSensor *, InvertedControl *, DriveMotor *);
 
 	void setTargetVelocity(float);
 	float getTargetVelocity();

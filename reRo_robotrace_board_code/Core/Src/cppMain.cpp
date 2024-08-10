@@ -37,8 +37,8 @@ WheelDial wheel_dial(&encoder);
 FollowingSensor following_sensor(&adc);
 SideSensor side_sensor_l(GPIOC, GPIO_PIN_13);
 SideSensor side_sensor_r(GPIOC, GPIO_PIN_14);
-LineFollowing line_following(&velocity_control, &following_sensor);
 InvertedControl inverted_control(&drive_motor, &encoder, &imu);
+LineFollowing line_following(&velocity_control, &following_sensor, &inverted_control, &drive_motor);
 
 sdCard sd_card;
 Logger logger(&sd_card, 10);

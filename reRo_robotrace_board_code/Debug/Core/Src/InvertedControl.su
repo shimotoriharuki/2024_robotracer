@@ -3,10 +3,11 @@
 ../Core/Src/InvertedControl.cpp:49:6:void InvertedControl::pid()	40	static
 ../Core/Src/InvertedControl.cpp:71:6:void InvertedControl::estimateRobotAngle(double, double, const double*, double, double, double, double, double, double*, double*)	80	static
 ../Core/Src/InvertedControl.cpp:81:6:void InvertedControl::flip()	104	static
-../Core/Src/InvertedControl.cpp:106:6:void InvertedControl::stateFeedbackControl(double, double, double, double, double)	120	static
+../Core/Src/InvertedControl.cpp:106:6:void InvertedControl::stateFeedbackControl(double, double, double, double, double)	104	static
 ../Core/Src/InvertedControl.cpp:133:6:void InvertedControl::setPIDGain(float, float, float)	24	static
 ../Core/Src/InvertedControl.cpp:140:6:void InvertedControl::start()	16	static
-../Core/Src/InvertedControl.cpp:149:6:void InvertedControl::stop()	16	static
-../Core/Src/InvertedControl.cpp:155:6:void InvertedControl::resetEstimatedTheta()	16	static
-../Core/Src/InvertedControl.cpp:160:6:void InvertedControl::setTargetOmega(float)	16	static
-../Core/Src/InvertedControl.cpp:167:6:bool InvertedControl::fallDown()	24	static
+../Core/Src/InvertedControl.cpp:151:6:void InvertedControl::stop()	16	static
+../Core/Src/InvertedControl.cpp:157:6:void InvertedControl::resetEstimatedTheta()	16	static
+../Core/Src/InvertedControl.cpp:162:6:void InvertedControl::setTargetOmega(float)	16	static
+../Core/Src/InvertedControl.cpp:169:6:bool InvertedControl::fallDown()	24	static
+../Core/Src/InvertedControl.cpp:182:6:void InvertedControl::getDytu(double*, double*)	24	static

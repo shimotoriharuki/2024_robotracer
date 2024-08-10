@@ -38,8 +38,8 @@ Core/Src/cppMain.o: ../Core/Src/cppMain.cpp ../Core/Inc/cppMain.hpp \
  ../Core/Inc/Encoder.hpp ../Core/Inc/IMU.hpp ../Core/Inc/UI.hpp \
  ../Core/Inc/FollowingSensor.hpp ../Core/Inc/UI.hpp ../Core/Inc/ADC.hpp \
  ../Core/Inc/LineFollowing.hpp ../Core/Inc/FollowingSensor.hpp \
- ../Core/Inc/VelocityControl.hpp ../Core/Inc/Logger.hpp \
- ../Core/Inc/sdCard.hpp ../FATFS/App/fatfs.h \
+ ../Core/Inc/VelocityControl.hpp ../Core/Inc/InvertedControl.hpp \
+ ../Core/Inc/Logger.hpp ../Core/Inc/sdCard.hpp ../FATFS/App/fatfs.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h \
  ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Core/Inc/main.h ../FATFS/Target/bsp_driver_sd.h \
@@ -50,9 +50,8 @@ Core/Src/cppMain.o: ../Core/Src/cppMain.cpp ../Core/Inc/cppMain.hpp \
  ../Core/Inc/Battery.hpp ../Core/Inc/ADC.hpp \
  ../Core/Inc/IdleStateController.hpp ../Core/Inc/LineFollowing.hpp \
  ../Core/Inc/Logger.hpp ../Core/Inc/RunningStateController.hpp \
- ../Core/Inc/SideSensor.hpp ../Core/Inc/InvertedControl.hpp \
- ../Core/Inc/RunningStateController.hpp ../Core/Inc/SideSensor.hpp \
- ../Core/Inc/InvertedControl.hpp
+ ../Core/Inc/SideSensor.hpp ../Core/Inc/RunningStateController.hpp \
+ ../Core/Inc/SideSensor.hpp ../Core/Inc/InvertedControl.hpp
 ../Core/Inc/cppMain.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -103,6 +102,7 @@ Core/Src/cppMain.o: ../Core/Src/cppMain.cpp ../Core/Inc/cppMain.hpp \
 ../Core/Inc/LineFollowing.hpp:
 ../Core/Inc/FollowingSensor.hpp:
 ../Core/Inc/VelocityControl.hpp:
+../Core/Inc/InvertedControl.hpp:
 ../Core/Inc/Logger.hpp:
 ../Core/Inc/sdCard.hpp:
 ../FATFS/App/fatfs.h:
@@ -123,7 +123,6 @@ Core/Src/cppMain.o: ../Core/Src/cppMain.cpp ../Core/Inc/cppMain.hpp \
 ../Core/Inc/Logger.hpp:
 ../Core/Inc/RunningStateController.hpp:
 ../Core/Inc/SideSensor.hpp:
-../Core/Inc/InvertedControl.hpp:
 ../Core/Inc/RunningStateController.hpp:
 ../Core/Inc/SideSensor.hpp:
 ../Core/Inc/InvertedControl.hpp:

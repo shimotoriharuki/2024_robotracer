@@ -59,6 +59,8 @@ private:
 	double f_[4];
 	double k_;
 
+	double left_duty_, right_duty_;
+
 	DriveMotor *motor_;
 	Encoder *encoder_;
 	IMU *imu_;
@@ -81,6 +83,7 @@ public:
 	void setTargetOmega(float);
 
 	bool fallDown();
+	void getDytu(double *, double *);
 
 };
 

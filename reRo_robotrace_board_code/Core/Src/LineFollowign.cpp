@@ -8,11 +8,12 @@
 
 float mon_diff;
 
-LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor) : i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
+LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor, InvertedControl *inverted_control, DriveMotor *drive_motor) : i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
 		processing_flag_(false)
 {
 	velocity_control_ = velocity_control;
 	following_sensor_ = following_sensor;
+	inverted_control_ = inverted_control;
 
 }
 
@@ -63,7 +64,11 @@ void LineFollowing::pidFlip()
 		d = kd_ * (diff - pre_diff) / DELTA_T;
 
 		rotation_ratio_ = p + i + d;
-		velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
+		//velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
+		double left_duty, right_duty;
+		inverted_control_->getDytu(&left_duty, &right_duty);
+
+		drive_motor_->setDuty(left_duty, right_duty);
 
 		pre_diff = diff;
 	}
@@ -82,8 +87,11 @@ void LineFollowing::start()
 
 	processing_flag_ = true;
 
-	velocity_control_->disableAngularVelocityPIDControl();
-	velocity_control_->start();
+	//velocity_control_->disableAngularVelocityPIDControl();
+	//velocity_control_->start();
+
+	inverted_control_->resetEstimatedTheta();
+	inverted_control_-> start();
 
 }
 
@@ -96,6 +104,7 @@ void LineFollowing::stop()
 
 	velocity_control_->stop();
 
+	inverted_control_-> stop();
 
 
 }

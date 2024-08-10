@@ -36,7 +36,7 @@ Core/Src/LineFollowign.o: ../Core/Src/LineFollowign.cpp \
  ../Core/Inc/UI.hpp ../Core/Inc/main.h ../Core/Inc/Encoder.hpp \
  ../Core/Inc/globalDefine.h ../Core/Inc/ADC.hpp \
  ../Core/Inc/VelocityControl.hpp ../Core/Inc/Motor.hpp \
- ../Core/Inc/IMU.hpp
+ ../Core/Inc/IMU.hpp ../Core/Inc/InvertedControl.hpp
 ../Core/Inc/LineFollowing.hpp:
 ../Core/Inc/FollowingSensor.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -80,3 +80,4 @@ Core/Src/LineFollowign.o: ../Core/Src/LineFollowign.cpp \
 ../Core/Inc/VelocityControl.hpp:
 ../Core/Inc/Motor.hpp:
 ../Core/Inc/IMU.hpp:
+../Core/Inc/InvertedControl.hpp:
