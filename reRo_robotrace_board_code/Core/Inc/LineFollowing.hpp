@@ -26,7 +26,7 @@ private:
 	FollowingSensor *following_sensor_;
 	VelocityControl *velocity_control_;
 	InvertedControl *inverted_control_;
-	DriveMotor * drive_motor_;
+	DriveMotor *drive_motor_;
 
 	float calcError();
 

@@ -71,7 +71,7 @@ void VelocityControl::pid()
 	r_left_ratio = r_p + r_d + r_i;
 	r_right_ratio = -(r_p + r_d + r_i);
 
-	motor_->setDuty(t_left_ratio + r_left_ratio, t_right_ratio + r_right_ratio);
+	//motor_->setDuty(t_left_ratio + r_left_ratio, t_right_ratio + r_right_ratio);
 
 	t_pre_diff = t_diff;
 	r_pre_diff = r_diff;
@@ -114,7 +114,7 @@ void VelocityControl::pidTranslationOnly()
 	translation_ratio_ -= exceeded;
 	rotation_ratio_ += exceeded;
 
-	motor_->setDuty(translation_ratio_ + rotation_ratio_, translation_ratio_ - rotation_ratio_);
+	//motor_->setDuty(translation_ratio_ + rotation_ratio_, translation_ratio_ - rotation_ratio_);
 
 	t_pre_diff = t_diff;
 }
@@ -178,7 +178,7 @@ void VelocityControl::start()
 void VelocityControl::stop()
 {
 	excution_flag_ = false;
-	motor_->setDuty(0, 0);
+	//motor_->setDuty(0, 0);
 
 }
 

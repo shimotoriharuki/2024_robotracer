@@ -151,7 +151,7 @@ void InvertedControl::start()
 void InvertedControl::stop()
 {
 	processing_flag_ = false;
-	motor_->setDuty(0, 0);
+	//motor_->setDuty(0, 0);
 }
 
 void InvertedControl::resetEstimatedTheta()

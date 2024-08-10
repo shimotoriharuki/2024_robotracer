@@ -10,6 +10,8 @@
 int16_t mon_rev_l, mon_rev_r;
 float mon_counter_period;
 
+float mon_duty_l, mon_duty_r;
+
 //*************************************//
 //************DriveMotor***************//
 //*************************************//
@@ -47,6 +49,9 @@ void DriveMotor::controlFlip()
 
 	counter_period_l = duty2CounterPeriod(duty_l_);
 	counter_period_r = duty2CounterPeriod(duty_r_);
+
+	mon_duty_r = duty_r_;
+	mon_duty_l = duty_l_;
 
 	if(duty_l_ >= 0){
 		// motor2
@@ -94,6 +99,7 @@ void DriveMotor::setDuty(float l, float r)
 
 	duty_l_ = l;
 	duty_r_ = r;
+
 }
 
 //*************************************//

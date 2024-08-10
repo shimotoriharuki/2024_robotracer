@@ -1,9 +1,9 @@
-../Core/Src/LineFollowign.cpp:11:1:LineFollowing::LineFollowing(VelocityControl*, FollowingSensor*, InvertedControl*, DriveMotor*)	24	static
-../Core/Src/LineFollowign.cpp:20:7:float LineFollowing::calcError()	40	static
-../Core/Src/LineFollowign.cpp:38:6:void LineFollowing::setTargetVelocity(float)	16	static
-../Core/Src/LineFollowign.cpp:43:7:float LineFollowing::getTargetVelocity()	16	static
-../Core/Src/LineFollowign.cpp:48:6:void LineFollowing::pidFlip()	56	static
-../Core/Src/LineFollowign.cpp:77:6:void LineFollowing::setGain(float, float, float)	24	static
-../Core/Src/LineFollowign.cpp:84:6:void LineFollowing::start()	16	static
-../Core/Src/LineFollowign.cpp:98:6:void LineFollowing::stop()	16	static
-../Core/Src/LineFollowign.cpp:112:6:void LineFollowing::emergencyStop()	16	static
+../Core/Src/LineFollowign.cpp:14:1:LineFollowing::LineFollowing(VelocityControl*, FollowingSensor*, InvertedControl*, DriveMotor*)	24	static
+../Core/Src/LineFollowign.cpp:24:7:float LineFollowing::calcError()	40	static
+../Core/Src/LineFollowign.cpp:42:6:void LineFollowing::setTargetVelocity(float)	16	static
+../Core/Src/LineFollowign.cpp:47:7:float LineFollowing::getTargetVelocity()	16	static
+../Core/Src/LineFollowign.cpp:52:6:void LineFollowing::pidFlip()	64	static
+../Core/Src/LineFollowign.cpp:86:6:void LineFollowing::setGain(float, float, float)	24	static
+../Core/Src/LineFollowign.cpp:93:6:void LineFollowing::start()	16	static
+../Core/Src/LineFollowign.cpp:107:6:void LineFollowing::stop()	16	static
+../Core/Src/LineFollowign.cpp:121:6:void LineFollowing::emergencyStop()	16	static

@@ -74,16 +74,17 @@ void cppInit(void)
 	HAL_TIM_Base_Start_IT(&htim10);
 
 	//キャリブレーションなど
-	//following_sensor.calibration();
-	HAL_Delay(500);
-
 	led.set(0x01);
 	imu.calibration();
 	led.set(0x00);
 
+	led.set(0x02);
+	following_sensor.calibration();
+	HAL_Delay(500);
+	led.set(0x00);
 
 	//ゲインの設定
-	line_following.setGain(0.23, 0, 0.0045); //吸引ありゲイン /0.20, 0, 0.0045
+	line_following.setGain(0.5, 0, 0.0); //吸引ありゲイン /0.23, 0, 0.0045
 	velocity_control.setTranslationGain(1000, 12000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 

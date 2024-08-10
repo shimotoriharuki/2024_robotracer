@@ -7,6 +7,9 @@
 #include "LineFollowing.hpp"
 
 float mon_diff;
+float _mon_left_duty;
+float _mon_right_duty;
+float mon_rotation_duty;
 
 LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor, InvertedControl *inverted_control, DriveMotor *drive_motor) : i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
 		processing_flag_(false)
@@ -14,6 +17,7 @@ LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor 
 	velocity_control_ = velocity_control;
 	following_sensor_ = following_sensor;
 	inverted_control_ = inverted_control;
+	drive_motor_ = drive_motor;
 
 }
 
@@ -64,11 +68,16 @@ void LineFollowing::pidFlip()
 		d = kd_ * (diff - pre_diff) / DELTA_T;
 
 		rotation_ratio_ = p + i + d;
+		mon_rotation_duty = rotation_ratio_;
+
 		//velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
 		double left_duty, right_duty;
 		inverted_control_->getDytu(&left_duty, &right_duty);
+		_mon_right_duty = right_duty;
+		_mon_left_duty = left_duty;
 
-		drive_motor_->setDuty(left_duty, right_duty);
+		drive_motor_->setDuty(left_duty + rotation_ratio_, right_duty - rotation_ratio_);
+		//drive_motor_->setDuty(rotation_ratio_, -rotation_ratio_);
 
 		pre_diff = diff;
 	}

@@ -252,7 +252,7 @@ void RunningStateController::loop()
 
 			inverted_control_->stop();
 			line_following_->emergencyStop();
-			fan_motor_->setDuty(0);
+			//fan_motor_->setDuty(0);
 			emergerncy_flag = true;
 
 			pattern = 30;

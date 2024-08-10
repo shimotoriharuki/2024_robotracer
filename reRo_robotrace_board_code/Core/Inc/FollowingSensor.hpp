@@ -11,6 +11,7 @@
 #include "stm32f4xx_hal.h"
 #include "UI.hpp"
 #include "ADC.hpp"
+#include "UI.hpp"
 
 #define SENSOR_DATA_SIZE 12
 
