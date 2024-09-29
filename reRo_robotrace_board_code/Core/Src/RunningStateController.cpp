@@ -233,8 +233,8 @@ void RunningStateController::loop()
 
 
 		//緊急停止処理
-		if(following_sensor_->isAllSensorBlack() == true || inverted_control_->fallDown() == true){
-		//if(inverted_control_->fallDown() == true){
+		//if(following_sensor_->isAllSensorBlack() == true || inverted_control_->fallDown() == true){
+		if(inverted_control_->fallDown() == true){
 			stopLogging();
 
 			inverted_control_->stop();

@@ -79,8 +79,8 @@ void cppInit(void)
 	led.set(0x00);
 
 	led.set(0x02);
-	following_sensor.calibration();
-	HAL_Delay(500);
+	//following_sensor.calibration();
+	//HAL_Delay(500);
 	led.set(0x00);
 
 	//ゲインの設定
