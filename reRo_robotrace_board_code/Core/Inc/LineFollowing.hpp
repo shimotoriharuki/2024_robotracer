@@ -21,6 +21,7 @@ private:
 	float target_velocity_;
 	float rotation_ratio_;
 	bool processing_flag_;
+	bool inverted_mode_flag_;
 
 
 	FollowingSensor *following_sensor_;
@@ -35,7 +36,11 @@ public:
 
 	void setTargetVelocity(float);
 	float getTargetVelocity();
-	void pidFlip();
+	void pid();
+	void pidWithInvertedControl();
+	void flip();
+	void setInvertedMode();
+	void resetInvertedMode();
 
 	void setGain(float, float, float);
 	void start();

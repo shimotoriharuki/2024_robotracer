@@ -11,8 +11,9 @@ float _mon_left_duty;
 float _mon_right_duty;
 float mon_rotation_duty;
 
-LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor, InvertedControl *inverted_control, DriveMotor *drive_motor) : i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
-		processing_flag_(false)
+LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor, InvertedControl *inverted_control, DriveMotor *drive_motor) :
+		i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
+		processing_flag_(false), inverted_mode_flag_(false)
 {
 	velocity_control_ = velocity_control;
 	following_sensor_ = following_sensor;
@@ -49,7 +50,34 @@ float LineFollowing::getTargetVelocity()
 	return target_velocity_;
 }
 
-void LineFollowing::pidFlip()
+void LineFollowing::pid()
+{
+	if(processing_flag_ == true){
+		float diff = calcError();
+		static float pre_diff = 0;
+		float p, d;
+		static float i;
+
+		if(i_reset_flag_ == true){
+			i = 0;
+			pre_diff = 0;
+			i_reset_flag_ = false;
+		}
+
+		p = kp_ * diff;
+		i += ki_ * diff * DELTA_T;
+		d = kd_ * (diff - pre_diff) / DELTA_T;
+
+		rotation_ratio_ = p + i + d;
+		mon_rotation_duty = rotation_ratio_;
+
+		velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
+		//drive_motor_->setDuty(rotation_ratio_, -rotation_ratio_);
+
+		pre_diff = diff;
+	}
+}
+void LineFollowing::pidWithInvertedControl()
 {
 	if(processing_flag_ == true){
 		float diff = calcError();
@@ -83,6 +111,27 @@ void LineFollowing::pidFlip()
 	}
 }
 
+void LineFollowing::flip()
+{
+	if(inverted_mode_flag_ == false){
+		pid();
+	}
+	else{
+		pidWithInvertedControl();
+	}
+
+}
+
+void LineFollowing::setInvertedMode()
+{
+	inverted_mode_flag_ = true;
+}
+
+void LineFollowing::resetInvertedMode()
+{
+	inverted_mode_flag_ = false;
+}
+
 void LineFollowing::setGain(float kp, float ki, float kd)
 {
 	kp_ = kp;
@@ -96,12 +145,16 @@ void LineFollowing::start()
 
 	processing_flag_ = true;
 
-	//velocity_control_->disableAngularVelocityPIDControl();
-	//velocity_control_->start();
+	if(inverted_mode_flag_ == false){
+		velocity_control_->disableAngularVelocityPIDControl();
+		velocity_control_->start();
 
-	inverted_control_->resetEstimatedTheta();
-	inverted_control_->start();
-	inverted_control_->setTargetOmega(0);
+	}
+	else{
+		inverted_control_->resetEstimatedTheta();
+		inverted_control_->setTargetOmega(0);
+		inverted_control_->start();
+	}
 
 }
 

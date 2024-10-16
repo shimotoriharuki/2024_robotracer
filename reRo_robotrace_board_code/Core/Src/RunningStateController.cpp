@@ -27,7 +27,7 @@ float RunningStateController::linear_function(float a, int16_t r, int16_t r_shif
 
 RunningStateController::RunningStateController(DriveMotor *drive_motor, FanMotor *fan_motor, LineFollowing *line_following, FollowingSensor *following_sensor,
 		SideSensor *side_sensor_l, SideSensor *side_sensor_r, VelocityControl *velocity_control, Encoder *encoder, IMU *imu, WheelDial *wheel_dial, sdCard *sd_card, InvertedControl *inverted_control) :
-				break_flag_(false), velocity_table_idx_(0), start_goal_line_cnt_(0), logging_flag_(false), velocity_update_flag_(false), cross_line_ignore_flag_(false), goal_judge_flag_(false),
+				break_flag_(false), velocity_table_idx_(0), mode_(1), inverted_mode_(false), start_goal_line_cnt_(0), logging_flag_(false), velocity_update_flag_(false), cross_line_ignore_flag_(false), goal_judge_flag_(false),
 				side_line_judge_flag_(false), continuous_cnt_reset_flag_(false), continuous_curve_flag_(false), running_flag_(false), cross_line_idx_(0), side_line_idx_(0), correction_check_cnt_cross_(0),
 				correction_check_cnt_side_(0), continuous_curve_check_cnt_(0), min_velocity_(0), max_velocity_(0), acceleration_(0), deceleration_(0), straight_radius_(0)
 {
@@ -125,6 +125,16 @@ bool RunningStateController::isContinuousCurvature()
 void RunningStateController::setRunMode(uint16_t num)
 {
 	mode_ = num;
+}
+
+void RunningStateController::setInvertedMode()
+{
+	inverted_mode_ = true;
+}
+
+void RunningStateController::resetInvertedMode()
+{
+	inverted_mode_ = false;
 }
 
 bool RunningStateController::isTargetDistance(float target)
@@ -363,16 +373,23 @@ void RunningStateController::init()
 	continuous_curve_flag_ = false;
 	running_flag_ = true;
 
-	//fan_motor_->setDuty(SUCTION_DUTY);
-	//HAL_Delay(2000);
 
-	//line_following_->setTargetVelocity(min_velocity_);
-	line_following_->start();
+	if(inverted_mode_ == false){ //寝そべりモード
+		line_following_->resetInvertedMode();
+		line_following_->setTargetVelocity(min_velocity_);
+		line_following_->start();
+	}
+	else{ //倒立モード
+		line_following_->setInvertedMode();
+		line_following_->setTargetVelocity(min_velocity_);
+		line_following_->start();
 
-	//inverted_control_->resetEstimatedTheta();
-	//encoder_->clearTheta();
+		inverted_control_->resetEstimatedTheta();
+		encoder_->clearTheta();
 
-	//inverted_control_->start();
+		inverted_control_->start();
+	}
+
 }
 
 void RunningStateController::storeLog()

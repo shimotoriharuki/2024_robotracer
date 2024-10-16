@@ -16,7 +16,7 @@
 
 #define WHEEL_RADIUS 33 //[mm]
 #define ENCODER_RESOLUTION 4096
-#define REDUCTION_RATIO 0.25//Gear reduction ratio
+#define REDUCTION_RATIO 0.167//Gear reduction ratio
 #define DISTANCE_PER_CNT (2 * PI * WHEEL_RADIUS * REDUCTION_RATIO / ENCODER_RESOLUTION) //[mm/cnt]=[m/s]
 #define RADIAN_PER_CNT (2 * PI * REDUCTION_RATIO / ENCODER_RESOLUTION) //
 

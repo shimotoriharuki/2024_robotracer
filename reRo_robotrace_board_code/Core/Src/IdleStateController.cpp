@@ -33,16 +33,14 @@ void IdleStateController::parameterAdjustmentMode()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
-				fan_motor_->setDuty(SUCTION_DUTY);
 				HAL_Delay(1000);
 
 				velocity_control_->enableAngularVelocityPIDControl();
-				velocity_control_->setTargetVelocity(0.0, 0);
+				velocity_control_->setTargetVelocity(0.0, 0.0);
 				velocity_control_->start();
 
 				HAL_Delay(3000);
 
-				fan_motor_->setDuty(0);
 				velocity_control_->stop();
 
 				HAL_Delay(500);
@@ -121,7 +119,7 @@ void IdleStateController::parameterAdjustmentMode()
 		case 5: //モータテスト
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
-				drive_motor_->setDuty(300, 300);
+				drive_motor_->setDuty(300, -300);
 
 				HAL_Delay(2000);
 
@@ -235,29 +233,22 @@ void IdleStateController::loop()
 				initializeRobotAngle();
 				HAL_Delay(1000);
 
+				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(1);
-				running_state_controller_->setMinVelocity(2.5);
-				running_state_controller_->setAccDec(1.0, 1.0);
-				running_state_controller_->setStraightRadius(1000);
-
+				running_state_controller_->setMinVelocity(1.0);
 
 				running_state_controller_->loop(); //走行状態ループ．
-
 			}
 			break;
 
 		case 1:
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
-
-				running_state_controller_->setRunMode(2);
-				running_state_controller_->setMinVelocity(2.0);
-				running_state_controller_->setMaxVelocity(6.0);
-				running_state_controller_->setAccDec(2.0, 2.0);
-				running_state_controller_->setStraightRadius(1000);
+				running_state_controller_->setInvertedMode();//倒立モード
+				running_state_controller_->setRunMode(1);
+				running_state_controller_->setMinVelocity(1.0);
 
 				running_state_controller_->loop(); //走行状態ループ．
-
 			}
 			break;
 

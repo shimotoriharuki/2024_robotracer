@@ -63,6 +63,7 @@ private:
 	//uint8_t mon_is_crossline_;
 	uint16_t velocity_table_idx_;
 	uint16_t mode_;
+	bool inverted_mode_;
 
 	float ref_distance_;
 
@@ -99,6 +100,8 @@ public:
 	bool isContinuousCurvature();
 
 	void setRunMode(uint16_t);
+	void setInvertedMode();
+	void resetInvertedMode();
 	bool isTargetDistance(float);
 
 	void loop();
