@@ -21,7 +21,7 @@ private:
 	float kp_, ki_, kd_;
 	bool i_reset_flag_;
 	bool processing_flag_;
-	float ratio_;
+	float linefollowing_ratio_;
 	double pre_P_[4];
 	double pre_theta_, U_, W_;
 	double estimated_robot_theta_;
@@ -59,7 +59,7 @@ private:
 	double f_[4];
 	double k_;
 
-	double left_duty_, right_duty_;
+	double inverted_left_duty_, inverted_right_duty_;
 
 	DriveMotor *motor_;
 	Encoder *encoder_;

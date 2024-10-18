@@ -51,7 +51,6 @@ void IdleStateController::parameterAdjustmentMode()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
-				fan_motor_->setDuty(SUCTION_DUTY);
 				HAL_Delay(1000);
 
 				line_following_->resetInvertedMode();
@@ -60,7 +59,6 @@ void IdleStateController::parameterAdjustmentMode()
 
 				HAL_Delay(3000);
 
-				fan_motor_->setDuty(0);
 				line_following_->stop();
 
 				HAL_Delay(500);
@@ -68,23 +66,23 @@ void IdleStateController::parameterAdjustmentMode()
 
 			break;
 
-		case 2: //
+		case 2: // 倒立ライントレーステスト
 			if(push_switch_->getStatus() == true){
-				HAL_Delay(2000);
-				acc_data_logger_->start();
-				gyro_data_logger_->start();
+				HAL_Delay(500);
 
-				HAL_Delay(2000);
+				line_following_->setInvertedMode();
+				line_following_->setTargetVelocity(0.0);
+				line_following_->start();
 
-				acc_data_logger_->stop();
-				gyro_data_logger_->stop();
+				HAL_Delay(3000);
 
-				acc_data_logger_->saveLogs("debug", "robot_theta_from_acc");
-				gyro_data_logger_->saveLogs("debug", "robot_omega_x");
+				line_following_->stop();
+
+				HAL_Delay(500);
 			}
 			break;
 
-		case 3:
+		case 3: //倒立テスト
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
@@ -99,19 +97,19 @@ void IdleStateController::parameterAdjustmentMode()
 			HAL_Delay(100);
 			break;
 
-		case 4: //吸引ファンテスト
+		case 4: //SDカードテスト
 			if(push_switch_->getStatus() == true){
-				HAL_Delay(500);
+				HAL_Delay(2000);
+				acc_data_logger_->start();
+				gyro_data_logger_->start();
 
-				fan_motor_->setDuty(SUCTION_DUTY);
+				HAL_Delay(2000);
 
-				while(push_switch_->getStatus() == false){
-					HAL_Delay(10);
-				}
-				HAL_Delay(500);
+				acc_data_logger_->stop();
+				gyro_data_logger_->stop();
 
-
-				fan_motor_->setDuty(0);
+				acc_data_logger_->saveLogs("debug", "robot_theta_from_acc");
+				gyro_data_logger_->saveLogs("debug", "robot_omega_x");
 			}
 
 			HAL_Delay(100);

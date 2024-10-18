@@ -105,7 +105,6 @@ void LineFollowing::pidWithInvertedControl()
 		_mon_left_duty = left_duty;
 
 		drive_motor_->setDuty(left_duty + rotation_ratio_, right_duty - rotation_ratio_);
-		//drive_motor_->setDuty(rotation_ratio_, -rotation_ratio_);
 
 		pre_diff = diff;
 	}
@@ -152,7 +151,7 @@ void LineFollowing::start()
 	}
 	else{
 		inverted_control_->resetEstimatedTheta();
-		inverted_control_->setTargetOmega(0);
+		inverted_control_->setTargetOmega(target_velocity_);
 		inverted_control_->start();
 		//TODO: 倒立しながらライントレースするモード処理を追加
 	}

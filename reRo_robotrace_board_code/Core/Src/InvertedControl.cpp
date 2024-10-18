@@ -16,7 +16,7 @@
 
 float mon_angle_diff;
 double mon_estimated_robot_theta;
-double mon_left_duty, mon_right_dity;
+double mon_inverted_left_duty, mon_inverted_right_dity;
 double mon_input;
 double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
 double mon_z;
@@ -50,27 +50,27 @@ float InvertedControl::calcError()
 	return diff;
 }
 
-void InvertedControl::pid()
-{
-		float diff = calcError();
-		static float pre_diff = 0;
-		float p, d;
-		static float i;
-
-		if(i_reset_flag_ == true){
-			i = 0;
-			pre_diff = 0;
-			i_reset_flag_ = false;
-		}
-
-		p = kp_ * diff;
-		i += ki_ * diff * DELTA_T;
-		d = kd_ * (diff - pre_diff) / DELTA_T;
-
-		ratio_ = p + i + d;
-		//motor_->setDuty(ratio_, ratio_);
-		pre_diff = diff;
-	}
+//void InvertedControl::pid()
+//{
+//	float diff = calcError();
+//	static float pre_diff = 0;
+//	float p, d;
+//	static float i;
+//
+//	if(i_reset_flag_ == true){
+//		i = 0;
+//		pre_diff = 0;
+//		i_reset_flag_ = false;
+//	}
+//
+//	p = kp_ * diff;
+//	i += ki_ * diff * DELTA_T;
+//	d = kd_ * (diff - pre_diff) / DELTA_T;
+//
+//	linefollowing_ratio_ = p + i + d;
+//	//motor_->setDuty(ratio_, ratio_);
+//	pre_diff = diff;
+//}
 
 void InvertedControl::estimateRobotAngle(double dt, double omega_offset, const double pre_P[4],
 		double pre_theta, double U, double W, double omega,
@@ -85,8 +85,8 @@ void InvertedControl::estimateRobotAngle(double dt, double omega_offset, const d
 void InvertedControl::flip()
 {
 	if(processing_flag_ == true){
+		//倒立制御
 		double P[4];
-
 		estimateRobotAngle(1e-3, double(imu_->getOmegaXOffset()), pre_P_, pre_theta_, U_, W_, double(imu_->getOmegaX()), double(imu_->getRobotAngleFromAcc()), &estimated_robot_theta_, P);
 		mon_estimated_robot_theta = estimated_robot_theta_;
 
@@ -105,7 +105,11 @@ void InvertedControl::flip()
 		mon_theta_w = encoder_->getTheta();
 		mon_dtheta_w = encoder_->getDTheta();
 		mon_target_theta = target_theta_;
+
+		//ライントレース制御
 		//pid();
+
+		//motor_->setDuty(input_ + ratio_, input_ - ratio_);
 	}
 }
 
@@ -126,12 +130,12 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	//}
 	//pre_z_ = z_;
 
-	left_duty_ = (input_/current_voltage_) * 1000;
-	right_duty_ = (input_/current_voltage_) * 1000;
+	inverted_left_duty_ = (input_/current_voltage_) * 1000;
+	inverted_right_duty_ = (input_/current_voltage_) * 1000;
 
 	mon_input = input_;
-	mon_left_duty = left_duty_;
-	mon_right_dity = right_duty_;
+	mon_inverted_left_duty = inverted_left_duty_;
+	mon_inverted_right_dity = inverted_right_duty_;
 
 	//motor_->setDuty(left_duty_, right_duty_);
 }
@@ -187,7 +191,7 @@ bool InvertedControl::fallDown()
 
 void InvertedControl::getDytu(double *left, double *right)
 {
-	*left = left_duty_;
-	*right = right_duty_;
+	*left = inverted_left_duty_;
+	*right = inverted_right_duty_;
 
 }
