@@ -154,6 +154,7 @@ void LineFollowing::start()
 		inverted_control_->resetEstimatedTheta();
 		inverted_control_->setTargetOmega(0);
 		inverted_control_->start();
+		//TODO: 倒立しながらライントレースするモード処理を追加
 	}
 
 }

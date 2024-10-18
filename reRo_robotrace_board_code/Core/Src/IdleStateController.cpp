@@ -54,6 +54,7 @@ void IdleStateController::parameterAdjustmentMode()
 				fan_motor_->setDuty(SUCTION_DUTY);
 				HAL_Delay(1000);
 
+				line_following_->resetInvertedMode();
 				line_following_->setTargetVelocity(0.0);
 				line_following_->start();
 
