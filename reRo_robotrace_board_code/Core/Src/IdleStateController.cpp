@@ -66,7 +66,30 @@ void IdleStateController::parameterAdjustmentMode()
 
 			break;
 
-		case 2: // 倒立ライントレーステスト
+		case 2: // 倒立テスト
+			if(push_switch_->getStatus() == true){
+				HAL_Delay(500);
+
+				initializeRobotAngle();
+
+				imu_->resetRobotAngleFromGyro();
+				inverted_control_->resetEstimatedTheta();
+				encoder_->clearTheta();
+				inverted_control_->setTargetOmega(0);
+				inverted_control_->setDebugMode();
+
+				inverted_control_->start();
+
+
+				HAL_Delay(3000);
+
+				inverted_control_->stop();
+				inverted_control_->resetDebugMode();
+
+			}
+			break;
+
+		case 3: //倒立ライントレーステスト
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
@@ -79,11 +102,6 @@ void IdleStateController::parameterAdjustmentMode()
 				line_following_->stop();
 
 				HAL_Delay(500);
-			}
-			break;
-
-		case 3: //倒立テスト
-			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
 				imu_->resetRobotAngleFromGyro();
@@ -97,7 +115,7 @@ void IdleStateController::parameterAdjustmentMode()
 			HAL_Delay(100);
 			break;
 
-		case 4: //SDカードテスト
+		case 4: //傾斜計テスト
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(2000);
 				acc_data_logger_->start();
@@ -126,7 +144,7 @@ void IdleStateController::parameterAdjustmentMode()
 			}
 			break;
 
-		case 6:
+		case 6: //SD書き込みテスト
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 				logger_->start();
@@ -142,7 +160,7 @@ void IdleStateController::parameterAdjustmentMode()
 			}
 			break;
 
-		case 7:
+		case 7: //パラメータ調整モードを抜ける
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 				break_flag = true;

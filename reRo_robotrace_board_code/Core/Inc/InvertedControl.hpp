@@ -61,6 +61,8 @@ private:
 
 	double inverted_left_duty_, inverted_right_duty_;
 
+	bool debug_flag_;
+
 	DriveMotor *motor_;
 	Encoder *encoder_;
 	IMU *imu_;
@@ -84,6 +86,9 @@ public:
 
 	bool fallDown();
 	void getDytu(double *, double *);
+
+	void setDebugMode();
+	void resetDebugMode();
 
 };
 
