@@ -147,13 +147,12 @@ void LineFollowing::start()
 	if(inverted_mode_flag_ == false){
 		velocity_control_->disableAngularVelocityPIDControl();
 		velocity_control_->start();
-
 	}
 	else{
 		inverted_control_->resetEstimatedTheta();
 		inverted_control_->setTargetOmega(target_velocity_);
 		inverted_control_->start();
-		//TODO: 倒立しながらライントレースするモード処理を追加
+		//TODO: 倒立しながらライントレースするモード処理を確認
 	}
 
 }

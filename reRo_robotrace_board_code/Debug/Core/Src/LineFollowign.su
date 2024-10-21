@@ -9,5 +9,5 @@
 ../Core/Src/LineFollowign.cpp:129:6:void LineFollowing::resetInvertedMode()	16	static
 ../Core/Src/LineFollowign.cpp:134:6:void LineFollowing::setGain(float, float, float)	24	static
 ../Core/Src/LineFollowign.cpp:141:6:void LineFollowing::start()	24	static
-../Core/Src/LineFollowign.cpp:161:6:void LineFollowing::stop()	16	static
-../Core/Src/LineFollowign.cpp:175:6:void LineFollowing::emergencyStop()	16	static
+../Core/Src/LineFollowign.cpp:160:6:void LineFollowing::stop()	16	static
+../Core/Src/LineFollowign.cpp:174:6:void LineFollowing::emergencyStop()	16	static

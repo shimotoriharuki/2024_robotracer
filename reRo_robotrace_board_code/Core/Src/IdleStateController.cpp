@@ -229,8 +229,6 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
-				initializeRobotAngle();
-				HAL_Delay(1000);
 
 				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(1);
@@ -243,6 +241,10 @@ void IdleStateController::loop()
 		case 1:
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
+
+				initializeRobotAngle();
+				HAL_Delay(1000);
+
 				running_state_controller_->setInvertedMode();//倒立モード
 				running_state_controller_->setRunMode(1);
 				running_state_controller_->setMinVelocity(1.0);

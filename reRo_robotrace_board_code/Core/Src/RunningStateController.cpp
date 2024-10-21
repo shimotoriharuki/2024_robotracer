@@ -158,8 +158,9 @@ void RunningStateController::loop()
 	while(break_flag_ == false){
 		switch(pattern){
 		case 0:
-
 			if(side_sensor_r_->getState() == true){ //最初のスタートマーカを読んだ
+				led_.set(0x1);
+
 				start_goal_line_cnt_++;
 
 				startLogging(); //ログ取り開始
@@ -175,6 +176,7 @@ void RunningStateController::loop()
 
 		case 5:
 			if(side_sensor_r_->getState() == false){ //最初のスタートマーカを過ぎた
+				led_.set(0x2);
 				pattern = 10;
 				encoder_->clearGoalJudgeDistance();
 			}
@@ -198,6 +200,7 @@ void RunningStateController::loop()
 			}
 
 			if(start_goal_line_cnt_ >= 2){ //ゴールした
+				led_.set(0x4);
 				stopLogging();
 				stopVelocityUpdate();
 				encoder_->clearGoalAreaDistance();
@@ -243,13 +246,12 @@ void RunningStateController::loop()
 
 
 		//緊急停止処理
-		//if(following_sensor_->isAllSensorBlack() == true || inverted_control_->fallDown() == true){
-		if(inverted_control_->fallDown() == true){
+		if(following_sensor_->isAllSensorBlack() == true || inverted_control_->fallDown() == true){
+		//if(inverted_control_->fallDown() == true){
 			stopLogging();
 
 			inverted_control_->stop();
 			line_following_->emergencyStop();
-			//fan_motor_->setDuty(0);
 			emergerncy_flag = true;
 
 			pattern = 30;
