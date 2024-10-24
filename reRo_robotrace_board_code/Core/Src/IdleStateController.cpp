@@ -81,7 +81,7 @@ void IdleStateController::parameterAdjustmentMode()
 				inverted_control_->start();
 
 
-				HAL_Delay(3000);
+				HAL_Delay(4000);
 
 				inverted_control_->stop();
 				inverted_control_->resetDebugMode();
@@ -136,7 +136,7 @@ void IdleStateController::parameterAdjustmentMode()
 		case 5: //モータテスト
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
-				drive_motor_->setDuty(300, -300);
+				drive_motor_->setDuty(300, 300);
 
 				HAL_Delay(2000);
 
