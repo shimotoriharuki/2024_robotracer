@@ -226,7 +226,8 @@ void RunningStateController::loop()
 
 			saveLog();
 
-			while(push_switch_->getStatus() == false){
+			//while(push_switch_->getStatus() == false){
+			for(uint16_t i = 0; i < 100; i++){
 				if(emergerncy_flag == true){
 					led_.set(0x7);
 					HAL_Delay(100);
@@ -236,9 +237,10 @@ void RunningStateController::loop()
 				else{
 					led_.set(0x07);
 				}
+				HAL_Delay(10);
 			}
 
-			HAL_Delay(1000);
+			//HAL_Delay(1000);
 
 			break_flag_ = true;
 
