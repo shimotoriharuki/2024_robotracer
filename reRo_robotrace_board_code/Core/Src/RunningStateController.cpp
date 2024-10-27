@@ -228,16 +228,18 @@ void RunningStateController::loop()
 
 			if(emergerncy_flag == true){
 				while(push_switch_->getStatus() == false){
-					led_.set(0x7);
+					led_.set(0x07);
 					HAL_Delay(100);
 					led_.set(0x00);
 					HAL_Delay(100);
 				}
+				HAL_Delay(1000);
 			}
 			else{
 				led_.set(0x07);
 				HAL_Delay(1000);
 			}
+
 
 			break_flag_ = true;
 
