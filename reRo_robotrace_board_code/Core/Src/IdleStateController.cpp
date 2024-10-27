@@ -81,7 +81,7 @@ void IdleStateController::parameterAdjustmentMode()
 				inverted_control_->start();
 
 
-				HAL_Delay(4000);
+				HAL_Delay(10000);
 
 				inverted_control_->stop();
 				inverted_control_->resetDebugMode();
@@ -101,7 +101,6 @@ void IdleStateController::parameterAdjustmentMode()
 
 				line_following_->stop();
 
-				HAL_Delay(500);
 				HAL_Delay(500);
 
 				imu_->resetRobotAngleFromGyro();
@@ -247,7 +246,6 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
-
 				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(1);
 				running_state_controller_->setMinVelocity(0.3);
@@ -260,12 +258,12 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
-				initializeRobotAngle();
-				HAL_Delay(1000);
-
-				running_state_controller_->setInvertedMode();//倒立モード
-				running_state_controller_->setRunMode(1);
-				running_state_controller_->setMinVelocity(1.0);
+				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setRunMode(2);
+				running_state_controller_->setMinVelocity(0.3);
+				running_state_controller_->setMaxVelocity(0.6);
+				running_state_controller_->setAccDec(1.0, 1.0);
+				running_state_controller_->setStraightRadius(1000);
 
 				running_state_controller_->loop(); //走行状態ループ．
 			}
@@ -275,10 +273,11 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(3);
-				running_state_controller_->setMinVelocity(2.5);
-				running_state_controller_->setMaxVelocity(7.0);
-				running_state_controller_->setAccDec(8.0, 6.0);
+				running_state_controller_->setMinVelocity(0.3);
+				running_state_controller_->setMaxVelocity(0.7);
+				running_state_controller_->setAccDec(1.0, 1.0);
 				running_state_controller_->setStraightRadius(1000);
 
 				running_state_controller_->loop(); //走行状態ループ．
@@ -289,10 +288,11 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(4);
-				running_state_controller_->setMinVelocity(2.5);
-				running_state_controller_->setMaxVelocity(7.0);
-				running_state_controller_->setAccDec(10.0, 6.0);
+				running_state_controller_->setMinVelocity(0.3);
+				running_state_controller_->setMaxVelocity(0.8);
+				running_state_controller_->setAccDec(1.0, 1.0);
 				running_state_controller_->setStraightRadius(1000);
 
 				running_state_controller_->loop(); //走行状態ループ．
@@ -303,18 +303,30 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(5);
-				running_state_controller_->setMinVelocity(2.8);
-				running_state_controller_->setMaxVelocity(7.0);
-				running_state_controller_->setAccDec(20.0, 15.0); //8.0, 8.0
+				running_state_controller_->setMinVelocity(0.3);
+				running_state_controller_->setMaxVelocity(1.0);
+				running_state_controller_->setAccDec(1.0, 1.0); //8.0, 8.0
 				running_state_controller_->setStraightRadius(1000);
 
 				running_state_controller_->loop(); //走行状態ループ．
 			}
 			break;
 
-		case 5:
-			HAL_Delay(100);
+		case 5: //倒立振子ライントレースモード
+			if(push_switch_->getStatus() == true){
+				HAL_Delay(500);
+
+				initializeRobotAngle();
+				HAL_Delay(1000);
+
+				running_state_controller_->setInvertedMode();//倒立モード
+				running_state_controller_->setRunMode(1);
+				running_state_controller_->setMinVelocity(1.0);
+
+				running_state_controller_->loop(); //走行状態ループ．
+			}
 			break;
 
 		case 6: //最新の記録したコースをロード
