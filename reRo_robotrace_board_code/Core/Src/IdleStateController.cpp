@@ -248,7 +248,7 @@ void IdleStateController::loop()
 
 				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(1);
-				running_state_controller_->setMinVelocity(0.3);
+				running_state_controller_->setMinVelocity(0.5);
 
 				running_state_controller_->loop(); //走行状態ループ．
 			}
@@ -261,7 +261,7 @@ void IdleStateController::loop()
 				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(2);
 				running_state_controller_->setMinVelocity(0.3);
-				running_state_controller_->setMaxVelocity(0.6);
+				running_state_controller_->setMaxVelocity(0.5);
 				running_state_controller_->setAccDec(1.0, 1.0);
 				running_state_controller_->setStraightRadius(1000);
 
@@ -314,16 +314,13 @@ void IdleStateController::loop()
 			}
 			break;
 
-		case 5: //倒立振子ライントレースモード
+		case 5: //超安全モード
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
-				initializeRobotAngle();
-				HAL_Delay(1000);
-
-				running_state_controller_->setInvertedMode();//倒立モード
+				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(1);
-				running_state_controller_->setMinVelocity(1.0);
+				running_state_controller_->setMinVelocity(0.3);
 
 				running_state_controller_->loop(); //走行状態ループ．
 			}
