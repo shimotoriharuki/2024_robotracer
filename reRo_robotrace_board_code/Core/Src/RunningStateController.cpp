@@ -159,7 +159,7 @@ void RunningStateController::loop()
 		switch(pattern){
 		case 0:
 			if(side_sensor_r_->getState() == true){ //最初のスタートマーカを読んだ
-				led_.set(0x1);
+				//led_.set(0x1);
 
 				start_goal_line_cnt_++;
 
@@ -176,9 +176,10 @@ void RunningStateController::loop()
 
 		case 5:
 			if(side_sensor_r_->getState() == false){ //最初のスタートマーカを過ぎた
-				led_.set(0x2);
+				//led_.set(0x2);
 				pattern = 10;
 				encoder_->clearGoalJudgeDistance();
+				encoder_->clearSideLineJudgeDistance(); //追加してみた
 			}
 			break;
 
@@ -200,7 +201,7 @@ void RunningStateController::loop()
 			}
 
 			if(start_goal_line_cnt_ >= 2){ //ゴールした
-				led_.set(0x4);
+				//led_.set(0x4);
 				stopLogging();
 				stopVelocityUpdate();
 				encoder_->clearGoalAreaDistance();
@@ -257,6 +258,7 @@ void RunningStateController::loop()
 			pattern = 30;
 		}
 
+
 	}
 }
 void RunningStateController::flip()
@@ -292,7 +294,7 @@ void RunningStateController::flip()
 				acc_dec_run_logger_cross_->storeLogs(encoder_->getTotalDistance());
 			}
 		}
-		else if(cross_line_ignore_flag_ == true && encoder_->getCrossLineJudgeDistance() >= 80){ //クロスライン読んでから一定距離立ったらフラグを下げる
+		else if(cross_line_ignore_flag_ == true && encoder_->getCrossLineJudgeDistance() >= 100){ //クロスライン読んでから一定距離立ったらフラグを下げる
 			cross_line_ignore_flag_ = false;
 			side_line_ignore_flag_ = false;
 		}
@@ -339,10 +341,15 @@ void RunningStateController::flip()
 		static uint8_t led_state;
 		if(correction_check_cnt_cross_ <= 150) led_.set(led_state | 0x01);
 		else led_.set(led_state & ~0x01);
+
 		if(correction_check_cnt_side_ <= 150) led_.set(led_state | 0x02);
 		else led_.set(led_state & ~0x02);
+
 		if(continuous_curve_flag_ == true) led_.set(led_state | 0x04);
 		else led_.set(led_state & ~0x04);
+
+		if(goal_judge_flag_ == true) led_.set(led_state | 0x08);
+		else led_.set(led_state & ~0x08);
 	}
 
 

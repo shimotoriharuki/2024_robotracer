@@ -21,7 +21,7 @@
 #include "InvertedControl.hpp"
 
 #define COURSE_STORAGE_SIZE 3000
-#define GOAL_LINE_JUDGE_DISTANCE 70 //mm
+#define GOAL_LINE_JUDGE_DISTANCE 100 //mm //70
 #define SIDE_LINE_JUDGE_DISTANCE 70 //mm
 
 class RunningStateController{

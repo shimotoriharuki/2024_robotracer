@@ -54,7 +54,7 @@ void IdleStateController::parameterAdjustmentMode()
 				HAL_Delay(1000);
 
 				line_following_->resetInvertedMode();
-				line_following_->setTargetVelocity(0.0);
+				line_following_->setTargetVelocity(0.5);
 				line_following_->start();
 
 				HAL_Delay(3000);
@@ -250,7 +250,7 @@ void IdleStateController::loop()
 
 				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(1);
-				running_state_controller_->setMinVelocity(1.0);
+				running_state_controller_->setMinVelocity(0.3);
 
 				running_state_controller_->loop(); //走行状態ループ．
 			}
