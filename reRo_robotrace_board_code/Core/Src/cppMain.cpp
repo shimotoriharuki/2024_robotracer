@@ -67,7 +67,6 @@ void cppInit(void)
 		//logger.saveLogs("TEST", "test");
 	}
 
-
 	//タイマー割り込み開始
 	HAL_TIM_Base_Start_IT(&htim6);
 	HAL_TIM_Base_Start_IT(&htim7);
@@ -85,7 +84,7 @@ void cppInit(void)
 
 	//ゲインの設定
 	//line_following.setGain(0.4, 0, 0.006); //吸引ありゲイン /0.23, 0, 0.0045
-	line_following.setGain(0.5, 0, 0.010); //吸引ありゲイン /0.23, 0, 0.0045
+	line_following.setGain(0.5, 0, 0.012); //吸引ありゲイン /0.23, 0, 0.0045
 	velocity_control.setTranslationGain(400, 4000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 

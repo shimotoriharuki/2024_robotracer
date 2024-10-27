@@ -299,10 +299,48 @@ void IdleStateController::loop()
 			}
 			break;
 
-		case 4:
+		case 4: //オートスタートモード
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				//1走目
+				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setRunMode(1);
+				running_state_controller_->setMinVelocity(0.5);
+
+				running_state_controller_->loop(); //走行状態ループ．
+
+				//2走目
+				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setRunMode(2);
+				running_state_controller_->setMinVelocity(0.5);
+				running_state_controller_->setMaxVelocity(0.7);
+				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
+				running_state_controller_->setStraightRadius(1000);
+
+				running_state_controller_->loop(); //走行状態ループ．
+
+				//3走目
+				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setRunMode(3);
+				running_state_controller_->setMinVelocity(0.5);
+				running_state_controller_->setMaxVelocity(0.8);
+				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
+				running_state_controller_->setStraightRadius(1000);
+
+				running_state_controller_->loop(); //走行状態ループ．
+
+				//4走目
+				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setRunMode(4);
+				running_state_controller_->setMinVelocity(0.5);
+				running_state_controller_->setMaxVelocity(0.9);
+				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
+				running_state_controller_->setStraightRadius(1000);
+
+				running_state_controller_->loop(); //走行状態ループ．
+
+				//5走目
 				running_state_controller_->resetInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(5);
 				running_state_controller_->setMinVelocity(0.5);
