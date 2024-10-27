@@ -80,7 +80,7 @@ void IdleStateController::parameterAdjustmentMode()
 
 				inverted_control_->start();
 
-				while(!inverted_control_->fallDown){}
+				while(inverted_control_->fallDown() == false){}
 				//HAL_Delay(10000);
 
 				inverted_control_->stop();

@@ -155,6 +155,9 @@ void InvertedControl::start()
 	z_ = 0;
 	target_theta_ = 0;
 	target_omega_ = 0;
+	pre_theta_ = 0;
+	input_ = 0;
+	estimated_robot_theta_ = 0;
 
 	encoder_->clearTheta();
 }
