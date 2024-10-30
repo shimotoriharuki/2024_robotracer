@@ -12,14 +12,14 @@ J_m= 1.51e-8; % モータの回転子のイナーシャ[kg m^2]
 g= 9.8; % 重力加速度 [m/s^2]
 n= 6; % 減速比
 kt= 3.52e-3; %トルク定数 [Nm/A]
-kn= 2710; % 回転数定数[rpm/V]
+kn= 410; % 回転数定数[rpm/V] 2710
 ke= 1 / (kn* 2*pi / 60); %起電力定数 [V/(rad/s)]
 R= 2.9; %内部抵抗 [Ω]
 t_md = 0; % 摩擦トルク[Nm]
 V_offset = R * t_md / kt;
 
 %実機のパラメータ
-m_w_actual = 3e-3; % ホイールの重さ [kg]
+m_w_actual = 33e-3; % ホイールの重さ [kg]
 m_p_actual = 201e-3; % 振子の重さ [kg]
 r_w_actual = 33e-3; % ホイールの半径 [m]
 r_p_actual = 70e-3; % 振子の重心までの距離 [m]
@@ -29,7 +29,7 @@ J_m_actual = 1.51e-8; % モータの回転子のイナーシャ[kg m^2]
 g_actual = 9.8; % 重力加速度 [m/s^2]
 n_actual = 6; % 減速比
 kt_actual = 3.52e-3; %トルク定数 [Nm/A]
-kn_actual = 410; % 回転数定数[rpm/V]
+kn_actual = 220; % 回転数定数[rpm/V]
 ke_actual = 1 / (kn* 2*pi / 60); %起電力定数 [V/(rad/s)]
 R_diff = 2.9; %内部抵抗 [Ω]
 t_md_actual  = 0.0; % 摩擦トルク[Nm]

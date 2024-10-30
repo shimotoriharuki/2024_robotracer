@@ -26,7 +26,7 @@ dtheta_w = dtheta_w(1 : data_size);
 t = linspace(0, data_size, data_size);
 t = t .* 10; %msに変換
 
-figure(1);
+figure(5);
 tiledlayout(2, 2);
 
 nexttile
