@@ -132,7 +132,6 @@ void cppFlip1ms(void)
 	battery.getVoltage();
 	wheel_dial.flip();
 	running_state_controller.timerCountUp();
-	idle_state_controller.debug_flip();
 
 	/*
 	static uint16_t cnt;
@@ -162,6 +161,7 @@ void cppFlip100ns(void)
 void cppFlip10ms(void)
 {
 	running_state_controller.flip10ms();
+	idle_state_controller.debug_flip();
 	//inverted_control.flip();
 }
 

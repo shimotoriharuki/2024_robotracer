@@ -47,11 +47,11 @@ Core/Src/cppMain.o: ../Core/Src/cppMain.cpp ../Core/Inc/cppMain.hpp \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
- ../Core/Inc/Battery.hpp ../Core/Inc/ADC.hpp \
+ ../Core/Inc/Logger.hpp ../Core/Inc/Battery.hpp ../Core/Inc/ADC.hpp \
  ../Core/Inc/IdleStateController.hpp ../Core/Inc/LineFollowing.hpp \
- ../Core/Inc/Logger.hpp ../Core/Inc/RunningStateController.hpp \
- ../Core/Inc/SideSensor.hpp ../Core/Inc/RunningStateController.hpp \
- ../Core/Inc/SideSensor.hpp ../Core/Inc/InvertedControl.hpp
+ ../Core/Inc/RunningStateController.hpp ../Core/Inc/SideSensor.hpp \
+ ../Core/Inc/RunningStateController.hpp ../Core/Inc/SideSensor.hpp \
+ ../Core/Inc/InvertedControl.hpp
 ../Core/Inc/cppMain.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -116,11 +116,11 @@ Core/Src/cppMain.o: ../Core/Src/cppMain.cpp ../Core/Inc/cppMain.hpp \
 ../Middlewares/Third_Party/FatFs/src/diskio.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/sd_diskio.h:
+../Core/Inc/Logger.hpp:
 ../Core/Inc/Battery.hpp:
 ../Core/Inc/ADC.hpp:
 ../Core/Inc/IdleStateController.hpp:
 ../Core/Inc/LineFollowing.hpp:
-../Core/Inc/Logger.hpp:
 ../Core/Inc/RunningStateController.hpp:
 ../Core/Inc/SideSensor.hpp:
 ../Core/Inc/RunningStateController.hpp:

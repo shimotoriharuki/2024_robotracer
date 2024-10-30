@@ -12,3 +12,4 @@
 ../Core/Src/InvertedControl.cpp:196:6:void InvertedControl::getDytu(double*, double*)	24	static
 ../Core/Src/InvertedControl.cpp:203:6:void InvertedControl::setDebugMode()	16	static
 ../Core/Src/InvertedControl.cpp:208:6:void InvertedControl::resetDebugMode()	16	static
+../Core/Src/InvertedControl.cpp:213:6:void InvertedControl::getStateVariables(double*, double*, double*, double*)	24	static

@@ -34,7 +34,15 @@ Core/Src/InvertedControl.o: ../Core/Src/InvertedControl.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Core/Inc/main.h ../Core/Inc/globalDefine.h ../Core/Inc/Encoder.hpp \
- ../Core/Inc/IMU.hpp ../Core/Inc/kalmanFilter.h ../Core/Inc/rtwtypes.h \
+ ../Core/Inc/IMU.hpp ../Core/Inc/Logger.hpp ../Core/Inc/sdCard.hpp \
+ ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
+ ../Core/Inc/main.h ../FATFS/Target/bsp_driver_sd.h \
+ ../FATFS/Target/fatfs_platform.h \
+ ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
+ ../Core/Inc/kalmanFilter.h ../Core/Inc/rtwtypes.h \
  ../Core/Inc/getEquationOfStateParameters.h \
  ../Core/Inc/getServoEquationOfStateParameters.h \
  ../Core/Inc/stateFeedback.h ../Core/Inc/servoStateFeedback.h
@@ -77,6 +85,19 @@ Core/Src/InvertedControl.o: ../Core/Src/InvertedControl.cpp \
 ../Core/Inc/globalDefine.h:
 ../Core/Inc/Encoder.hpp:
 ../Core/Inc/IMU.hpp:
+../Core/Inc/Logger.hpp:
+../Core/Inc/sdCard.hpp:
+../FATFS/App/fatfs.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../FATFS/Target/ffconf.h:
+../Core/Inc/main.h:
+../FATFS/Target/bsp_driver_sd.h:
+../FATFS/Target/fatfs_platform.h:
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../FATFS/Target/sd_diskio.h:
 ../Core/Inc/kalmanFilter.h:
 ../Core/Inc/rtwtypes.h:
 ../Core/Inc/getEquationOfStateParameters.h:

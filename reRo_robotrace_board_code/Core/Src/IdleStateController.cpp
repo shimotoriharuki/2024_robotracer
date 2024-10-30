@@ -78,13 +78,28 @@ void IdleStateController::parameterAdjustmentMode()
 				inverted_control_->setTargetOmega(0);
 				inverted_control_->setDebugMode();
 
+				x1_logger_->start();
+				x2_logger_->start();
+				x3_logger_->start();
+				x4_logger_->start();
+
 				inverted_control_->start();
 
-				while(inverted_control_->fallDown() == false){}
-				//HAL_Delay(10000);
+				//while(inverted_control_->fallDown() == false){}
+				HAL_Delay(10000);
 
 				inverted_control_->stop();
 				inverted_control_->resetDebugMode();
+
+				x1_logger_->stop();
+				x2_logger_->stop();
+				x3_logger_->stop();
+				x4_logger_->stop();
+
+				x1_logger_->saveLogs("debug", "theta_p");
+				x2_logger_->saveLogs("debug", "dtheta_p");
+				x3_logger_->saveLogs("debug", "theta_w");
+				x4_logger_->saveLogs("debug", "dtheta_w");
 
 			}
 			break;
@@ -219,8 +234,13 @@ IdleStateController::IdleStateController(DriveMotor *drive_motor, FanMotor *fan_
 	logger_ = new Logger(sd_card, 10);
 	push_switch_ = new Switch(GPIOA, GPIO_PIN_12);
 
-	acc_data_logger_ = new Logger(sd_card, 2000);
-	gyro_data_logger_ = new Logger(sd_card, 2000);
+	acc_data_logger_ = new Logger(sd_card, 1); //2000
+	gyro_data_logger_ = new Logger(sd_card, 1);
+
+	x1_logger_ = new Logger(sd_card, 1000);
+	x2_logger_ = new Logger(sd_card, 1000);
+	x3_logger_ = new Logger(sd_card, 1000);
+	x4_logger_ = new Logger(sd_card, 1000);
 
 }
 
@@ -388,8 +408,16 @@ void IdleStateController::loop()
 
 void IdleStateController::debug_flip()
 {
-	acc_data_logger_->storeLogs(imu_->getRobotAngleFromAcc());
-	gyro_data_logger_->storeLogs(imu_->getOmegaX());
+	//acc_data_logger_->storeLogs(imu_->getRobotAngleFromAcc());
+	//gyro_data_logger_->storeLogs(imu_->getOmegaX());
+
+	double theta_p, dtheta_p, theta_w, dtheta_w;
+	inverted_control_->getStateVariables(&theta_p, &dtheta_p, &theta_w, &dtheta_w);
+
+	x1_logger_->storeLogs(theta_p);
+	x2_logger_->storeLogs(dtheta_p);
+	x3_logger_->storeLogs(theta_w);
+	x4_logger_->storeLogs(dtheta_w);
 
 }
 

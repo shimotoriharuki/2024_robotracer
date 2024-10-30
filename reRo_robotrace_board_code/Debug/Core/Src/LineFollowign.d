@@ -36,7 +36,15 @@ Core/Src/LineFollowign.o: ../Core/Src/LineFollowign.cpp \
  ../Core/Inc/UI.hpp ../Core/Inc/main.h ../Core/Inc/Encoder.hpp \
  ../Core/Inc/globalDefine.h ../Core/Inc/ADC.hpp \
  ../Core/Inc/VelocityControl.hpp ../Core/Inc/Motor.hpp \
- ../Core/Inc/IMU.hpp ../Core/Inc/InvertedControl.hpp
+ ../Core/Inc/IMU.hpp ../Core/Inc/InvertedControl.hpp \
+ ../Core/Inc/Logger.hpp ../Core/Inc/sdCard.hpp ../FATFS/App/fatfs.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
+ ../Core/Inc/main.h ../FATFS/Target/bsp_driver_sd.h \
+ ../FATFS/Target/fatfs_platform.h \
+ ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h
 ../Core/Inc/LineFollowing.hpp:
 ../Core/Inc/FollowingSensor.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -81,3 +89,16 @@ Core/Src/LineFollowign.o: ../Core/Src/LineFollowign.cpp \
 ../Core/Inc/Motor.hpp:
 ../Core/Inc/IMU.hpp:
 ../Core/Inc/InvertedControl.hpp:
+../Core/Inc/Logger.hpp:
+../Core/Inc/sdCard.hpp:
+../FATFS/App/fatfs.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../FATFS/Target/ffconf.h:
+../Core/Inc/main.h:
+../FATFS/Target/bsp_driver_sd.h:
+../FATFS/Target/fatfs_platform.h:
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../FATFS/Target/sd_diskio.h:

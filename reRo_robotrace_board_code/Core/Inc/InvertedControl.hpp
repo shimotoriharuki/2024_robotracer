@@ -13,6 +13,7 @@
 #include "IMU.hpp"
 #include "globalDefine.h"
 #include <cmath>
+#include "Logger.hpp"
 
 #define FALL_DOWN_THETA 0.5
 
@@ -89,6 +90,8 @@ public:
 
 	void setDebugMode();
 	void resetDebugMode();
+
+	void getStateVariables(double *, double *, double *, double *);
 
 };
 

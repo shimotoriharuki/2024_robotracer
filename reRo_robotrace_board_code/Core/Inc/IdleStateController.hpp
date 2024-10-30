@@ -45,6 +45,11 @@ private:
 	Logger *acc_data_logger_;
 	Logger *gyro_data_logger_;
 
+	Logger *x1_logger_;
+	Logger *x2_logger_;
+	Logger *x3_logger_;
+	Logger *x4_logger_;
+
 	void parameterAdjustmentMode();
 	void initializeRobotAngle();
 

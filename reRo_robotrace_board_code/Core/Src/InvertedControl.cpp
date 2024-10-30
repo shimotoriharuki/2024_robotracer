@@ -209,3 +209,11 @@ void InvertedControl::resetDebugMode()
 {
 	debug_flag_ = false;
 }
+
+void InvertedControl::getStateVariables(double *theta_p, double *dtheta_p, double *theta_w, double *dtheta_w)
+{
+	*theta_p = estimated_robot_theta_;
+	*dtheta_p = imu_->getOmegaX();
+	*theta_w = encoder_->getTheta();
+	*dtheta_w = encoder_->getDTheta();
+}
