@@ -75,7 +75,7 @@ void IdleStateController::parameterAdjustmentMode()
 				imu_->resetRobotAngleFromGyro();
 				inverted_control_->resetEstimatedTheta();
 				encoder_->clearTheta();
-				inverted_control_->setTargetOmega(0);
+				inverted_control_->setTargetOmega(1);
 				inverted_control_->setDebugMode();
 
 				x1_logger_->start();
@@ -85,8 +85,8 @@ void IdleStateController::parameterAdjustmentMode()
 
 				inverted_control_->start();
 
-				//while(inverted_control_->fallDown() == false){}
-				HAL_Delay(10000);
+				while(inverted_control_->fallDown() == false){}
+				//HAL_Delay(10000);
 
 				inverted_control_->stop();
 				inverted_control_->resetDebugMode();

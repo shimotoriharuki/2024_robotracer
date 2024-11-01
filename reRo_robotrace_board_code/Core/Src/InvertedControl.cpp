@@ -20,17 +20,17 @@ double mon_inverted_left_duty, mon_inverted_right_dity;
 double mon_input;
 double mon_theta_p, mon_dtheta_p, mon_theta_w, mon_dtheta_w;
 double mon_z;
-double mon_target_theta;
+double mon_target_theta, mon_target_omega;
 bool mon_fall_down;
 double mon_estimate_theta;
-//f_{-30.8843942783021,-3.27677844337711,-0.201098294451269,-0.307268950808485}, k_(-0.1291)
 
+//f_{-22.2690, -2.5254, -0.1171, -0.3624}
 
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-22.2690, -2.5254, -0.1171, -0.3624}, k_(-0.0354),
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-26.5862, -3.2078, -0.2540, -0.4977}, k_(-0.2500),
 		debug_flag_(false)
 {
 	motor_ = motor;
@@ -97,7 +97,8 @@ void InvertedControl::flip()
 
 		pre_theta_ = estimated_robot_theta_;
 
-		target_theta_ += target_omega_ * DELTA_T;
+		target_theta_ += target_omega_ * DELTA_T; //targert_omegaが変わってない
+		//target_theta_ += 0.2* DELTA_T;
 		//if(abs(target_theta_) >= 2*M_PI) target_theta_ = 0;
 
 		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
@@ -106,6 +107,7 @@ void InvertedControl::flip()
 		mon_theta_w = encoder_->getTheta();
 		mon_dtheta_w = encoder_->getDTheta();
 		mon_target_theta = target_theta_;
+		mon_target_omega = target_omega_;
 
 
 		if(debug_flag_ == true){
@@ -133,6 +135,12 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 
 	inverted_left_duty_ = (input_/current_voltage_) * 1000;
 	inverted_right_duty_ = (input_/current_voltage_) * 1000;
+
+	double offset_v = 0.0; //0.5
+	if(inverted_left_duty_ > 0) inverted_left_duty_ += (offset_v / current_voltage_) * 1000;
+	else if(inverted_left_duty_ < 0) inverted_left_duty_ -= (offset_v / current_voltage_) * 1000;
+	if(inverted_right_duty_ > 0) inverted_right_duty_ += (offset_v / current_voltage_) * 1000;
+	else if(inverted_right_duty_ < 0) inverted_right_duty_ -= (offset_v / current_voltage_) * 1000;
 
 	mon_input = input_;
 	mon_inverted_left_duty = inverted_left_duty_;

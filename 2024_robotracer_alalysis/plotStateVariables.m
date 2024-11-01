@@ -1,5 +1,5 @@
-f1 = figure(1);
-clf (f1, "reset")
+f5 = figure(1);
+clf (f5, "reset")
 clc
 clear
 
