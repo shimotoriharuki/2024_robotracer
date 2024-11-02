@@ -297,7 +297,7 @@ void IdleStateController::loop()
 				running_state_controller_->setRunMode(3);
 				running_state_controller_->setMinVelocity(0.6);
 				running_state_controller_->setMaxVelocity(0.8);
-				running_state_controller_->setAccDec(1.0, 0.5);
+				running_state_controller_->setAccDec(1.0, 0.3);
 				running_state_controller_->setStraightRadius(1000);
 
 				running_state_controller_->loop(); //走行状態ループ．
@@ -312,7 +312,7 @@ void IdleStateController::loop()
 				running_state_controller_->setRunMode(4);
 				running_state_controller_->setMinVelocity(0.6);
 				running_state_controller_->setMaxVelocity(1.0);
-				running_state_controller_->setAccDec(1.0, 0.5);
+				running_state_controller_->setAccDec(1.0, 0.2);
 				running_state_controller_->setStraightRadius(1000);
 
 				running_state_controller_->loop(); //走行状態ループ．
