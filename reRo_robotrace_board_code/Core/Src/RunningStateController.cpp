@@ -613,40 +613,40 @@ float RunningStateController::radius2Velocity(float radius){
 		velocity = (1 / (1 + exp(-(gain/facter) * radius + (adjust_x / 2) * gain))) * (max_velocity_ - min_velocity_) + min_velocity_ + adjust_y; // sigmoid function
 		*/
 		//9.90675990675985e-12	-2.17560217560216e-08	1.83041958041957e-05	-0.00195843045843044	2.51958041958042
-		velocity = 9.90675990675985e-12 * pow(radius, 4) + -2.17560217560216e-08 * pow(radius, 3) + 1.83041958041957e-05 * pow(radius, 2) + -0.00195843045843044 * radius + 2.51958041958042;
+		velocity = 1e-3 * radius * radius * ((max_velocity_ - min_velocity_) / straight_radius_) + min_velocity_; // quadratic function
 	}
 	else if(mode_ == 4){
 		//velocity = 1*radius * ((max_velocity_ - min_velocity_) / straight_radius_) + min_velocity_; // linear function
 		//条件別1次関数
-		uint16_t r1 = 400;
-		uint16_t r2 = 800;
+		//uint16_t r1 = 400;
+		//uint16_t r2 = 800;
 
-		float ratio1 = 0.4;
-		float ratio2 = 0.9;
+		//float ratio1 = 0.4;
+		//float ratio2 = 0.9;
 
-		float a = (max_velocity_ - min_velocity_) / straight_radius_;
+		//float a = (max_velocity_ - min_velocity_) / straight_radius_;
 
-		float v1 = linear_function(a, r1, 0, min_velocity_);
-		float vv1 = (v1-min_velocity_) * ratio1 + min_velocity_;
-		float a1 = (vv1 - min_velocity_) / r1;
+		//float v1 = linear_function(a, r1, 0, min_velocity_);
+		//float vv1 = (v1-min_velocity_) * ratio1 + min_velocity_;
+		//float a1 = (vv1 - min_velocity_) / r1;
 
-		float v2 = linear_function(a, r2, 0, min_velocity_);
-		float vv2 = (v2-min_velocity_) * ratio2 + min_velocity_;
-		float a2 = (vv2 - vv1) / (r2 - r1);
+		//float v2 = linear_function(a, r2, 0, min_velocity_);
+		//float vv2 = (v2-min_velocity_) * ratio2 + min_velocity_;
+		//float a2 = (vv2 - vv1) / (r2 - r1);
 
-		float v3 = max_velocity_;
-		float vv3 = v3;
-		float a3 = (vv3 - vv2) / (straight_radius_ - r2);
+		//float v3 = max_velocity_;
+		//float vv3 = v3;
+		//float a3 = (vv3 - vv2) / (straight_radius_ - r2);
 
-		if (radius < r1){
-			velocity = linear_function(a1, radius, 0, min_velocity_);
-		}
-		else if (radius < r2){
-			velocity = linear_function(a2, radius, r1, vv1);
-		}
-		else{
-			velocity = linear_function(a3, radius, r2, vv2);
-		}
+		//if (radius < r1){
+		//	velocity = linear_function(a1, radius, 0, min_velocity_);
+		//}
+		//else if (radius < r2){
+		//	velocity = linear_function(a2, radius, r1, vv1);
+		//}
+		//else{
+		//	velocity = linear_function(a3, radius, r2, vv2);
+		//}
 		//velocity = 1.13636363636363e-11 * pow(radius, 4) - 3.26534576534575e-08 * pow(radius, 3) + 2.94551282051281e-05 * pow(radius, 2) - 0.00420726495726492 * radius + 2.55244755244755;
 		//velocity = -4.07925407925417e-12 * pow(radius, 4) + 1.63170163170184e-09 * pow(radius, 3) + 5.68181818181801e-06 * pow(radius, 2) + 0.000832167832167887 * radius + 2.44965034965034;
 
@@ -658,15 +658,17 @@ float RunningStateController::radius2Velocity(float radius){
 		float facter = straight_radius_/adjust_x;
 		velocity = (1 / (1 + exp(-(gain/facter) * radius + (adjust_x / 2) * gain))) * (max_velocity_ - min_velocity_) + min_velocity_ + adjust_y; // sigmoid function
 		*/
+		velocity = 1e-3 * radius * radius * ((max_velocity_ - min_velocity_) / straight_radius_) + min_velocity_; // quadratic function
 	}
 	else if(mode_ == 5){
 		//velocity = 1*radius * ((max_velocity_ - min_velocity_) / straight_radius_) + min_velocity_; // linear function
 
-		float adjust_x = 25;
-		float adjust_y = 0;
-		float gain = 0.30;
-		float facter = straight_radius_/adjust_x;
-		velocity = (1 / (1 + exp(-(gain/facter) * radius + (adjust_x / 2) * gain))) * (max_velocity_ - min_velocity_) + min_velocity_ + adjust_y; // sigmoid function
+		//float adjust_x = 25;
+		//float adjust_y = 0;
+		//float gain = 0.30;
+		//float facter = straight_radius_/adjust_x;
+		//velocity = (1 / (1 + exp(-(gain/facter) * radius + (adjust_x / 2) * gain))) * (max_velocity_ - min_velocity_) + min_velocity_ + adjust_y; // sigmoid function
+		velocity = 1e-3 * radius * radius * ((max_velocity_ - min_velocity_) / straight_radius_) + min_velocity_; // quadratic function
 	}
 
 	return velocity;
