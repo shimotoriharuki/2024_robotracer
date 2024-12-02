@@ -87,11 +87,11 @@ void IdleStateController::parameterAdjustmentMode()
 
 				//while(inverted_control_->fallDown() == false){
 				for(uint16_t i = 0; i < 5; i++){
-					inverted_control_->setTargetVelocity(50);
+					inverted_control_->setTargetVelocity(0);
 					HAL_Delay(300);
 					inverted_control_->setTargetVelocity(0);
 					HAL_Delay(2000);
-					inverted_control_->setTargetVelocity(-50);
+					inverted_control_->setTargetVelocity(-0);
 					HAL_Delay(300);
 
 				}

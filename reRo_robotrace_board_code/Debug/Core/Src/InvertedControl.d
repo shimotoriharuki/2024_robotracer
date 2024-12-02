@@ -43,7 +43,7 @@ Core/Src/InvertedControl.o: ../Core/Src/InvertedControl.cpp \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/sd_diskio.h \
  ../Core/Inc/kalmanFilter.h ../Core/Inc/rtwtypes.h \
- ../Core/Inc/getEquationOfStateParameters.h \
+ ../Core/Inc/getEquationOfStateParameters2.h \
  ../Core/Inc/getServoEquationOfStateParameters.h \
  ../Core/Inc/stateFeedback.h ../Core/Inc/servoStateFeedback.h
 ../Core/Inc/InvertedControl.hpp:
@@ -100,7 +100,7 @@ Core/Src/InvertedControl.o: ../Core/Src/InvertedControl.cpp \
 ../FATFS/Target/sd_diskio.h:
 ../Core/Inc/kalmanFilter.h:
 ../Core/Inc/rtwtypes.h:
-../Core/Inc/getEquationOfStateParameters.h:
+../Core/Inc/getEquationOfStateParameters2.h:
 ../Core/Inc/getServoEquationOfStateParameters.h:
 ../Core/Inc/stateFeedback.h:
 ../Core/Inc/servoStateFeedback.h:

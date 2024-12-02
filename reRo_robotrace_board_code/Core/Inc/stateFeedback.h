@@ -21,7 +21,7 @@ extern "C" {
 #endif
 
 /* Function Declarations */
-extern double stateFeedback(const double x[4], const double f[4]);
+extern double stateFeedback(const double x[2], const double f[2]);
 
 #ifdef __cplusplus
 }

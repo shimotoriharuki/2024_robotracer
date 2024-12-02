@@ -19,9 +19,10 @@
  *                const double f[4]
  * Return Type  : double
  */
-double stateFeedback(const double x[4], const double f[4])
+double stateFeedback(const double x[2], const double f[2])
 {
-  return ((-f[0] * x[0] + -f[1] * x[1]) + -f[2] * x[2]) + -f[3] * x[3];
+//  return ((-f[0] * x[0] + -f[1] * x[1]) + -f[2] * x[2]) + -f[3] * x[3];
+  return (-f[0] * x[0] + -f[1] * x[1]);
 }
 
 /*

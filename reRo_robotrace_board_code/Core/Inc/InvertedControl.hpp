@@ -58,7 +58,7 @@ private:
 	double pre_z_;
 	double pre_input_;
 	double disturbance_[4];
-	double f_[4];
+	double f_[2];
 	double k_;
 
 	double inverted_left_duty_, inverted_right_duty_;

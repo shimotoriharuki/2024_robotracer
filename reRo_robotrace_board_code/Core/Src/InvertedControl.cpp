@@ -8,7 +8,7 @@
 #include "InvertedControl.hpp"
 #include "kalmanFilter.h"
 #include <cmath>
-#include "getEquationOfStateParameters.h"
+#include "getEquationOfStateParameters2.h"
 #include "getServoEquationOfStateParameters.h"
 #include "stateFeedback.h"
 #include "servoStateFeedback.h"
@@ -31,14 +31,14 @@ double mon_estimate_theta;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0), target_velocity_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-36.4462, -3.6192, -0.1414, -0.2448}, k_(-0.2500),
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-50, -5.2}, k_(-0.2500),
 		debug_flag_(false)
 {
 	motor_ = motor;
 	encoder_ = encoder;
 	imu_ = imu;
 
-	getServoEquationOfStateParameters(m_w_,  m_p_,  r_w_, r_p_,  J_w_,  J_p_, J_m_,  g_,  n_,  kt_, kn_,  R_,  Ab_, Bb_,  C_);
+	getEquationOfStateParameters2(m_w_,  m_p_,  r_w_, r_p_,  J_w_,  J_p_, J_m_,  g_,  n_,  kt_, kn_,  R_,  Ab_, Bb_,  C_);
 }
 
 //--------------------------------private----------------//
@@ -113,7 +113,8 @@ void InvertedControl::flip()
 
 void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w)
 {
-	double x[4] = {theta_p, dtheta_p, theta_w, dtheta_w};
+	//double x[4] = {theta_p, dtheta_p, theta_w, dtheta_w};
+	double x[2] = {theta_p, dtheta_p};
 
 	//input_ = servoStateFeedback(x, z_, f_, k_);
 	input_ = stateFeedback(x, f_);
