@@ -2,14 +2,15 @@
 ../Core/Src/InvertedControl.cpp:46:7:float InvertedControl::calcError()	24	static
 ../Core/Src/InvertedControl.cpp:77:6:void InvertedControl::estimateRobotAngle(double, double, const double*, double, double, double, double, double, double*, double*)	80	static
 ../Core/Src/InvertedControl.cpp:87:6:void InvertedControl::flip()	104	static
-../Core/Src/InvertedControl.cpp:120:6:void InvertedControl::stateFeedbackControl(double, double, double, double, double)	104	static
-../Core/Src/InvertedControl.cpp:154:6:void InvertedControl::setPIDGain(float, float, float)	24	static
-../Core/Src/InvertedControl.cpp:161:6:void InvertedControl::start()	16	static
-../Core/Src/InvertedControl.cpp:175:6:void InvertedControl::stop()	16	static
-../Core/Src/InvertedControl.cpp:181:6:void InvertedControl::resetEstimatedTheta()	16	static
-../Core/Src/InvertedControl.cpp:186:6:void InvertedControl::setTargetOmega(double)	24	static
-../Core/Src/InvertedControl.cpp:193:6:bool InvertedControl::fallDown()	24	static
-../Core/Src/InvertedControl.cpp:206:6:void InvertedControl::getDytu(double*, double*)	24	static
-../Core/Src/InvertedControl.cpp:213:6:void InvertedControl::setDebugMode()	16	static
-../Core/Src/InvertedControl.cpp:218:6:void InvertedControl::resetDebugMode()	16	static
-../Core/Src/InvertedControl.cpp:223:6:void InvertedControl::getStateVariables(double*, double*, double*, double*)	24	static
+../Core/Src/InvertedControl.cpp:114:6:void InvertedControl::stateFeedbackControl(double, double, double, double)	80	static
+../Core/Src/InvertedControl.cpp:148:6:void InvertedControl::setPIDGain(float, float, float)	24	static
+../Core/Src/InvertedControl.cpp:155:6:void InvertedControl::start()	16	static
+../Core/Src/InvertedControl.cpp:169:6:void InvertedControl::stop()	16	static
+../Core/Src/InvertedControl.cpp:175:6:void InvertedControl::resetEstimatedTheta()	16	static
+../Core/Src/InvertedControl.cpp:180:6:void InvertedControl::setTargetOmega(double)	24	static
+../Core/Src/InvertedControl.cpp:185:6:void InvertedControl::setTargetVelocity(double)	24	static
+../Core/Src/InvertedControl.cpp:191:6:bool InvertedControl::fallDown()	24	static
+../Core/Src/InvertedControl.cpp:204:6:void InvertedControl::getDytu(double*, double*)	24	static
+../Core/Src/InvertedControl.cpp:211:6:void InvertedControl::setDebugMode()	16	static
+../Core/Src/InvertedControl.cpp:216:6:void InvertedControl::resetDebugMode()	16	static
+../Core/Src/InvertedControl.cpp:221:6:void InvertedControl::getStateVariables(double*, double*, double*, double*)	24	static

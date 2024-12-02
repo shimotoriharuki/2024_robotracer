@@ -53,6 +53,7 @@ private:
 
 	double current_voltage_;
 	double target_omega_;
+	double target_velocity_;
 	double pre_target_theta_;
 	double pre_z_;
 	double pre_input_;
@@ -74,7 +75,7 @@ private:
                          double pre_theta, double U, double W, double omega,
                          double theta, double *estimated_robot_theta,
                          double P[4]);
-	void stateFeedbackControl(double, double, double, double, double);
+	void stateFeedbackControl(double, double, double, double);
 
 public:
 	InvertedControl(DriveMotor *, Encoder *, IMU *);
@@ -84,6 +85,7 @@ public:
 	void stop();
 	void resetEstimatedTheta();
 	void setTargetOmega(double);
+	void setTargetVelocity(double);
 
 	bool fallDown();
 	void getDytu(double *, double *);

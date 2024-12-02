@@ -30,7 +30,7 @@ double mon_estimate_theta;
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
-		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
+		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0), target_velocity_(0),
 		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-36.4462, -3.6192, -0.1414, -0.2448}, k_(-0.2500),
 		debug_flag_(false)
 {
@@ -96,13 +96,7 @@ void InvertedControl::flip()
 			pre_P_[i] = P[i];
 		}
 
-		pre_theta_ = estimated_robot_theta_;
-
-		target_theta_ += target_omega_ * DELTA_T; //targert_omegaが変わってない
-		//target_theta_ += 0.2* DELTA_T;
-		//if(abs(target_theta_) >= 2*M_PI) target_theta_ = 0;
-
-		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
+		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta());
 		mon_theta_p = estimated_robot_theta_;
 		mon_dtheta_p = imu_->getOmegaX();
 		mon_theta_w = encoder_->getTheta();
@@ -112,12 +106,12 @@ void InvertedControl::flip()
 
 
 		if(debug_flag_ == true){
-			motor_->setDuty(inverted_left_duty_, inverted_right_duty_);
+			motor_->setDuty(inverted_left_duty_ + target_velocity_, inverted_right_duty_ + target_velocity_);
 		}
 	}
 }
 
-void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w, double target_theta)
+void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, double theta_w, double dtheta_w)
 {
 	double x[4] = {theta_p, dtheta_p, theta_w, dtheta_w};
 
@@ -138,11 +132,11 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	inverted_left_duty_ = (input_/current_voltage_) * 1000;
 	inverted_right_duty_ = (input_/current_voltage_) * 1000;
 
-	double offset_v = 0.0; //0.5
-	if(inverted_left_duty_ > 0) inverted_left_duty_ += (offset_v / current_voltage_) * 1000;
-	else if(inverted_left_duty_ < 0) inverted_left_duty_ -= (offset_v / current_voltage_) * 1000;
-	if(inverted_right_duty_ > 0) inverted_right_duty_ += (offset_v / current_voltage_) * 1000;
-	else if(inverted_right_duty_ < 0) inverted_right_duty_ -= (offset_v / current_voltage_) * 1000;
+	//double offset_v = 0.0; //0.5
+	//if(inverted_left_duty_ > 0) inverted_left_duty_ += (offset_v / current_voltage_) * 1000;
+	//else if(inverted_left_duty_ < 0) inverted_left_duty_ -= (offset_v / current_voltage_) * 1000;
+	//if(inverted_right_duty_ > 0) inverted_right_duty_ += (offset_v / current_voltage_) * 1000;
+	//else if(inverted_right_duty_ < 0) inverted_right_duty_ -= (offset_v / current_voltage_) * 1000;
 
 	mon_input = input_;
 	mon_inverted_left_duty = inverted_left_duty_;
@@ -165,7 +159,7 @@ void InvertedControl::start()
 	z_ = 0;
 	target_theta_ = 0;
 	target_omega_ = 0;
-	pre_theta_ = 0;
+	//pre_theta_ = 0;
 	input_ = 0;
 	estimated_robot_theta_ = 0;
 
@@ -186,7 +180,11 @@ void InvertedControl::resetEstimatedTheta()
 void InvertedControl::setTargetOmega(double target_omega)
 {
 	target_omega_ = target_omega;
-	//target_theta_ += target_omega * DELTA_T;
+}
+
+void InvertedControl::setTargetVelocity(double target_velocity)
+{
+	target_velocity_ = target_velocity;
 }
 
 
