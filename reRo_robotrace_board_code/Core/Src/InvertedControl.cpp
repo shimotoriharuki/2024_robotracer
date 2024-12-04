@@ -24,9 +24,7 @@ double mon_target_theta, mon_target_omega;
 bool mon_fall_down;
 double mon_estimate_theta;
 
-//f_{-22.2690, -2.5254, -0.1171, -0.3624}
-//-26.5862, -3.2078, -0.2540, -0.4977
-
+//f_{-36.4462, -3.6192, -0.1414, -0.2448}
 
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
