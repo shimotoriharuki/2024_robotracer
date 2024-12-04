@@ -108,8 +108,14 @@ void IdleStateController::parameterAdjustmentMode()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				initializeRobotAngle();
+
+				line_following_->setInvertedMode();
+				imu_->resetRobotAngleFromGyro();
+				encoder_->clearTheta();
 				line_following_->setInvertedMode();
 				line_following_->setTargetVelocity(0.0);
+
 				line_following_->start();
 
 				HAL_Delay(3000);
@@ -118,12 +124,12 @@ void IdleStateController::parameterAdjustmentMode()
 
 				HAL_Delay(500);
 
-				imu_->resetRobotAngleFromGyro();
-				inverted_control_->start();
+				//imu_->resetRobotAngleFromGyro();
+				//inverted_control_->start();
 
-				HAL_Delay(3000);
+				//HAL_Delay(3000);
 
-				inverted_control_->stop();
+				//inverted_control_->stop();
 			}
 
 			HAL_Delay(100);

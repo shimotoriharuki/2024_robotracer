@@ -85,7 +85,8 @@ void cppInit(void)
 	//ゲインの設定
 	//line_following.setGain(0.4, 0, 0.006); //吸引ありゲイン /0.23, 0, 0.0045
 	line_following.setGain(0.5, 0, 0.016); //吸引ありゲイン /0.23, 0, 0.0045
-	velocity_control.setTranslationGain(400, 4000, 0); //吸引ありゲイン 1200, 12000, 0
+	//velocity_control.setTranslationGain(400, 4000, 0); //吸引ありゲイン 1200, 12000, 0
+	velocity_control.setTranslationGain(800, 8000, 0); //吸引ありゲイン 1200, 12000, 0
 	velocity_control.setRotationGain(0, 0, 0);
 
 	inverted_control.setPIDGain(4000, 0, 0);

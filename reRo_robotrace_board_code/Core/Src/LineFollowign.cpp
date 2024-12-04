@@ -7,9 +7,9 @@
 #include "LineFollowing.hpp"
 
 float mon_diff;
-float _mon_left_duty;
-float _mon_right_duty;
+float _mon_inverted_duty;
 float mon_rotation_duty;
+float mon_translation_duty;
 
 LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor, InvertedControl *inverted_control, DriveMotor *drive_motor) :
 		i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
@@ -99,12 +99,18 @@ void LineFollowing::pidWithInvertedControl()
 		mon_rotation_duty = rotation_ratio_;
 
 		//velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
-		double left_duty, right_duty;
-		inverted_control_->getDytu(&left_duty, &right_duty);
-		_mon_right_duty = right_duty;
-		_mon_left_duty = left_duty;
 
-		drive_motor_->setDuty(left_duty + rotation_ratio_, right_duty - rotation_ratio_);
+		double inverted_duty;
+		inverted_control_->getDytu(&inverted_duty, &inverted_duty);
+		_mon_inverted_duty = inverted_duty;
+		_mon_inverted_duty = inverted_duty;
+
+		double translation_ratio;
+		translation_ratio = velocity_control_->getTranslationRatio();
+		mon_translation_duty = translation_ratio;
+
+		//drive_motor_->setDuty(left_duty + rotation_ratio_, right_duty - rotation_ratio_);
+		drive_motor_->setDuty(inverted_duty - translation_ratio, inverted_duty - translation_ratio);
 
 		pre_diff = diff;
 	}
@@ -152,6 +158,11 @@ void LineFollowing::start()
 		inverted_control_->resetEstimatedTheta();
 		inverted_control_->setTargetOmega(target_velocity_);
 		inverted_control_->start();
+
+		velocity_control_->disableAngularVelocityPIDControl();
+		velocity_control_->start();
+
+		velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
 		//TODO: 倒立しながらライントレースするモード処理を確認
 	}
 

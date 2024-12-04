@@ -114,7 +114,7 @@ void VelocityControl::pidTranslationOnly()
 	translation_ratio_ -= exceeded;
 	rotation_ratio_ += exceeded;
 
-	motor_->setDuty(translation_ratio_ + rotation_ratio_, translation_ratio_ - rotation_ratio_);
+	//motor_->setDuty(translation_ratio_ + rotation_ratio_, translation_ratio_ - rotation_ratio_);
 
 	t_pre_diff = t_diff;
 }
