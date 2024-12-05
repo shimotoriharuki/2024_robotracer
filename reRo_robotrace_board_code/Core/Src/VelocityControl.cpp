@@ -99,7 +99,7 @@ void VelocityControl::pidTranslationOnly()
 
 	translation_ratio_ =  t_p + t_d + t_i;
 
-	float limit = 800;
+	float limit = 1000;
 	if(translation_ratio_ >= limit) translation_ratio_= limit;
 	else if(translation_ratio_ <= -limit) translation_ratio_ = -limit;
 
