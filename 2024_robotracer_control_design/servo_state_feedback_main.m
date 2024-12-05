@@ -12,7 +12,7 @@ J_m= 1.51e-8; % モータの回転子のイナーシャ[kg m^2]
 g= 9.8; % 重力加速度 [m/s^2]
 n= 6; % 減速比
 kt= 3.52e-3; %トルク定数 [Nm/A]
-kn= 410; % 回転数定数[rpm/V] 2710 410
+kn= 2710; % 回転数定数[rpm/V] 2710 410
 ke= 60 / (kn* 2*pi); %起電力定数 [V/(rad/s)]
 R= 2.9; %内部抵抗 [Ω]
 t_md = 0; % 摩擦トルク[Nm]
@@ -45,11 +45,11 @@ if det(Uc) ~= 0
 end
 
 %状態フィードバック
-Q = [0.02, 0, 0, 0, 0;
-     0, 0.02, 0, 0, 0;
-     0, 0, 0.1, 0, 0;
-     0, 0, 0, 0.1, 0;
-     0, 0, 0, 0, 0.8];
+Q = [0.01, 0, 0, 0, 0;
+     0, 0.01, 0, 0, 0;
+     0, 0, 0.01, 0, 0;
+     0, 0, 0, 0.01, 0;
+     0, 0, 0, 0, 0.1];
 R = 8;
 % gain = lqr(Ab, Bb, Q, R);
 % f = gain(1:4);
@@ -65,7 +65,7 @@ t = 0 : dt : 10;
 xb0 = [-0.01; 0; 0; 0]; % 初期値
 z = 0; % 偏差の積分
 v = [0; 0; 0; 0]; % 外乱
-target_theta = 0; % 目標角度 [rad]
+target_theta = pi; % 目標角度 [rad]
 target_omega = 0; %目標角速度[rad/s]
 
 u = 0; % 入力の初期値
@@ -86,7 +86,7 @@ pre_z = z;
 for i = t
     input =  servoStateFeedback(xb, z, f, k);
 
-    target_theta = pre_target_theta + target_omega * dt;
+    %target_theta = pre_target_theta + target_omega * dt;
     dxb = Ab * [pre_xb; pre_z] + Bb * pre_input + [v; target_theta];
     xb = pre_xb + dxb(1:4, 1) * dt;
     z = pre_z + dxb(5) * dt;

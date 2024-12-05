@@ -120,6 +120,10 @@ void IdleStateController::parameterAdjustmentMode()
 
 				HAL_Delay(3000);
 
+				//inverted_control_->setTargetOmega(3.14*2);
+
+				//HAL_Delay(3000);
+
 				line_following_->stop();
 
 				HAL_Delay(500);

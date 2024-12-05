@@ -109,8 +109,9 @@ void LineFollowing::pidWithInvertedControl()
 		translation_ratio = velocity_control_->getTranslationRatio();
 		mon_translation_duty = translation_ratio;
 
-		//drive_motor_->setDuty(left_duty + rotation_ratio_, right_duty - rotation_ratio_);
-		drive_motor_->setDuty(inverted_duty - translation_ratio, inverted_duty - translation_ratio);
+		drive_motor_->setDuty(inverted_duty, inverted_duty);
+		//drive_motor_->setDuty(inverted_duty + rotation_ratio_, inverted_duty - rotation_ratio_);
+		//drive_motor_->setDuty(inverted_duty - translation_ratio, inverted_duty - translation_ratio);
 
 		pre_diff = diff;
 	}
