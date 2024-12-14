@@ -1,5 +1,5 @@
 ../Core/Src/IdleStateController.cpp:15:6:void IdleStateController::parameterAdjustmentMode()	24	static
-../Core/Src/IdleStateController.cpp:200:6:void IdleStateController::initializeRobotAngle()	24	static
-../Core/Src/IdleStateController.cpp:228:1:IdleStateController::IdleStateController(DriveMotor*, FanMotor*, LineFollowing*, FollowingSensor*, VelocityControl*, Encoder*, IMU*, WheelDial*, sdCard*, RunningStateController*, InvertedControl*)	32	static
-../Core/Src/IdleStateController.cpp:257:6:void IdleStateController::loop()	16	static
-../Core/Src/IdleStateController.cpp:419:6:void IdleStateController::debug_flip()	64	static
+../Core/Src/IdleStateController.cpp:215:6:void IdleStateController::initializeRobotAngle()	24	static
+../Core/Src/IdleStateController.cpp:243:1:IdleStateController::IdleStateController(DriveMotor*, FanMotor*, LineFollowing*, FollowingSensor*, VelocityControl*, Encoder*, IMU*, WheelDial*, sdCard*, RunningStateController*, InvertedControl*)	32	static
+../Core/Src/IdleStateController.cpp:272:6:void IdleStateController::loop()	16	static
+../Core/Src/IdleStateController.cpp:434:6:void IdleStateController::debug_flip()	64	static

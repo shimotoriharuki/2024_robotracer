@@ -116,8 +116,14 @@ void IdleStateController::parameterAdjustmentMode()
 				line_following_->setInvertedMode();
 				line_following_->setTargetVelocity(0.0);
 
+				x1_logger_->start();
+				x2_logger_->start();
+				x3_logger_->start();
+				x4_logger_->start();
+
 				line_following_->start();
 
+				//while(inverted_control_->fallDown() == false){}
 				HAL_Delay(3000);
 
 				//inverted_control_->setTargetOmega(3.14*2);
@@ -126,6 +132,15 @@ void IdleStateController::parameterAdjustmentMode()
 
 				line_following_->stop();
 
+				x1_logger_->stop();
+				x2_logger_->stop();
+				x3_logger_->stop();
+				x4_logger_->stop();
+
+				x1_logger_->saveLogs("debug", "theta_p");
+				x2_logger_->saveLogs("debug", "dtheta_p");
+				x3_logger_->saveLogs("debug", "theta_w");
+				x4_logger_->saveLogs("debug", "dtheta_w");
 				HAL_Delay(500);
 
 				//imu_->resetRobotAngleFromGyro();
