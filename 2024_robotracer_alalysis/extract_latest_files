@@ -53,3 +53,4 @@ find /e/debug/ -name theta_p* | sed -n '$p' | xargs -i cp -p {} workingDirectory
 find /e/debug/ -name dtheta_p* | sed -n '$p' | xargs -i cp -p {} workingDirectory/dtheta_p.txt 
 find /e/debug/ -name theta_w* | sed -n '$p' | xargs -i cp -p {} workingDirectory/theta_w.txt 
 find /e/debug/ -name dtheta_w* | sed -n '$p' | xargs -i cp -p {} workingDirectory/dtheta_w.txt 
+find /e/debug/ -name z* | sed -n '$p' | xargs -i cp -p {} workingDirectory/z.txt 

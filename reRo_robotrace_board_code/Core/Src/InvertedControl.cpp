@@ -29,7 +29,7 @@ double mon_estimate_theta;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-19.9386, -2.1655, -0.1124, -0.1902}, k_(-0.0011),
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-20.4891, -2.2707, -0.1514, -0.2329}, k_(-0.1732),
 		debug_flag_(false)
 {
 	motor_ = motor;
@@ -219,10 +219,11 @@ void InvertedControl::resetDebugMode()
 	debug_flag_ = false;
 }
 
-void InvertedControl::getStateVariables(double *theta_p, double *dtheta_p, double *theta_w, double *dtheta_w)
+void InvertedControl::getStateVariables(double *theta_p, double *dtheta_p, double *theta_w, double *dtheta_w, double *z)
 {
 	*theta_p = estimated_robot_theta_;
 	*dtheta_p = imu_->getOmegaX();
 	*theta_w = encoder_->getTheta();
 	*dtheta_w = encoder_->getDTheta();
+	*z= z_;
 }

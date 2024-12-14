@@ -10,6 +10,8 @@ theta_p = load('workingDirectory/theta_p.txt');
 dtheta_p = load('workingDirectory/dtheta_p.txt');
 theta_w = load('workingDirectory/theta_w.txt');
 dtheta_w = load('workingDirectory/dtheta_w.txt');
+z = load('workingDirectory/z.txt');
+
 
 
 % --- データが有るところだけ抽出---
@@ -19,6 +21,7 @@ theta_p = theta_p(1 : data_size);
 dtheta_p = dtheta_p(1 : data_size); 
 theta_w = theta_w(1 : data_size);
 dtheta_w = dtheta_w(1 : data_size);
+z = z(1 : data_size);
 
 
 
@@ -44,3 +47,8 @@ title("theta_w")
 nexttile
 plot(t, dtheta_w);
 title("dtheta_w")
+
+figure(6)
+plot(t, z);
+title("z")
+

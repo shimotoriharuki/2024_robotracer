@@ -82,6 +82,7 @@ void IdleStateController::parameterAdjustmentMode()
 				x2_logger_->start();
 				x3_logger_->start();
 				x4_logger_->start();
+				x5_logger_->start();
 
 				inverted_control_->start();
 
@@ -95,11 +96,13 @@ void IdleStateController::parameterAdjustmentMode()
 				x2_logger_->stop();
 				x3_logger_->stop();
 				x4_logger_->stop();
+				x5_logger_->stop();
 
 				x1_logger_->saveLogs("debug", "theta_p");
 				x2_logger_->saveLogs("debug", "dtheta_p");
 				x3_logger_->saveLogs("debug", "theta_w");
 				x4_logger_->saveLogs("debug", "dtheta_w");
+				x5_logger_->saveLogs("debug", "z");
 
 			}
 			break;
@@ -120,11 +123,18 @@ void IdleStateController::parameterAdjustmentMode()
 				x2_logger_->start();
 				x3_logger_->start();
 				x4_logger_->start();
+				x5_logger_->start();
 
 				line_following_->start();
 
-				//while(inverted_control_->fallDown() == false){}
-				HAL_Delay(3000);
+				//while(inverted_control_->fallDown() == false){
+					inverted_control_->setTargetOmega(10);
+				//}
+				HAL_Delay(9900);
+				//for(float theta = 0; theta <= 3; theta += 0.5){
+				//	inverted_control_->setTargetOmega(theta);
+				//	HAL_Delay(300);
+				//}
 
 				//inverted_control_->setTargetOmega(3.14*2);
 
@@ -136,11 +146,13 @@ void IdleStateController::parameterAdjustmentMode()
 				x2_logger_->stop();
 				x3_logger_->stop();
 				x4_logger_->stop();
+				x5_logger_->stop();
 
 				x1_logger_->saveLogs("debug", "theta_p");
 				x2_logger_->saveLogs("debug", "dtheta_p");
 				x3_logger_->saveLogs("debug", "theta_w");
 				x4_logger_->saveLogs("debug", "dtheta_w");
+				x5_logger_->saveLogs("debug", "z");
 				HAL_Delay(500);
 
 				//imu_->resetRobotAngleFromGyro();
@@ -266,6 +278,7 @@ IdleStateController::IdleStateController(DriveMotor *drive_motor, FanMotor *fan_
 	x2_logger_ = new Logger(sd_card, 1000);
 	x3_logger_ = new Logger(sd_card, 1000);
 	x4_logger_ = new Logger(sd_card, 1000);
+	x5_logger_ = new Logger(sd_card, 1000);
 
 }
 
@@ -436,13 +449,14 @@ void IdleStateController::debug_flip()
 	//acc_data_logger_->storeLogs(imu_->getRobotAngleFromAcc());
 	//gyro_data_logger_->storeLogs(imu_->getOmegaX());
 
-	double theta_p, dtheta_p, theta_w, dtheta_w;
-	inverted_control_->getStateVariables(&theta_p, &dtheta_p, &theta_w, &dtheta_w);
+	double theta_p, dtheta_p, theta_w, dtheta_w, z;
+	inverted_control_->getStateVariables(&theta_p, &dtheta_p, &theta_w, &dtheta_w, &z);
 
 	x1_logger_->storeLogs(theta_p);
 	x2_logger_->storeLogs(dtheta_p);
 	x3_logger_->storeLogs(theta_w);
 	x4_logger_->storeLogs(dtheta_w);
+	x5_logger_->storeLogs(z);
 
 }
 

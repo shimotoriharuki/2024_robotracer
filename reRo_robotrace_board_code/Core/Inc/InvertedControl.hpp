@@ -91,7 +91,7 @@ public:
 	void setDebugMode();
 	void resetDebugMode();
 
-	void getStateVariables(double *, double *, double *, double *);
+	void getStateVariables(double *, double *, double *, double *, double *);
 
 };
 

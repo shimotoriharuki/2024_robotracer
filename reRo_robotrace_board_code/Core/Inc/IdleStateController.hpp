@@ -49,6 +49,7 @@ private:
 	Logger *x2_logger_;
 	Logger *x3_logger_;
 	Logger *x4_logger_;
+	Logger *x5_logger_;
 
 	void parameterAdjustmentMode();
 	void initializeRobotAngle();
