@@ -29,7 +29,7 @@ private:
 
 	double m_w_ = 33e-3; // ホイールの重さ [kg]
 	double m_p_ = 193e-3; // 振子の重さ [kg]
-	double r_w_ = 33e-3; // ホイールの半径 [m]
+	double r_w_ = 47e-3; // ホイールの半径 [m]
 	double r_p_ = 70e-3; // 振子の重心までの距離 [m]
 	double J_w_ = 7.239e-6; // ホイールのイナーシャ
 	double J_p_ = 0.826e-3; // 振子のイナーシャ ??

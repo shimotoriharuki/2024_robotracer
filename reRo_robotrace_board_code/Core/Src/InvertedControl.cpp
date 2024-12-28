@@ -29,7 +29,7 @@ double mon_estimate_theta;
 InvertedControl::InvertedControl(DriveMotor *motor, Encoder *encoder, IMU *imu): kp_(0), ki_(0), kd_(0), i_reset_flag_(0),
 		pre_P_{0.1*M_PI/180, 0, 0, 6.3e-06}, pre_theta_(0), U_(6.3e-06), W_(2.2e-05), estimated_robot_theta_(0), //U: 角速度の分散, W: 角度の分散
 		pre_xb_{0, 0, 0, 0}, xb_{0, 0, 0, 0}, dt_(1e-3), input_(0), target_theta_(0), z_(0), current_voltage_(8.4), target_omega_(0),
-		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-20.4891, -2.2707, -0.1514, -0.2329}, k_(-0.1732),
+		pre_target_theta_(0), pre_z_(0), pre_input_(0), disturbance_{0, 0, 0, 0}, f_{-19.8213, -1.9981, -0.0797, -0.1731}, k_(-0.0354),
 		debug_flag_(false)
 {
 	motor_ = motor;
@@ -133,14 +133,17 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	//}
 	//pre_z_ = z_;
 
-	inverted_left_duty_ = (input_/current_voltage_) * 1000;
-	inverted_right_duty_ = (input_/current_voltage_) * 1000;
+	//inverted_left_duty_ = (input_/current_voltage_) * 1000;
+	//inverted_right_duty_ = (input_/current_voltage_) * 1000;
 
-	double offset_v = 0.0; //0.5
-	if(inverted_left_duty_ > 0) inverted_left_duty_ += (offset_v / current_voltage_) * 1000;
-	else if(inverted_left_duty_ < 0) inverted_left_duty_ -= (offset_v / current_voltage_) * 1000;
-	if(inverted_right_duty_ > 0) inverted_right_duty_ += (offset_v / current_voltage_) * 1000;
-	else if(inverted_right_duty_ < 0) inverted_right_duty_ -= (offset_v / current_voltage_) * 1000;
+	double k = 180;
+	inverted_left_duty_ = input_ * k;
+	inverted_right_duty_ = input_ * k;
+	//double offset_v = 0.0; //0.5
+	//if(inverted_left_duty_ > 0) inverted_left_duty_ += (offset_v / current_voltage_) * 1000;
+	//else if(inverted_left_duty_ < 0) inverted_left_duty_ -= (offset_v / current_voltage_) * 1000;
+	//if(inverted_right_duty_ > 0) inverted_right_duty_ += (offset_v / current_voltage_) * 1000;
+	//else if(inverted_right_duty_ < 0) inverted_right_duty_ -= (offset_v / current_voltage_) * 1000;
 
 	mon_input = input_;
 	mon_inverted_left_duty = inverted_left_duty_;

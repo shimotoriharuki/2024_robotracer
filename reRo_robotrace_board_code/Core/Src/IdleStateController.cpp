@@ -128,7 +128,7 @@ void IdleStateController::parameterAdjustmentMode()
 				line_following_->start();
 
 				//while(inverted_control_->fallDown() == false){
-					inverted_control_->setTargetOmega(10);
+					//inverted_control_->setTargetOmega(10);
 				//}
 				HAL_Delay(9900);
 				//for(float theta = 0; theta <= 3; theta += 0.5){
