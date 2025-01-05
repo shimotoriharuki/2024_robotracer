@@ -171,14 +171,15 @@ void LineFollowing::start()
 
 void LineFollowing::stop()
 {
-	setTargetVelocity(0.0);
-	HAL_Delay(1000);
+	drive_motor_->setDuty(0, 0);
+	//setTargetVelocity(0.0);
+	//HAL_Delay(1000);
 
 	processing_flag_ = false;
 
 	velocity_control_->stop();
 
-	inverted_control_-> stop();
+	inverted_control_->stop();
 
 
 }
@@ -187,9 +188,12 @@ void LineFollowing::emergencyStop()
 {
 	processing_flag_ = false;
 
-	velocity_control_->setTargetTranslationVelocityOnly(0.0, 0.0);
-	HAL_Delay(1000);
-	velocity_control_->stop();
+	//velocity_control_->setTargetTranslationVelocityOnly(0.0, 0.0);
+	//HAL_Delay(1000);
+	//velocity_control_->stop();
+
+	drive_motor_->setDuty(0, 0);
+	//HAL_Delay(1000);
 
 
 }

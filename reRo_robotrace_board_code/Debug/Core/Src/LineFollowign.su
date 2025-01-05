@@ -10,4 +10,4 @@
 ../Core/Src/LineFollowign.cpp:141:6:void LineFollowing::setGain(float, float, float)	24	static
 ../Core/Src/LineFollowign.cpp:148:6:void LineFollowing::start()	24	static
 ../Core/Src/LineFollowign.cpp:172:6:void LineFollowing::stop()	16	static
-../Core/Src/LineFollowign.cpp:186:6:void LineFollowing::emergencyStop()	16	static
+../Core/Src/LineFollowign.cpp:187:6:void LineFollowing::emergencyStop()	16	static

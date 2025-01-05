@@ -25,6 +25,7 @@ private:
 	bool break_flag_;
 	int8_t state_;
 	int8_t parameter_state_;
+	bool fall_down_flag_;
 
 	DriveMotor *drive_motor_;
 	FanMotor *fan_motor_;
@@ -50,6 +51,7 @@ private:
 	Logger *x3_logger_;
 	Logger *x4_logger_;
 	Logger *x5_logger_;
+
 
 	void parameterAdjustmentMode();
 	void initializeRobotAngle();

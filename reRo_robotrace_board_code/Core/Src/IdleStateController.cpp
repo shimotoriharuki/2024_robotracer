@@ -127,10 +127,22 @@ void IdleStateController::parameterAdjustmentMode()
 
 				line_following_->start();
 
+				fall_down_flag_ = false;
+
+				uint16_t cnt = 0;
+				while(fall_down_flag_ == false){
+					if(cnt >= 5000){
+						break;
+					}
+
+					HAL_Delay(1);
+					cnt++;
+
+				}
 				//while(inverted_control_->fallDown() == false){
 					//inverted_control_->setTargetOmega(10);
 				//}
-				HAL_Delay(9900);
+				//HAL_Delay(5000);
 				//for(float theta = 0; theta <= 3; theta += 0.5){
 				//	inverted_control_->setTargetOmega(theta);
 				//	HAL_Delay(300);
@@ -254,7 +266,7 @@ void IdleStateController::initializeRobotAngle()
 //-------------------------//
 IdleStateController::IdleStateController(DriveMotor *drive_motor, FanMotor *fan_motor, LineFollowing *line_following, FollowingSensor *following_sensor,
 		VelocityControl *velocity_control, Encoder *encoder, IMU *imu, WheelDial *wheel_dial, sdCard *sd_card, RunningStateController *running_state_controller, InvertedControl *inverted_control) :
-		break_flag_(false), state_(0), parameter_state_(0)
+		break_flag_(false), state_(0), parameter_state_(0), fall_down_flag_(false)
 {
 	drive_motor_ = drive_motor;
 	fan_motor_ = fan_motor;
@@ -458,8 +470,8 @@ void IdleStateController::flip()
 	x4_logger_->storeLogs(dtheta_w);
 	x5_logger_->storeLogs(z);
 
-	if(inverted_control_->fallDown() == false){
-		line_following_->stop();
+	if(inverted_control_->fallDown() == true){
+		fall_down_flag_ = true;
 	}
 
 }
