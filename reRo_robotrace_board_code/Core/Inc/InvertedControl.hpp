@@ -16,6 +16,7 @@
 #include "Logger.hpp"
 
 #define FALL_DOWN_THETA 0.5
+#define INITIAL_ANGLE 0.12
 
 class InvertedControl{
 private:

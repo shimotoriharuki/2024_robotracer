@@ -136,7 +136,9 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	//inverted_left_duty_ = (input_/current_voltage_) * 1000;
 	//inverted_right_duty_ = (input_/current_voltage_) * 1000;
 
-	double k = 175;
+	double k = 160;
+	//double k = 175;
+
 	inverted_left_duty_ = input_ * k;
 	inverted_right_duty_ = input_ * k;
 	//double offset_v = 0.0; //0.5
