@@ -131,7 +131,7 @@ void IdleStateController::parameterAdjustmentMode()
 
 				uint16_t cnt = 0;
 				while(fall_down_flag_ == false){
-					if(cnt >= 5000){
+					if(cnt >= 9900){
 						break;
 					}
 
