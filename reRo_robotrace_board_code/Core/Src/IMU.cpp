@@ -67,7 +67,7 @@ void IMU::updateValues()
 	robot_angle_from_gyro_ += (omega_x_ - offset_x_) * DELTA_T;
 	mon_robot_angle_gyro = robot_angle_from_gyro_;
 
-	if(ya == 0) ya = 1e-3;
+	if(ya == 0) ya = 1e-9;
 	robot_angle_from_acc_ = std::atan2(ya, -za) + M_PI / 2;
 	mon_robot_angle_acc = robot_angle_from_acc_;
 }

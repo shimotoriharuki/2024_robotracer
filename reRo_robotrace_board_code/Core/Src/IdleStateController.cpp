@@ -444,7 +444,7 @@ void IdleStateController::loop()
 
 }
 
-void IdleStateController::debug_flip()
+void IdleStateController::flip()
 {
 	//acc_data_logger_->storeLogs(imu_->getRobotAngleFromAcc());
 	//gyro_data_logger_->storeLogs(imu_->getOmegaX());
@@ -457,6 +457,10 @@ void IdleStateController::debug_flip()
 	x3_logger_->storeLogs(theta_w);
 	x4_logger_->storeLogs(dtheta_w);
 	x5_logger_->storeLogs(z);
+
+	if(inverted_control_->fallDown() == false){
+		line_following_->stop();
+	}
 
 }
 

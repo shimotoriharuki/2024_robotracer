@@ -162,7 +162,7 @@ void cppFlip100ns(void)
 void cppFlip10ms(void)
 {
 	running_state_controller.flip10ms();
-	idle_state_controller.debug_flip();
+	idle_state_controller.flip();
 	//inverted_control.flip();
 }
 
