@@ -130,17 +130,20 @@ void IdleStateController::parameterAdjustmentMode()
 				fall_down_flag_ = false;
 
 				uint16_t cnt = 0;
+				double theta = 0;
 				while(fall_down_flag_ == false){
-					if(cnt >= 9900){
+					if(cnt >= 99900){
 						break;
 					}
 
+					inverted_control_->setTargetOmega(theta);
+
 					HAL_Delay(1);
 					cnt++;
+					theta += PI * 0.001;
 
 				}
 				//while(inverted_control_->fallDown() == false){
-					//inverted_control_->setTargetOmega(10);
 				//}
 				//HAL_Delay(5000);
 				//for(float theta = 0; theta <= 3; theta += 0.5){
