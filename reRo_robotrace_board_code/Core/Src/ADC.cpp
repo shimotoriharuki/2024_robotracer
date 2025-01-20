@@ -16,7 +16,7 @@ ADConverter::ADConverter()
 
 void ADConverter::start()
 {
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, ADC_DATA_SIZE);
+	//HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, ADC_DATA_SIZE);
 }
 
 
