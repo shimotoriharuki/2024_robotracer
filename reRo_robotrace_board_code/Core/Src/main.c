@@ -139,7 +139,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 
 	if (htim->Instance == TIM5) {
-		//HAL_ADC_Start(&hadc1); // ADC変換を開???��?��??��?��? } }
+		//HAL_ADC_Start(&hadc1); // ADC変換を開????��?��??��?��???��?��??��?��? } }
 		//HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, 12);
 	}
 
@@ -149,14 +149,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM5) {
-		//HAL_ADC_Start(&hadc1); // ADC変換を開???��?��??��?��? } }
+		//HAL_ADC_Start(&hadc1); // ADC変換を開????��?��??��?��???��?��??��?��? } }
 		//HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, 4);
 	}
 
 }
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim) {
 	if (htim->Instance == TIM5) {
-		// 比�?マッチ時の割り込みを�?��?
+		// 比�?マッチ時の割り込みを�??��?��?
 		HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, 12);
 	}
 }
@@ -212,7 +212,8 @@ int main(void)
 
 	HAL_TIM_PWM_Start_IT(&htim5, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_1);
-	//__HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, 90);
+	__HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, 4999);
+
 
 
 	//printf("HelloWorld!!\r\n");
@@ -316,7 +317,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 4;
-  hadc1.Init.DMAContinuousRequests = ENABLE;
+  hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
