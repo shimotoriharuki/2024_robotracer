@@ -100,7 +100,7 @@ void InvertedControl::flip()
 		//target_theta_ += 0.2* DELTA_T;
 		//if(abs(target_theta_) >= 2*M_PI) target_theta_ = 0;
 
-		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
+		stateFeedbackControl(estimated_robot_theta_ + 0.1, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
 		mon_theta_p = estimated_robot_theta_;
 		mon_dtheta_p = imu_->getOmegaX();
 		mon_theta_w = encoder_->getTheta();
