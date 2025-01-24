@@ -131,7 +131,7 @@ void IdleStateController::parameterAdjustmentMode()
 
 				uint16_t cnt = 0;
 				double omega= 0;
-				double max_omega = PI/2;
+				double max_omega = PI;
 				while(fall_down_flag_ == false){
 					if(cnt >= 99900){
 						break;
