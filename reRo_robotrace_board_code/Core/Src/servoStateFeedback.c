@@ -22,9 +22,9 @@
  * Return Type  : double
  */
 double servoStateFeedback(const double xb[4], double z, const double f[4],
-                          double k)
+                          double k ,double target_wheel_dtheta)
 {
-  return (((-f[0] * xb[0] + -f[1] * xb[1]) + -f[2] * xb[2]) + -f[3] * xb[3]) + k * z;
+  return (((-f[0] * xb[0] + -f[1] * xb[1]) + -f[2] * xb[2]) + -f[3] * (xb[3] - target_wheel_dtheta)) + k * z;
 }
 
 /*

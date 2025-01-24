@@ -130,30 +130,24 @@ void IdleStateController::parameterAdjustmentMode()
 				fall_down_flag_ = false;
 
 				uint16_t cnt = 0;
-				double theta = 0;
+				double omega= 0;
+				double max_omega = 0;
 				while(fall_down_flag_ == false){
 					if(cnt >= 99900){
 						break;
 					}
 
-					inverted_control_->setTargetOmega(theta);
+					inverted_control_->setTargetOmega(omega);
 
 					HAL_Delay(1);
 					cnt++;
-					theta += PI * 0.001;
+
+					omega += max_omega * 0.001;
+					if(omega >= max_omega){
+						omega = max_omega;
+					}
 
 				}
-				//while(inverted_control_->fallDown() == false){
-				//}
-				//HAL_Delay(5000);
-				//for(float theta = 0; theta <= 3; theta += 0.5){
-				//	inverted_control_->setTargetOmega(theta);
-				//	HAL_Delay(300);
-				//}
-
-				//inverted_control_->setTargetOmega(3.14*2);
-
-				//HAL_Delay(3000);
 
 				line_following_->stop();
 

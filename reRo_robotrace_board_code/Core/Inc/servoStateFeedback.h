@@ -22,7 +22,7 @@ extern "C" {
 
 /* Function Declarations */
 extern double servoStateFeedback(const double xb[4], double z,
-                                 const double f[4], double k);
+                                 const double f[4], double k, double target_wheel_dtheta);
 
 #ifdef __cplusplus
 }
