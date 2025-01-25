@@ -9,7 +9,7 @@
 #define INC_GLOBALDEFINE_H_
 
 
-#define ADC_DATA_SIZE 13
+#define ADC_DATA_SIZE 4
 
 #define DELTA_T 0.001
 #define PI 3.1415926535

@@ -391,13 +391,18 @@ void RunningStateController::init()
 	}
 	else{ //倒立モード
 		line_following_->setInvertedMode();
-		line_following_->setTargetVelocity(min_velocity_);
+		imu_->resetRobotAngleFromGyro();
+		encoder_->clearTheta();
+		line_following_->setInvertedMode();
+		line_following_->setTargetVelocity(0.0);
 		line_following_->start();
 
+		/*
 		inverted_control_->resetEstimatedTheta();
 		encoder_->clearTheta();
 
 		inverted_control_->start();
+		 */
 	}
 
 }

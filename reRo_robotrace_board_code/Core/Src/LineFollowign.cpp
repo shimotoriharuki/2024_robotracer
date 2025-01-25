@@ -35,9 +35,9 @@ float LineFollowing::calcError()
 	*/
 	average_left =  (following_sensor_->sensor[1] * 1.4 + following_sensor_->sensor[0] * 1.0) / 2;
 
-	average_right= (following_sensor_->sensor[3] * 1.4 + following_sensor_->sensor[2] * 1.0) / 6;
+	average_right= (following_sensor_->sensor[3] * 1.4 + following_sensor_->sensor[2] * 1.0) / 2;
 
-	float diff = average_left- average_right;
+	float diff = average_left - average_right;
 	mon_diff = diff;
 
 	return diff;
@@ -168,6 +168,7 @@ void LineFollowing::start()
 		velocity_control_->start();
 
 		velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
+		inverted_control_->setTargetOmega(0);
 	}
 
 }
