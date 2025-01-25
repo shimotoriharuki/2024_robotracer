@@ -26,12 +26,16 @@ float LineFollowing::calcError()
 {
 	float average_left = 0, average_right = 0;
 
+	/*
 	average_left = (following_sensor_->sensor[0] * 3.0 + following_sensor_->sensor[1] * 2.6 + following_sensor_->sensor[2] * 2.2 + following_sensor_->sensor[3] * 1.8
 			+ following_sensor_->sensor[4] * 1.4 + following_sensor_->sensor[5] * 1.0) / 6;
 
 	average_right= (following_sensor_->sensor[6] * 1.0 + following_sensor_->sensor[7] * 1.4 + following_sensor_->sensor[8] * 1.8 + following_sensor_->sensor[9] * 2.2
 			+ following_sensor_->sensor[10] * 2.6 + following_sensor_->sensor[11] * 3.0) / 6;
+	*/
+	average_left =  (following_sensor_->sensor[1] * 1.4 + following_sensor_->sensor[0] * 1.0) / 2;
 
+	average_right= (following_sensor_->sensor[3] * 1.4 + following_sensor_->sensor[2] * 1.0) / 6;
 
 	float diff = average_left- average_right;
 	mon_diff = diff;
@@ -157,11 +161,11 @@ void LineFollowing::start()
 	}
 	else{
 		inverted_control_->resetEstimatedTheta();
-		//inverted_control_->setTargetOmega(target_velocity_);
+		inverted_control_->setTargetOmega(target_velocity_);
 		inverted_control_->start();
 
-		//velocity_control_->disableAngularVelocityPIDControl();
-		//velocity_control_->start();
+		velocity_control_->disableAngularVelocityPIDControl();
+		velocity_control_->start();
 
 		//velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
 	}

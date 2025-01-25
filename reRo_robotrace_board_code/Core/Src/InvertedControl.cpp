@@ -111,9 +111,11 @@ void InvertedControl::flip()
 		mon_target_omega = target_omega_;
 
 
+		/*
 		if(debug_flag_ == true){
 			motor_->setDuty(inverted_left_duty_, inverted_right_duty_);
 		}
+		*/
 	}
 }
 
