@@ -18,6 +18,7 @@ public:
 	uint16_t analog_val_[ADC_DATA_SIZE];
 
 	ADConverter();
+	void init();
 	void start();
 
 };

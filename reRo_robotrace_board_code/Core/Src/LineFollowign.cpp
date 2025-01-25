@@ -157,14 +157,13 @@ void LineFollowing::start()
 	}
 	else{
 		inverted_control_->resetEstimatedTheta();
-		inverted_control_->setTargetOmega(target_velocity_);
+		//inverted_control_->setTargetOmega(target_velocity_);
 		inverted_control_->start();
 
-		velocity_control_->disableAngularVelocityPIDControl();
-		velocity_control_->start();
+		//velocity_control_->disableAngularVelocityPIDControl();
+		//velocity_control_->start();
 
-		velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
-		//TODO: 倒立しながらライントレースするモード処理を確認
+		//velocity_control_->setTargetTranslationVelocityOnly(target_velocity_, rotation_ratio_);
 	}
 
 }

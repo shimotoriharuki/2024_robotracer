@@ -1,2 +1,3 @@
-../Core/Src/ADC.cpp:10:1:ADConverter::ADConverter()	32	static
-../Core/Src/ADC.cpp:17:6:void ADConverter::start()	16	static
+../Core/Src/ADC.cpp:11:1:ADConverter::ADConverter()	32	static
+../Core/Src/ADC.cpp:19:6:void ADConverter::init()	16	static
+../Core/Src/ADC.cpp:27:6:void ADConverter::start()	16	static

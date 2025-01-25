@@ -32,7 +32,7 @@ Core/Src/ADC.o: ../Core/Src/ADC.cpp ../Core/Inc/ADC.hpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Core/Inc/main.h ../Core/Inc/globalDefine.h
+ ../Core/Inc/main.h ../Core/Inc/globalDefine.h ../Core/Inc/main.h
 ../Core/Inc/ADC.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -69,3 +69,4 @@ Core/Src/ADC.o: ../Core/Src/ADC.cpp ../Core/Inc/ADC.hpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Core/Inc/main.h:
 ../Core/Inc/globalDefine.h:
+../Core/Inc/main.h:

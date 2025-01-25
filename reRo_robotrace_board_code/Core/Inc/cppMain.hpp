@@ -22,6 +22,7 @@ void cppFlip1ms(void);
 void cppFlip100ns(void);
 void cppFlip10ms(void);
 void cppLoop(void);
+void cppTimPwmPulseFinished(void);
 
 
 #ifdef __cplusplus

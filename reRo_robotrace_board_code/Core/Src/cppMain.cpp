@@ -57,7 +57,8 @@ void cppInit(void)
 	fan_motor.init();
 
 	//センサー初期化
-	adc.start();
+	//adc.start();
+	adc.init();
 	imu.init();
 	encoder.init();
 
@@ -170,5 +171,11 @@ void cppFlip10ms(void)
 void cppLoop(void)
 {
 	idle_state_controller.loop(); //アイドル状態ループ．走行するときはこのループから抜ける
+
+}
+
+void cppTimPwmPulseFinished()
+{
+	adc.start();
 
 }

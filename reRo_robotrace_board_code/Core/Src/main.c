@@ -150,7 +150,8 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM5) {
 		//HAL_ADC_Start(&hadc1); // ADC変換を開??????��?��??��?��???��?��??��?��????��?��??��?��???��?��??��?��?????��?��??��?��???��?��??��?��????��?��??��?��???��?��??��?��? } }
-		HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, 4);
+		//HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog_val_, 4);
+		cppTimPwmPulseFinished();
 	}
 
 }
@@ -210,10 +211,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	cppInit();
 
+	/*
 	HAL_TIM_PWM_Start_IT(&htim5, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim5, TIM_CHANNEL_1);
 	__HAL_TIM_SET_COMPARE(&htim5, TIM_CHANNEL_1, 8999);
-
+	*/
 
 
 	//printf("HelloWorld!!\r\n");

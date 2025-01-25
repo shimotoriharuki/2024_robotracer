@@ -148,19 +148,6 @@ void IdleStateController::parameterAdjustmentMode()
 					}
 
 				}
-				cnt = 0;
-				while(fall_down_flag_ == false){
-					if(cnt >= 10000){
-						break;
-					}
-
-					inverted_control_->setTargetOmega(0);
-
-					HAL_Delay(1);
-					cnt++;
-
-
-				}
 
 				line_following_->stop();
 
