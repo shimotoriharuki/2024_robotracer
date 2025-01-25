@@ -130,11 +130,11 @@ bool FollowingSensor::isAllSensorBlack()
 		if(s >= 550) out_cnt++;
 	}
 	*/
-	for(uint16_t i = 1; i <= 10; i++){
+	for(uint16_t i = 1; i <= 4; i++){
 		if(sensor[i] >= 900) out_cnt++;
 	}
 
-	if(out_cnt >= 10){
+	if(out_cnt >= 4){
 		cnt++;
 	}
 	else{
