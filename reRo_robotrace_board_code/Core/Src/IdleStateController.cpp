@@ -133,11 +133,11 @@ void IdleStateController::parameterAdjustmentMode()
 				double omega= 0;
 				double max_omega = PI/2;
 				while(fall_down_flag_ == false){
-					if(cnt >= 99900){
+					if(cnt >= 10000){
 						break;
 					}
 
-					inverted_control_->setTargetOmega(omega);
+					inverted_control_->setTargetOmega(0);
 
 					HAL_Delay(1);
 					cnt++;
@@ -146,6 +146,19 @@ void IdleStateController::parameterAdjustmentMode()
 					if(omega >= max_omega){
 						omega = max_omega;
 					}
+
+				}
+				cnt = 0;
+				while(fall_down_flag_ == false){
+					if(cnt >= 10000){
+						break;
+					}
+
+					inverted_control_->setTargetOmega(0);
+
+					HAL_Delay(1);
+					cnt++;
+
 
 				}
 
