@@ -373,14 +373,16 @@ void IdleStateController::loop()
 				HAL_Delay(500);
 
 				//1走目
-				running_state_controller_->resetInvertedMode();//寝そべりモード
+				initializeRobotAngle();
+
+				running_state_controller_->setInvertedMode();//倒立モード
 				running_state_controller_->setRunMode(1);
-				running_state_controller_->setMinVelocity(0.5);
+				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
 				running_state_controller_->loop(); //走行状態ループ．
 
 				//2走目
-				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setInvertedMode();//倒立モード
 				running_state_controller_->setRunMode(2);
 				running_state_controller_->setMinVelocity(0.5);
 				running_state_controller_->setMaxVelocity(0.7);
@@ -390,8 +392,18 @@ void IdleStateController::loop()
 				running_state_controller_->loop(); //走行状態ループ．
 
 				//3走目
-				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setInvertedMode();//倒立モード
 				running_state_controller_->setRunMode(3);
+				running_state_controller_->setMinVelocity(0.5);
+				running_state_controller_->setMaxVelocity(0.7);
+				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
+				running_state_controller_->setStraightRadius(1000);
+
+				running_state_controller_->loop(); //走行状態ループ．
+
+				//4走目
+				running_state_controller_->setInvertedMode();//寝そべりモード
+				running_state_controller_->setRunMode(4);
 				running_state_controller_->setMinVelocity(0.5);
 				running_state_controller_->setMaxVelocity(0.8);
 				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
@@ -399,21 +411,11 @@ void IdleStateController::loop()
 
 				running_state_controller_->loop(); //走行状態ループ．
 
-				//4走目
-				running_state_controller_->resetInvertedMode();//寝そべりモード
-				running_state_controller_->setRunMode(4);
-				running_state_controller_->setMinVelocity(0.6);
-				running_state_controller_->setMaxVelocity(0.9);
-				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
-				running_state_controller_->setStraightRadius(1000);
-
-				running_state_controller_->loop(); //走行状態ループ．
-
 				//5走目
-				running_state_controller_->resetInvertedMode();//寝そべりモード
+				running_state_controller_->setInvertedMode();//寝そべりモード
 				running_state_controller_->setRunMode(5);
 				running_state_controller_->setMinVelocity(0.6);
-				running_state_controller_->setMaxVelocity(1.0);
+				running_state_controller_->setMaxVelocity(0.9);
 				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
 				running_state_controller_->setStraightRadius(1000);
 
