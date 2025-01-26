@@ -22,6 +22,7 @@ private:
 	float rotation_ratio_;
 	bool processing_flag_;
 	bool inverted_mode_flag_;
+	bool cross_line_ignore_flag_;
 
 
 	FollowingSensor *following_sensor_;
@@ -46,6 +47,9 @@ public:
 	void start();
 	void stop();
 	void emergencyStop();
+
+	void enableCrossLineIgnore();
+	void disableCrossLineIgnore();
 };
 
 

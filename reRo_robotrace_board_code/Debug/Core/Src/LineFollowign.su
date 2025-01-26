@@ -4,10 +4,12 @@
 ../Core/Src/LineFollowign.cpp:52:7:float LineFollowing::getTargetVelocity()	16	static
 ../Core/Src/LineFollowign.cpp:57:6:void LineFollowing::pid()	40	static
 ../Core/Src/LineFollowign.cpp:84:6:void LineFollowing::pidWithInvertedControl()	64	static
-../Core/Src/LineFollowign.cpp:124:6:void LineFollowing::flip()	16	static
-../Core/Src/LineFollowign.cpp:135:6:void LineFollowing::setInvertedMode()	16	static
-../Core/Src/LineFollowign.cpp:140:6:void LineFollowing::resetInvertedMode()	16	static
-../Core/Src/LineFollowign.cpp:145:6:void LineFollowing::setGain(float, float, float)	24	static
-../Core/Src/LineFollowign.cpp:152:6:void LineFollowing::start()	24	static
-../Core/Src/LineFollowign.cpp:176:6:void LineFollowing::stop()	16	static
-../Core/Src/LineFollowign.cpp:191:6:void LineFollowing::emergencyStop()	16	static
+../Core/Src/LineFollowign.cpp:129:6:void LineFollowing::flip()	16	static
+../Core/Src/LineFollowign.cpp:140:6:void LineFollowing::setInvertedMode()	16	static
+../Core/Src/LineFollowign.cpp:145:6:void LineFollowing::resetInvertedMode()	16	static
+../Core/Src/LineFollowign.cpp:150:6:void LineFollowing::setGain(float, float, float)	24	static
+../Core/Src/LineFollowign.cpp:157:6:void LineFollowing::start()	24	static
+../Core/Src/LineFollowign.cpp:181:6:void LineFollowing::stop()	16	static
+../Core/Src/LineFollowign.cpp:196:6:void LineFollowing::emergencyStop()	16	static
+../Core/Src/LineFollowign.cpp:210:6:void LineFollowing::enableCrossLineIgnore()	16	static
+../Core/Src/LineFollowign.cpp:216:6:void LineFollowing::disableCrossLineIgnore()	16	static

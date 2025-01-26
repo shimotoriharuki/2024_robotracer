@@ -46,16 +46,16 @@ RunningStateController::RunningStateController(DriveMotor *drive_motor, FanMotor
 
 	searching_run_logger_distance_ = new Logger(sd_card_, COURSE_STORAGE_SIZE);
 	searching_run_logger_theta_ = new Logger(sd_card_, COURSE_STORAGE_SIZE);
-	searching_run_logger_side_= new Logger(sd_card_, 100);
-	searching_run_logger_cross_= new Logger(sd_card_, 100);
+	searching_run_logger_side_= new Logger(sd_card_, 100); //100
+	searching_run_logger_cross_= new Logger(sd_card_, 100); //100
 
 	acc_dec_run_logger_distance_ = new Logger(sd_card_, COURSE_STORAGE_SIZE);
 	acc_dec_run_logger_theta_ = new Logger(sd_card_, COURSE_STORAGE_SIZE);
-	acc_dec_run_logger_side_= new Logger(sd_card_, 100);
-	acc_dec_run_logger_cross_= new Logger(sd_card_, 100);
+	acc_dec_run_logger_side_= new Logger(sd_card_, 100); //100
+	acc_dec_run_logger_cross_= new Logger(sd_card_, 100); //100
 
-	current_velocity_logger_ = new Logger(sd_card_, 1500);
-	target_velocity_logger_ = new Logger(sd_card_, 1500);
+	current_velocity_logger_ = new Logger(sd_card_, 1500); //1500
+	target_velocity_logger_ = new Logger(sd_card_, 1500); //1500
 
 	push_switch_ = new Switch(GPIOA, GPIO_PIN_12);
 
@@ -225,7 +225,7 @@ int8_t RunningStateController::loop()
 		case 30: //後始末
 			running_flag_ = false;
 
-			saveLog();
+			//saveLog();
 
 			if(emergerncy_flag == true){
 				while(push_switch_->getStatus() == false){
@@ -298,10 +298,13 @@ void RunningStateController::flip()
 				correctionTotalDistanceFromCrossLine();
 				acc_dec_run_logger_cross_->storeLogs(encoder_->getTotalDistance());
 			}
+
+			line_following_->enableCrossLineIgnore();
 		}
 		else if(cross_line_ignore_flag_ == true && encoder_->getCrossLineJudgeDistance() >= 100){ //クロスライン読んでから一定距離立ったらフラグを下げる
 			cross_line_ignore_flag_ = false;
 			side_line_ignore_flag_ = false;
+			line_following_->disableCrossLineIgnore();
 		}
 
 		//--- Side marker Process---//

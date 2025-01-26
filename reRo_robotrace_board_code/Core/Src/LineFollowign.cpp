@@ -114,7 +114,12 @@ void LineFollowing::pidWithInvertedControl()
 		mon_translation_duty = translation_ratio;
 
 		//drive_motor_->setDuty(inverted_duty, inverted_duty);
-		drive_motor_->setDuty(inverted_duty + rotation_ratio_, inverted_duty - rotation_ratio_);
+		if(cross_line_ignore_flag_ == false){
+			drive_motor_->setDuty(inverted_duty + rotation_ratio_, inverted_duty - rotation_ratio_);
+		}
+		else{
+			drive_motor_->setDuty(inverted_duty, inverted_duty);
+		}
 		//drive_motor_->setDuty(inverted_duty - translation_ratio, inverted_duty - translation_ratio);
 
 		pre_diff = diff;
@@ -200,4 +205,15 @@ void LineFollowing::emergencyStop()
 	//HAL_Delay(1000);
 
 
+}
+
+void LineFollowing::enableCrossLineIgnore()
+{
+	cross_line_ignore_flag_ = true;
+
+}
+
+void LineFollowing::disableCrossLineIgnore()
+{
+	cross_line_ignore_flag_ = false;
 }
