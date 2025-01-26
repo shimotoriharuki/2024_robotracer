@@ -72,7 +72,7 @@ void IdleStateController::parameterAdjustmentMode()
 
 				initializeRobotAngle();
 
-				imu_->resetRobotAngleFromGyro();
+				//imu_->resetRobotAngleFromGyro();
 				inverted_control_->resetEstimatedTheta();
 				encoder_->clearTheta();
 				inverted_control_->setTargetOmega(1);
@@ -114,7 +114,7 @@ void IdleStateController::parameterAdjustmentMode()
 				initializeRobotAngle();
 
 				line_following_->setInvertedMode();
-				imu_->resetRobotAngleFromGyro();
+				//imu_->resetRobotAngleFromGyro();
 				encoder_->clearTheta();
 				line_following_->setInvertedMode();
 				line_following_->setTargetVelocity(0.0);
@@ -372,6 +372,8 @@ void IdleStateController::loop()
 			if(push_switch_->getStatus() == true){
 				HAL_Delay(500);
 
+				int8_t ret = 0;
+
 				//1走目
 				initializeRobotAngle();
 
@@ -379,7 +381,8 @@ void IdleStateController::loop()
 				running_state_controller_->setRunMode(1);
 				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
-				running_state_controller_->loop(); //走行状態ループ．
+				ret = running_state_controller_->loop(); //走行状態ループ．
+				if(ret != 0) return; //正常終了じゃなかったらreturn
 
 				//2走目
 				running_state_controller_->setInvertedMode();//倒立モード
@@ -389,7 +392,8 @@ void IdleStateController::loop()
 				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
 				running_state_controller_->setStraightRadius(1000);
 
-				running_state_controller_->loop(); //走行状態ループ．
+				ret = running_state_controller_->loop(); //走行状態ループ．
+				if(ret != 0) return; //正常終了じゃなかったらreturn
 
 				//3走目
 				running_state_controller_->setInvertedMode();//倒立モード
@@ -399,7 +403,8 @@ void IdleStateController::loop()
 				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
 				running_state_controller_->setStraightRadius(1000);
 
-				running_state_controller_->loop(); //走行状態ループ．
+				ret = running_state_controller_->loop(); //走行状態ループ．
+				if(ret != 0) return; //正常終了じゃなかったらreturn
 
 				//4走目
 				running_state_controller_->setInvertedMode();//寝そべりモード
@@ -409,7 +414,8 @@ void IdleStateController::loop()
 				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
 				running_state_controller_->setStraightRadius(1000);
 
-				running_state_controller_->loop(); //走行状態ループ．
+				ret = running_state_controller_->loop(); //走行状態ループ．
+				if(ret != 0) return; //正常終了じゃなかったらreturn
 
 				//5走目
 				running_state_controller_->setInvertedMode();//寝そべりモード
@@ -419,7 +425,8 @@ void IdleStateController::loop()
 				running_state_controller_->setAccDec(1.0, 0.5); //8.0, 8.0
 				running_state_controller_->setStraightRadius(1000);
 
-				running_state_controller_->loop(); //走行状態ループ．
+				ret = running_state_controller_->loop(); //走行状態ループ．
+				if(ret != 0) return; //正常終了じゃなかったらreturn
 			}
 			break;
 

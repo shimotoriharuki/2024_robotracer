@@ -8,28 +8,28 @@ c:\st\stm32cubeide_1.11.2\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.external
 ../Core/Src/RunningStateController.cpp:130:6:void RunningStateController::setInvertedMode()	16	static
 ../Core/Src/RunningStateController.cpp:135:6:void RunningStateController::resetInvertedMode()	16	static
 ../Core/Src/RunningStateController.cpp:140:6:bool RunningStateController::isTargetDistance(float)	24	static
-../Core/Src/RunningStateController.cpp:149:6:void RunningStateController::loop()	24	static
-../Core/Src/RunningStateController.cpp:265:6:void RunningStateController::flip()	24	static
-../Core/Src/RunningStateController.cpp:359:6:void RunningStateController::flip10ms()	24	static
-../Core/Src/RunningStateController.cpp:367:6:void RunningStateController::init()	16	static
-../Core/Src/RunningStateController.cpp:410:6:void RunningStateController::storeLog()	24	static
-../Core/Src/RunningStateController.cpp:435:6:void RunningStateController::startLogging()	16	static
-../Core/Src/RunningStateController.cpp:472:6:void RunningStateController::stopLogging()	16	static
-../Core/Src/RunningStateController.cpp:493:6:void RunningStateController::saveLog()	16	static
-../Core/Src/RunningStateController.cpp:542:6:void RunningStateController::startVelocityUpdate()	16	static
-../Core/Src/RunningStateController.cpp:553:6:void RunningStateController::stopVelocityUpdate()	16	static
-../Core/Src/RunningStateController.cpp:558:6:void RunningStateController::createVelocityTable()	72	static
-../Core/Src/RunningStateController.cpp:605:7:float RunningStateController::radius2Velocity(float)	32	static
-../Core/Src/RunningStateController.cpp:682:6:void RunningStateController::decelerateProcessing(float, const float*)	48	static
-../Core/Src/RunningStateController.cpp:697:6:void RunningStateController::accelerateProcessing(float, const float*)	48	static
-../Core/Src/RunningStateController.cpp:712:6:void RunningStateController::addDecelerationDistanceMergin(float*, int16_t)	40	static
-../Core/Src/RunningStateController.cpp:735:6:void RunningStateController::addAccelerationDistanceMergin(float*, int16_t)	40	static
-../Core/Src/RunningStateController.cpp:758:6:void RunningStateController::shiftVelocityTable(float*, int16_t)	32	static
-../Core/Src/RunningStateController.cpp:771:6:void RunningStateController::updateTargetVelocity()	24	static
-../Core/Src/RunningStateController.cpp:807:6:void RunningStateController::correctionTotalDistanceFromCrossLine()	32	static
-../Core/Src/RunningStateController.cpp:827:6:void RunningStateController::correctionTotalDistanceFromSideLine()	32	static
-../Core/Src/RunningStateController.cpp:848:6:void RunningStateController::setMaxVelocity(float)	16	static
-../Core/Src/RunningStateController.cpp:853:6:void RunningStateController::setMinVelocity(float)	16	static
-../Core/Src/RunningStateController.cpp:857:6:void RunningStateController::setAccDec(float, float)	24	static
-../Core/Src/RunningStateController.cpp:863:6:void RunningStateController::setStraightRadius(float)	16	static
-../Core/Src/RunningStateController.cpp:868:6:void RunningStateController::loadSearchinRunLog()	16	static
+../Core/Src/RunningStateController.cpp:149:8:int8_t RunningStateController::loop()	24	static
+../Core/Src/RunningStateController.cpp:269:6:void RunningStateController::flip()	24	static
+../Core/Src/RunningStateController.cpp:363:6:void RunningStateController::flip10ms()	24	static
+../Core/Src/RunningStateController.cpp:371:6:void RunningStateController::init()	16	static
+../Core/Src/RunningStateController.cpp:414:6:void RunningStateController::storeLog()	24	static
+../Core/Src/RunningStateController.cpp:439:6:void RunningStateController::startLogging()	16	static
+../Core/Src/RunningStateController.cpp:476:6:void RunningStateController::stopLogging()	16	static
+../Core/Src/RunningStateController.cpp:497:6:void RunningStateController::saveLog()	16	static
+../Core/Src/RunningStateController.cpp:546:6:void RunningStateController::startVelocityUpdate()	16	static
+../Core/Src/RunningStateController.cpp:557:6:void RunningStateController::stopVelocityUpdate()	16	static
+../Core/Src/RunningStateController.cpp:562:6:void RunningStateController::createVelocityTable()	72	static
+../Core/Src/RunningStateController.cpp:609:7:float RunningStateController::radius2Velocity(float)	32	static
+../Core/Src/RunningStateController.cpp:686:6:void RunningStateController::decelerateProcessing(float, const float*)	48	static
+../Core/Src/RunningStateController.cpp:701:6:void RunningStateController::accelerateProcessing(float, const float*)	48	static
+../Core/Src/RunningStateController.cpp:716:6:void RunningStateController::addDecelerationDistanceMergin(float*, int16_t)	40	static
+../Core/Src/RunningStateController.cpp:739:6:void RunningStateController::addAccelerationDistanceMergin(float*, int16_t)	40	static
+../Core/Src/RunningStateController.cpp:762:6:void RunningStateController::shiftVelocityTable(float*, int16_t)	32	static
+../Core/Src/RunningStateController.cpp:775:6:void RunningStateController::updateTargetVelocity()	24	static
+../Core/Src/RunningStateController.cpp:811:6:void RunningStateController::correctionTotalDistanceFromCrossLine()	32	static
+../Core/Src/RunningStateController.cpp:831:6:void RunningStateController::correctionTotalDistanceFromSideLine()	32	static
+../Core/Src/RunningStateController.cpp:852:6:void RunningStateController::setMaxVelocity(float)	16	static
+../Core/Src/RunningStateController.cpp:857:6:void RunningStateController::setMinVelocity(float)	16	static
+../Core/Src/RunningStateController.cpp:861:6:void RunningStateController::setAccDec(float, float)	24	static
+../Core/Src/RunningStateController.cpp:867:6:void RunningStateController::setStraightRadius(float)	16	static
+../Core/Src/RunningStateController.cpp:872:6:void RunningStateController::loadSearchinRunLog()	16	static

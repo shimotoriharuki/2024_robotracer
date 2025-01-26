@@ -146,9 +146,10 @@ bool RunningStateController::isTargetDistance(float target)
 	return ret;
 }
 
-void RunningStateController::loop()
+int8_t RunningStateController::loop()
 {
 	break_flag_ = false; //もう一度この関数に戻ってきたとき用にfalseにする
+	int8_t ret = 0;
 
 	//走行開始直前の初期化
 	init();
@@ -233,10 +234,12 @@ void RunningStateController::loop()
 					led_.set(0x00);
 					HAL_Delay(100);
 				}
+				ret = 0; //正常終了
 				HAL_Delay(1000);
 			}
 			else{
 				led_.set(0x07);
+				ret = 1;
 				HAL_Delay(1000);
 			}
 
@@ -249,7 +252,6 @@ void RunningStateController::loop()
 
 		//緊急停止処理
 		if(following_sensor_->isAllSensorBlack() == true || inverted_control_->fallDown() == true){
-		//if(inverted_control_->fallDown() == true){
 			stopLogging();
 
 			inverted_control_->stop();
@@ -259,9 +261,11 @@ void RunningStateController::loop()
 			pattern = 30;
 		}
 
-
 	}
+
+	return ret;
 }
+
 void RunningStateController::flip()
 {
 	if(running_flag_ == true){
@@ -391,7 +395,7 @@ void RunningStateController::init()
 	}
 	else{ //倒立モード
 		line_following_->setInvertedMode();
-		imu_->resetRobotAngleFromGyro();
+		//imu_->resetRobotAngleFromGyro();
 		encoder_->clearTheta();
 		line_following_->setInvertedMode();
 		line_following_->setTargetVelocity(0.0);

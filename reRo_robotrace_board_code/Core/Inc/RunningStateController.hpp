@@ -104,7 +104,7 @@ public:
 	void resetInvertedMode();
 	bool isTargetDistance(float);
 
-	void loop();
+	int8_t loop();
 	void flip();
 	void flip10ms();
 	void init();
