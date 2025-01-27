@@ -98,10 +98,6 @@ void InvertedControl::flip()
 
 		pre_theta_ = estimated_robot_theta_;
 
-		//target_theta_ += target_omega_ * DELTA_T; //targert_omegaが変わってない
-		//target_theta_ += 0.2* DELTA_T;
-		//if(abs(target_theta_) >= 2*M_PI) target_theta_ = 0;
-
 		stateFeedbackControl(estimated_robot_theta_, imu_->getOmegaX(), encoder_->getTheta(), encoder_->getDTheta(), target_theta_);
 		mon_theta_p = estimated_robot_theta_;
 		mon_dtheta_p = imu_->getOmegaX();
@@ -128,26 +124,10 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	z_ = z_ + dz * DELTA_T;
 	mon_z = z_;
 
-	//pre_input_ = input_;
-	//pre_target_theta_ = target_theta_;
-	//for(uint8_t i = 0; i < 4; i++){
-	//	pre_xb_[i] = xb_[i];
-	//}
-	//pre_z_ = z_;
-
-	//inverted_left_duty_ = (input_/current_voltage_) * 1000;
-	//inverted_right_duty_ = (input_/current_voltage_) * 1000;
-
-	//double k = 160;
 	double k = 175;
 
 	inverted_left_duty_ = input_ * k;
 	inverted_right_duty_ = input_ * k;
-	//double offset_v = 0.0; //0.5
-	//if(inverted_left_duty_ > 0) inverted_left_duty_ += (offset_v / current_voltage_) * 1000;
-	//else if(inverted_left_duty_ < 0) inverted_left_duty_ -= (offset_v / current_voltage_) * 1000;
-	//if(inverted_right_duty_ > 0) inverted_right_duty_ += (offset_v / current_voltage_) * 1000;
-	//else if(inverted_right_duty_ < 0) inverted_right_duty_ -= (offset_v / current_voltage_) * 1000;
 
 	mon_input = input_;
 	mon_inverted_left_duty = inverted_left_duty_;
@@ -191,8 +171,6 @@ void InvertedControl::resetEstimatedTheta()
 void InvertedControl::setTargetOmega(double target_omega)
 {
 	target_omega_ = target_omega;
-	//target_theta_ += target_omega * DELTA_T;
-	//target_theta_ = target_omega;
 }
 
 
