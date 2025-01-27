@@ -28,6 +28,16 @@
 
 #define SUCTION_DUTY 1000 //700
 
+#define F1_RUN -24.521
+#define F2_RUN -1.9125
+#define F3_RUN -0.0000
+#define F4_RUN -0.0871
+
+#define F1_STOP -219.1902
+#define F2_STOP -0.0
+#define F3_STOP -3.0
+#define F4_STOP -0.0
+
 
 
 #endif /* INC_GLOBALDEFINE_H_ */
