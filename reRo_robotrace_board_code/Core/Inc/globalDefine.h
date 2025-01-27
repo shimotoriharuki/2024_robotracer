@@ -33,10 +33,10 @@
 #define F3_RUN -0.0000
 #define F4_RUN -0.0871
 
-#define F1_STOP -350.0
-#define F2_STOP -0.0
-#define F3_STOP -10
-#define F4_STOP -0.0
+#define F1_STOP -36.4462
+#define F2_STOP -3.6192
+#define F3_STOP -0.1414
+#define F4_STOP -0.2448
 
 
 
