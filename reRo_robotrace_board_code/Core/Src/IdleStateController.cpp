@@ -132,6 +132,26 @@ void IdleStateController::parameterAdjustmentMode()
 				uint16_t cnt = 0;
 				double omega= 0;
 				double max_omega = PI/2;
+				inverted_control_->setRunFeedbackGain();
+				while(fall_down_flag_ == false){
+					if(cnt >= 2000){
+						break;
+					}
+
+					inverted_control_->setTargetOmega(0);
+
+					HAL_Delay(1);
+					cnt++;
+
+					omega += max_omega * 0.001;
+					if(omega >= max_omega){
+						omega = max_omega;
+					}
+
+				}
+
+				cnt = 0;
+				inverted_control_->setStopFeedbackGain();
 				while(fall_down_flag_ == false){
 					if(cnt >= 10000){
 						break;

@@ -33,6 +33,7 @@ public:
 	float getOmegaX();
 	float getOmegaY();
 	float getOmegaZ();
+	void resetOmegaX();
 	void calibration();
 
 	float getOffsetVal();

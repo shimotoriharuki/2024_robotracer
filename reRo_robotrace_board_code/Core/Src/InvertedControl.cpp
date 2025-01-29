@@ -212,3 +212,39 @@ void InvertedControl::getStateVariables(double *theta_p, double *dtheta_p, doubl
 	*dtheta_w = encoder_->getDTheta();
 	*z= z_;
 }
+
+void InvertedControl::setRunFeedbackGain()
+{
+	resetAllState();
+	f_[0] = F1_RUN;
+	f_[1] = F2_RUN;
+	f_[2] = F3_RUN;
+	f_[3] = F4_RUN;
+}
+
+void InvertedControl::setStopFeedbackGain()
+{
+	resetAllState();
+	f_[0] = F1_STOP;
+	f_[1] = F2_STOP;
+	f_[2] = F3_STOP;
+	f_[3] = F4_STOP;
+}
+
+
+void InvertedControl::resetAllState()
+{
+	estimated_robot_theta_ = 0;
+	imu_->resetOmegaX();
+	encoder_->clearTheta();
+	encoder_->clearDTheta();
+
+	for(uint8_t i = 0; i < 4; i++){
+		pre_P_[i] = 0;
+	}
+
+	pre_theta_ = 0;
+	z_ = 0;
+
+
+}

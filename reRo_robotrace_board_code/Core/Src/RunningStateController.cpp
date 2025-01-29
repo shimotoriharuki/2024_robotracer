@@ -213,7 +213,9 @@ int8_t RunningStateController::loop()
 
 		case 20:
 			if(encoder_->getGoalAreaDistance() >= 100){
-				line_following_->stop(); //ゴールエリアで止まる処理
+				//line_following_->stop(); //ゴールエリアで止まる処理 オートスタートだからコメントアウト
+				inverted_control_->setStopFeedbackGain();
+
 				fan_motor_->setDuty(0);
 				emergerncy_flag = false;
 
@@ -234,13 +236,13 @@ int8_t RunningStateController::loop()
 					led_.set(0x00);
 					HAL_Delay(100);
 				}
-				ret = 0; //正常終了
+				ret = 1;
 				HAL_Delay(1000);
 			}
 			else{
 				led_.set(0x07);
-				ret = 1;
-				HAL_Delay(1000);
+				ret = 0; //正常終了
+				HAL_Delay(3000);
 			}
 
 
@@ -402,6 +404,7 @@ void RunningStateController::init()
 		encoder_->clearTheta();
 		line_following_->setInvertedMode();
 		line_following_->setTargetVelocity(0.0);
+		inverted_control_->setRunFeedbackGain();
 		line_following_->start();
 
 		/*

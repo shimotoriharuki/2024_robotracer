@@ -93,6 +93,9 @@ public:
 	void resetDebugMode();
 
 	void getStateVariables(double *, double *, double *, double *, double *);
+	void setRunFeedbackGain();
+	void setStopFeedbackGain();
+	void resetAllState();
 
 };
 

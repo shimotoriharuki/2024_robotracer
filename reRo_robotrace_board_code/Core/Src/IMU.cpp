@@ -87,6 +87,11 @@ float IMU::getOmegaZ()
 	return omega_z_;
 }
 
+void IMU::resetOmegaX()
+{
+	omega_x_ = 0;
+}
+
 void IMU::calibration()
 {
 	int16_t num = 2000;
