@@ -13,7 +13,7 @@ float mon_translation_duty;
 
 LineFollowing::LineFollowing(VelocityControl *velocity_control, FollowingSensor *following_sensor, InvertedControl *inverted_control, DriveMotor *drive_motor) :
 		i_reset_flag_(false), kp_(0), ki_(0), kd_(0), target_velocity_(0),
-		processing_flag_(false), inverted_mode_flag_(false)
+		processing_flag_(false), inverted_mode_flag_(false), cross_line_ignore_flag_(false)
 {
 	velocity_control_ = velocity_control;
 	following_sensor_ = following_sensor;
@@ -119,7 +119,7 @@ void LineFollowing::pidWithInvertedControl()
 			//drive_motor_->setDuty(inverted_duty, inverted_duty);
 		}
 		else{
-			//drive_motor_->setDuty(inverted_duty, inverted_duty);
+			drive_motor_->setDuty(inverted_duty + 0, inverted_duty - 0);
 		}
 		//drive_motor_->setDuty(inverted_duty - translation_ratio, inverted_duty - translation_ratio);
 
