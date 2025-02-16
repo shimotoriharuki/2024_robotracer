@@ -340,6 +340,7 @@ void IdleStateController::loop()
 				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
 				running_state_controller_->loop(); //走行状態ループ．
+				inverted_control_->stop();
 			}
 			break;
 

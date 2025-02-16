@@ -36,7 +36,7 @@
 #define F1_STOP -20.0
 #define F2_STOP -2.5
 #define F3_STOP -0.10
-#define F4_STOP -0.15
+#define F4_STOP -0.25
 //#define F1_STOP -30.0
 //#define F2_STOP -3.5
 //#define F3_STOP -0.10
