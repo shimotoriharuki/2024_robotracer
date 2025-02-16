@@ -75,8 +75,8 @@ bool RunningStateController::isCrossLine()
 	static uint16_t cnt = 0;
 	//float sensor_edge_val_l = (sensor[0] + sensor[1]) / 2;
 	//float sensor_edge_val_r = (sensor[10] + sensor[11]) / 2;
-	float sensor_edge_val_l = (following_sensor_->sensor[2] + following_sensor_->sensor[3]) / 2;
-	float sensor_edge_val_r = (following_sensor_->sensor[9] + following_sensor_->sensor[10]) / 2;
+	float sensor_edge_val_l = (following_sensor_->sensor[0] + following_sensor_->sensor[1]) / 2;
+	float sensor_edge_val_r = (following_sensor_->sensor[2] + following_sensor_->sensor[3]) / 2;
 	static bool flag = false;
 
 	if(sensor_edge_val_l < 700 && sensor_edge_val_r < 700){
