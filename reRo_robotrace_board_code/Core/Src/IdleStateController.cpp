@@ -340,7 +340,7 @@ void IdleStateController::loop()
 				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
 				running_state_controller_->loop(); //走行状態ループ．
-				inverted_control_->stop();
+				line_following_->stop();
 			}
 			break;
 
@@ -355,6 +355,7 @@ void IdleStateController::loop()
 				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
 				running_state_controller_->loop(); //走行状態ループ．
+				line_following_->stop();
 			}
 			break;
 
@@ -369,6 +370,7 @@ void IdleStateController::loop()
 				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
 				running_state_controller_->loop(); //走行状態ループ．
+				line_following_->stop();
 			}
 			break;
 
@@ -383,6 +385,7 @@ void IdleStateController::loop()
 				running_state_controller_->setMinVelocity(0.5); //0.6:OK, 0.7:OK, 0.8:NG
 
 				running_state_controller_->loop(); //走行状態ループ．
+				line_following_->stop();
 			}
 			break;
 
@@ -445,6 +448,7 @@ void IdleStateController::loop()
 
 				ret = running_state_controller_->loop(); //走行状態ループ．
 				//if(ret != 0) return; //正常終了じゃなかったらreturn
+				line_following_->stop();
 			}
 			break;
 
