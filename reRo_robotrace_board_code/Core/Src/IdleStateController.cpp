@@ -449,6 +449,7 @@ void IdleStateController::loop()
 				ret = running_state_controller_->loop(); //走行状態ループ．
 				//if(ret != 0) return; //正常終了じゃなかったらreturn
 				line_following_->stop();
+
 			}
 			break;
 
