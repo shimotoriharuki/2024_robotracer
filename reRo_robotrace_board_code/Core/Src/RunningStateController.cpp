@@ -242,7 +242,7 @@ int8_t RunningStateController::loop()
 			else{
 				led_.set(0x07);
 				ret = 0; //正常終了
-				HAL_Delay(3000); // しばらく待つ
+				HAL_Delay(4500); // しばらく待つ
 			}
 
 

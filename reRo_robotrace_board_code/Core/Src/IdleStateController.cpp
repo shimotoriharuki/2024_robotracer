@@ -134,7 +134,7 @@ void IdleStateController::parameterAdjustmentMode()
 				double max_omega = PI/2;
 				inverted_control_->setRunFeedbackGain();
 				while(fall_down_flag_ == false){
-					if(cnt >= 2000){
+					if(cnt >= 1000){
 						break;
 					}
 
