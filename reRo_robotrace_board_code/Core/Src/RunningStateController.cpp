@@ -303,7 +303,7 @@ void RunningStateController::flip()
 
 			line_following_->enableCrossLineIgnore();
 		}
-		else if(cross_line_ignore_flag_ == true && encoder_->getCrossLineJudgeDistance() >= 100){ //クロスライン読んでから一定距離立ったらフラグを下げる
+		else if(cross_line_ignore_flag_ == true && encoder_->getCrossLineJudgeDistance() >= 30){ //クロスライン読んでから一定距離立ったらフラグを下げる
 			cross_line_ignore_flag_ = false;
 			side_line_ignore_flag_ = false;
 			line_following_->disableCrossLineIgnore();
