@@ -424,7 +424,7 @@ void IdleStateController::loop()
 				//if(ret != 0) return; //正常終了じゃなかったらreturn
 
 				//4走目
-				running_state_controller_->setInvertedMode();//寝そべりモード
+				running_state_controller_->setInvertedMode();//倒立モード
 				running_state_controller_->setRunMode(4);
 				running_state_controller_->setMinVelocity(0.5);
 				running_state_controller_->setMaxVelocity(0.8);
@@ -435,7 +435,7 @@ void IdleStateController::loop()
 				//if(ret != 0) return; //正常終了じゃなかったらreturn
 
 				//5走目
-				running_state_controller_->setInvertedMode();//寝そべりモード
+				running_state_controller_->setInvertedMode();//倒立モード
 				running_state_controller_->setRunMode(5);
 				running_state_controller_->setMinVelocity(0.6);
 				running_state_controller_->setMaxVelocity(0.9);

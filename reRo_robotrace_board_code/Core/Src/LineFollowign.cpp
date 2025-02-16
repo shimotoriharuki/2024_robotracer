@@ -115,11 +115,11 @@ void LineFollowing::pidWithInvertedControl()
 
 		//drive_motor_->setDuty(inverted_duty, inverted_duty);
 		if(cross_line_ignore_flag_ == false){
-	//		drive_motor_->setDuty(inverted_duty + rotation_ratio_, inverted_duty - rotation_ratio_);
-			drive_motor_->setDuty(inverted_duty, inverted_duty);
+			drive_motor_->setDuty(inverted_duty + rotation_ratio_, inverted_duty - rotation_ratio_);
+			//drive_motor_->setDuty(inverted_duty, inverted_duty);
 		}
 		else{
-			drive_motor_->setDuty(inverted_duty, inverted_duty);
+			//drive_motor_->setDuty(inverted_duty, inverted_duty);
 		}
 		//drive_motor_->setDuty(inverted_duty - translation_ratio, inverted_duty - translation_ratio);
 
