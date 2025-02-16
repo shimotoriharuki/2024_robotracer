@@ -124,7 +124,7 @@ void InvertedControl::stateFeedbackControl(double theta_p, double dtheta_p, doub
 	z_ = z_ + dz * DELTA_T;
 	mon_z = z_;
 
-	double k = 162;
+	double k = 162; //162: 8.4v
 
 	inverted_left_duty_ = input_ * k;
 	inverted_right_duty_ = input_ * k;
