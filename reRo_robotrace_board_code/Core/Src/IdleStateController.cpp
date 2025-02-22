@@ -77,12 +77,13 @@ void IdleStateController::parameterAdjustmentMode()
 				encoder_->clearTheta();
 				inverted_control_->setTargetOmega(1);
 				inverted_control_->setDebugMode();
+				inverted_control_->setStopFeedbackGain();
 
-				x1_logger_->start();
-				x2_logger_->start();
-				x3_logger_->start();
-				x4_logger_->start();
-				x5_logger_->start();
+				//x1_logger_->start();
+				//x2_logger_->start();
+				//x3_logger_->start();
+				//x4_logger_->start();
+				//x5_logger_->start();
 
 				inverted_control_->start();
 
@@ -92,17 +93,17 @@ void IdleStateController::parameterAdjustmentMode()
 				inverted_control_->stop();
 				inverted_control_->resetDebugMode();
 
-				x1_logger_->stop();
-				x2_logger_->stop();
-				x3_logger_->stop();
-				x4_logger_->stop();
-				x5_logger_->stop();
+				//x1_logger_->stop();
+				//x2_logger_->stop();
+				//x3_logger_->stop();
+				//x4_logger_->stop();
+				//x5_logger_->stop();
 
-				x1_logger_->saveLogs("debug", "theta_p");
-				x2_logger_->saveLogs("debug", "dtheta_p");
-				x3_logger_->saveLogs("debug", "theta_w");
-				x4_logger_->saveLogs("debug", "dtheta_w");
-				x5_logger_->saveLogs("debug", "z");
+				//x1_logger_->saveLogs("debug", "theta_p");
+				//x2_logger_->saveLogs("debug", "dtheta_p");
+				//x3_logger_->saveLogs("debug", "theta_w");
+				//x4_logger_->saveLogs("debug", "dtheta_w");
+				//x5_logger_->saveLogs("debug", "z");
 
 			}
 			break;
