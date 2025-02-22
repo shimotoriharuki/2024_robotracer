@@ -212,7 +212,7 @@ int8_t RunningStateController::loop()
 			break;
 
 		case 20:
-			if(encoder_->getGoalAreaDistance() >= 100){
+			if(encoder_->getGoalAreaDistance() >= 300){
 				//line_following_->stop(); //ゴールエリアで止まる処理 オートスタートだからコメントアウト
 				inverted_control_->setStopFeedbackGain();
 
