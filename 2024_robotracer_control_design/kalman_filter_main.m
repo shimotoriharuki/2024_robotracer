@@ -19,6 +19,8 @@ W = 2.2e-05;
 
 data_size = length(omega_data);
 store_theta = zeros(1, data_size);
+theta_from_omega = zeros(1, data_size);
+
 for i = 1 : data_size
     [theta, P] = kalmanFilter(dt, 0, pre_P, pre_theta, U, W, omega_data(i), theta_data(i));
 
@@ -26,4 +28,24 @@ for i = 1 : data_size
     pre_theta = theta;
 
     store_theta(i) = theta;
+
 end
+
+for i = 2 : data_size
+        theta_from_omega(i) = theta_from_omega(i-1) + omega_data(i) * dt;
+end
+
+
+plot(theta_from_omega)
+hold on 
+plot(theta_data)
+plot(store_theta)
+hold off
+
+legend("角速度から計算した角度", "加速度から計算した角度", "カルマンフィルタで計算した角度")
+xlabel("時間 [ms]")
+ylabel("角度 [rad]")
+title("カルマンフィルタによる倒立振子の角度推定")
+
+fontsize(18,"points")
+

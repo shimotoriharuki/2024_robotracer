@@ -2,7 +2,6 @@ function [estimated_robot_theta, P] = kalmanFilter(dt, omega_offset, pre_P, pre_
     P = pre_P;
     theta_hat = [pre_theta; omega_offset];
 
-
     A_theta = [1, -dt;
                0, 1];
     B_theta = [dt;
